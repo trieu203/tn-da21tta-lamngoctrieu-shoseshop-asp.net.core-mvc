@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <!-- Topbar Start -->
+        @await Html.PartialAsync("_Header")
+        <!-- Topbar End -->
+        <!-- Navbar Start -->
+        @await Html.PartialAsync("_Narbar")
+        <!-- Navbar End -->
+        <!-- Carousel Start -->
+        <div class="container-fluid mb-3">
+            <div class="row px-xl-5">
+                <div class="col-lg-8">
+                    <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#header-carousel" data-slide-to="1"></li>
+                            <li data-target="#header-carousel" data-slide-to="2"></li>
+                            <li data-target="#header-carousel" data-slide-to="3"></li>
+                            <li data-target="#header-carousel" data-slide-to="4"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item position-relative active" style="height: 430px;">
+                                <img class="position-absolute w-100 h-100" src="img/categories/nike.jpg" style="object-fit: cover;">
+                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                    <div class="p-3" style="max-width: 700px;">
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">NIKE</h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Nike là thương hiệu giày thể thao hàng đầu thế giới, nổi tiếng với thiết kế sáng tạo và công nghệ tiên tiến.</p>
+                                        <a title="Click để xem chi tiết" class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="@Url.Action("Details", "Categories", new { id = 1 })">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item position-relative" style="height: 430px;">
+                                <img class="position-absolute w-100 h-100" src="img/categories/addias.jpg" style="object-fit: cover;">
+                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                    <div class="p-3" style="max-width: 700px;">
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">ADIDAS</h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Adidas là thương hiệu giày thể thao nổi tiếng toàn cầu, được thành lập năm 1949. Với biểu tượng ba sọc đặc trưng.</p>
+                                        <a title="Click để xem chi tiết" class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="@Url.Action("Details", "Categories", new { id = 2 })">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item position-relative" style="height: 430px;">
+                                <img class="position-absolute w-100 h-100" src="img/categories/puma.jpg" style="object-fit: cover;">
+                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                    <div class="p-3" style="max-width: 700px;">
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">PUMA</h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Puma là thương hiệu giày thể thao toàn cầu, nổi tiếng với thiết kế hiện đại và công nghệ tiên tiến.</p>
+                                        <a title="Click để xem chi tiết" class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="@Url.Action("Details", "Categories", new { id = 5 })">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item position-relative" style="height: 430px;">
+                                <img class="position-absolute w-100 h-100" src="img/categories/ontiger.jpg" style="object-fit: cover;">
+                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                    <div class="p-3" style="max-width: 700px;">
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">ONITSUKA TIGER</h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Onitsuka Tiger, thành lập năm 1949 tại Nhật Bản, là thương hiệu giày nổi tiếng với phong cách retro cổ điển kết hợp cùng sự tinh tế hiện đại</p>
+                                        <a title="Click để xem chi tiết" class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="@Url.Action("Details", "Categories", new { id = 4 })">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item position-relative" style="height: 430px;">
+                                <img class="position-absolute w-100 h-100" src="img/categories/newbalance.jpg" style="object-fit: cover;">
+                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                    <div class="p-3" style="max-width: 700px;">
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">NEW BALANCE</h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">New Balance, thành lập năm 1906 tại Mỹ, là thương hiệu giày thể thao nổi tiếng với sự kết hợp giữa hiệu suất cao và thiết kế cổ điển.</p>
+                                        <a title="Click để xem chi tiết" class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="@Url.Action("Details", "Categories", new { id = 3 })">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="product-offer mb-30" style="height: 200px;">
+                        <img class="img-fluid" src="img/sale/sale.jpg" alt="">
+                        <div class="offer-text">
+                            <h6 class="text-white text-uppercase">Flash Sale</h6>
+                            <h3 class="text-white mb-3">Khuyến mãi đặc biệt</h3>
+                            <a title="Đi thôi!!!" asp-controller="Products" asp-action="Index" class="btn btn-primary">Đến ngay!!!</a>
+                        </div>
+                    </div>
+                    <div class="product-offer mb-30" style="height: 200px;">
+                        <img class="img-fluid" src="img/sale/new.jpg" alt="">
+                        <div class="offer-text">
+                            <h6 class="text-white text-uppercase">NEW</h6>
+                            <h3 class="text-white mb-3">Sản phẩm mới</h3>
+                            <a title="Đi thôi!!!" asp-controller="Products" asp-action="Index" class="btn btn-primary">Đến ngay!!!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+        <!-- Featured Start -->
+        <div class="container-fluid pt-5">
+            <div class="row px-xl-5 pb-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                        <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Sản phẩm chất lượng</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                        <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Miễn phí vận chuyển</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                        <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">14-Ngày trả hàng</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                        <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Hỗ trợ 24/7</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured End -->
+        @RenderBody()
+
+
+
+        @await Html.PartialAsync("_Footer")
+
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="~/mail/jqBootstrapValidation.min.js"></script>
+    <script src="~/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $("#searchButton").click(function () {
+                let url = '/Products/Search?query' + $("#searchText").val();
+                window.location.herf = url;
+            });
+        });
+    </script>
+</body>
+</html>

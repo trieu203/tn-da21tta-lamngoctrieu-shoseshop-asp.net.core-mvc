@@ -1,0 +1,102 @@
+﻿@model khoaLuan_webGiay.ViewModels.HomeVM
+
+@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "_Layout";
+}
+
+<!-- Sản phẩm mới -->
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title text-uppercase text-center mb-4"><span class="bg-secondary px-2">Sản phẩm mới</span></h2>
+    <div class="row px-xl-5">
+        @foreach (var item in Model.NewProducts)
+        {
+            @await Html.PartialAsync("_ProductCard", item)
+        }
+    </div>
+</div>
+
+<!-- Sản phẩm nổi bật -->
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title text-uppercase text-center mb-4"><span class="bg-secondary px-2">Sản phẩm nổi bật</span></h2>
+    <div class="row px-xl-5">
+        @foreach (var item in Model.FeaturedProducts)
+        {
+            @await Html.PartialAsync("_ProductCard", item)
+        }
+    </div>
+</div>
+
+<!-- Sản phẩm bán chạy -->
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title text-uppercase text-center mb-4"><span class="bg-secondary px-2">Sản phẩm bán chạy</span></h2>
+    <div class="row px-xl-5">
+        @foreach (var item in Model.BestSellingProducts)
+        {
+            @await Html.PartialAsync("_ProductCard", item)
+        }
+    </div>
+</div>
+
+
+<!-- Phân Trang -->
+<div class="col-12">
+    <nav>
+        <ul class="pagination justify-content-center">
+            <!-- Nút Previous -->
+            @if (Model.PaginatedProducts.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.PaginatedProducts.TotalPages - 1, Category = ViewBag.CurrentCategory })">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <span aria-hidden="true">&laquo;</span>
+                    </span>
+                </li>
+            }
+
+            <!-- Số Trang -->
+            @for (int i = 1; i <= Model.PaginatedProducts.TotalPages; i++)
+            {
+                if (i == Model.PaginatedProducts.TotalPages)
+                {
+                    <li class="page-item active">
+                        <span class="page-link">@i</span>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, Category = ViewBag.CurrentCategory })">@i</a>
+                    </li>
+                }
+            }
+
+            <!-- Nút Next -->
+            @if (Model.PaginatedProducts.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.PaginatedProducts.TotalPages + 1, Category = ViewBag.CurrentCategory })">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <span aria-hidden="true">&raquo;</span>
+                    </span>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+</div>

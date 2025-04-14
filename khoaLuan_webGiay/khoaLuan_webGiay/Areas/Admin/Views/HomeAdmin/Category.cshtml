@@ -1,0 +1,69 @@
+﻿@model IEnumerable<khoaLuan_webGiay.Data.Category>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.IO
+
+@{
+    ViewData["Title"] = "Danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 text-primary">Danh mục sản phẩm</h1>
+        <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="CreateCategory" class="btn btn-success">
+            + Tạo mới danh mục
+        </a>
+
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Tên danh mục</th>
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Hình minh họa</th>
+                    <th scope="col" class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                        <td>@item.CreatedDate?.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            @{
+                                var imageUrl = item.ImageUrl?.ToString() ?? ""; // Đảm bảo ImageUrl không null
+                                var imageFile = string.IsNullOrEmpty(System.IO.Path.GetExtension(imageUrl))
+                                ? imageUrl + ".jpg"
+                                : imageUrl;
+
+                                var imagePath = Url.Content("~/img/categories/" + imageFile);
+                            }
+                            <img src="@imagePath"
+                                 alt="@item.CategoryName"
+                                 class="img-thumbnail"
+                                 style="width: 70px; height: 70px;"
+                                 onerror="this.onerror=null; this.src='/img/products/default.jpg';" />
+                        </td>
+
+
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" asp-area="admin" asp-action="EditCategory" asp-route-id="@item.CategoryId">
+                                <i class="fa fa-edit"></i> Sửa
+                            </a>
+                            <a class="btn btn-info btn-sm" asp-area="admin" asp-action="DetailCategory" asp-route-id="@item.CategoryId">
+                                <i class="fa fa-info-circle"></i> Chi Tiết
+                            </a>
+                            <a class="btn btn-danger btn-sm" asp-area="admin" asp-action="DeleteCategory" asp-route-id="@item.CategoryId">
+                                <i class="fa fa-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

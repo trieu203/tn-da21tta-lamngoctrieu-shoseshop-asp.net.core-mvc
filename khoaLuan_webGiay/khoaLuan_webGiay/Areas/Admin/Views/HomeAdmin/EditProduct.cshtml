@@ -1,0 +1,87 @@
+﻿@model khoaLuan_webGiay.Data.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Chỉnh sửa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">Chỉnh sửa sản phẩm</h3>
+        </div>
+        <div class="card-body p-4">
+            <form asp-route-id="@Model.ProductId" method="post" enctype="multipart/form-data" asp-action="EditProduct">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <input type="hidden" asp-for="ProductId" />
+
+                <div class="mb-3">
+                    <label asp-for="ProductName" class="form-label fw-bold">Tên sản phẩm</label>
+                    <input asp-for="ProductName" class="form-control border rounded-3" placeholder="Nhập tên sản phẩm" />
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label fw-bold">Giá sản phẩm</label>
+                    <input asp-for="Price" class="form-control border rounded-3" placeholder="Nhập giá sản phẩm" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+                    <textarea asp-for="Description" class="form-control border rounded-3" rows="3" placeholder="Nhập mô tả sản phẩm"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Discount" class="form-label fw-bold">Giảm giá (%)</label>
+                    <input asp-for="Discount" class="form-control border rounded-3" placeholder="Nhập phần trăm giảm giá" />
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label fw-bold">Danh mục</label>
+                    <select asp-for="CategoryId" class="form-select border rounded-3" asp-items="ViewBag.CategoryName">
+                        <option value="">-- Chọn danh mục --</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input asp-for="CreatedDate" class="form-control border rounded-3" type="date" />
+                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Hình ảnh danh mục</label>
+                    <input type="file" name="ImageFile" class="form-control border rounded-3" accept="image/*" />
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="mt-2">
+                            <label class="fw-bold">Hình ảnh hiện tại:</label><br />
+                            @{
+                                var imageUrl = Model.ImageUrl?.ToString() ?? "";
+                                var imageFile = string.IsNullOrEmpty(System.IO.Path.GetExtension(imageUrl))
+                                ? imageUrl + ".jpg"
+                                : imageUrl;
+
+                                var imagePath = Url.Content("~/img/products/" + imageFile);
+                            }
+                            <img src="@imagePath"
+                                 alt="@Model.ProductName"
+                                 class="img-thumbnail border shadow-sm rounded-3"
+                                 style="width: 120px; height: 120px; object-fit: cover;"
+                                 onerror="this.onerror=null; this.src='/img/products/default.jpg';" />
+                        </div>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="Product" class="btn btn-secondary me-2 rounded-3">Quay lại</a>
+                    <button type="submit" class="btn btn-primary rounded-3">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

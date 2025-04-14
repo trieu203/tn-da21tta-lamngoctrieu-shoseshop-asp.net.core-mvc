@@ -1,0 +1,76 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model khoaLuan_webGiay.Data.ProductSize
+
+@{
+    ViewData["Title"] = "Tạo Size Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Tạo Size Sản Phẩm</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="CreateProductSize" class="shadow p-4 rounded bg-light">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="ProductId" class="form-label">Chọn sản phẩm</label>
+                    <select asp-for="ProductId" class="form-select" asp-items="ViewBag.ProductName">
+                        <option value="">-- Chọn sản phẩm --</option>
+                    </select>
+                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Size" class="form-label">Kích thước (Size)</label>
+                    <input asp-for="Size" class="form-control" placeholder="Nhập kích thước sản phẩm" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Quantity" class="form-label">Số lượng</label>
+                    <input asp-for="Quantity" class="form-control" placeholder="Nhập số lượng sản phẩm" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PriceAtTime" class="form-label">Giá tại thời điểm</label>
+                    <input asp-for="PriceAtTime" class="form-control" type="text" pattern="[0-9]+(\.[0-9]+)?" placeholder="Nhập giá sản phẩm" />
+                    <span asp-validation-for="PriceAtTime" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                    <button type="submit" class="btn btn-primary">Tạo mới</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        let productId = document.querySelector("#ProductId").value;
+        let size = document.querySelector("#Size").value;
+        let quantity = document.querySelector("#Quantity").value;
+
+        if (!productId) {
+            alert("Vui lòng chọn sản phẩm.");
+            event.preventDefault();
+            return;
+        }
+
+        if (size < 36 || size > 45) {
+            alert("Kích thước (Size) phải từ 36 đến 45.");
+            event.preventDefault();
+        }
+
+        // Kiểm tra Quantity không nhỏ hơn 0 và là số nguyên
+        if (quantity < 0 || !Number.isInteger(Number(quantity))) {
+            alert("Số lượng phải là số nguyên lớn hơn hoặc bằng 0.");
+            event.preventDefault();
+            return;
+        }
+    });
+</script>

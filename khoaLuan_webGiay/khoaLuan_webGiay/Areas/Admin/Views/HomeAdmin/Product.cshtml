@@ -1,0 +1,91 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<khoaLuan_webGiay.Data.Product>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.IO
+
+@{
+    ViewData["Title"] = "Danh Sách Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary">Danh Sách Sản Phẩm</h2>
+        <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="CreateProduct" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Thêm Sản Phẩm Mới
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm">
+            <thead class="table-dark text-white">
+                <tr>
+                    <th scope="col">Tên Sản Phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Hình Ảnh</th>
+                    <th scope="col">Danh Mục</th>
+                    <th scope="col" class="text-center">Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td>
+                            @{
+                                var imageUrl = item.ImageUrl?.ToString() ?? ""; // Đảm bảo ImageUrl không null
+                                var imageFile = string.IsNullOrEmpty(System.IO.Path.GetExtension(imageUrl))
+                                ? imageUrl + ".jpg"
+                                : imageUrl;
+
+                                var imagePath = Url.Content("~/img/products/" + imageFile);
+                            }
+                            <img src="@imagePath"
+                                 alt="@item.ProductName"
+                                 class="img-thumbnail"
+                                 style="width: 70px; height: 70px;"
+                                 onerror="this.onerror=null; this.src='/img/products/default.jpg';" />
+                        </td>
+
+                        <td>@(item.Category?.CategoryName ?? "Chưa có danh mục")</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" asp-area="admin" asp-action="EditProduct" asp-route-id="@item.ProductId">
+                                <i class="fa fa-edit"></i> Sửa
+                            </a>
+                            <a class="btn btn-info btn-sm" asp-area="admin" asp-action="DetailProduct" asp-route-id="@item.ProductId">
+                                <i class="fa fa-info-circle"></i> Chi Tiết
+                            </a>
+                            <a class="btn btn-danger btn-sm" asp-area="admin" asp-action="DeleteProduct" asp-route-id="@item.ProductId">
+                                <i class="fa fa-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phân trang -->
+    @if (Model.TotalItemCount > 7)
+    {
+        <div class="d-flex justify-content-center mt-4">
+            @Html.PagedListPager(
+                     Model,
+                     page => Url.Action("Product", new { page }),
+                     new PagedListRenderOptions
+        {
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" },
+            UlElementClasses = new[] { "pagination", "pagination-sm" },
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always
+        }
+                     )
+        </div>
+    }
+</div>

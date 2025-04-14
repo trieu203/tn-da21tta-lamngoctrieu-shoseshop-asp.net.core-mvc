@@ -1,0 +1,88 @@
+﻿@model khoaLuan_webGiay.Data.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0">Xác nhận xóa sản phẩm</h3>
+        </div>
+        <div class="card-body">
+            <p class="lead">Bạn có chắc chắn muốn xóa sản phẩm này không?</p>
+
+            <dl class="row">
+                <dt class="col-sm-3 text-muted">Tên sản phẩm</dt>
+                <dd class="col-sm-9">@Model.ProductName</dd>
+
+                <dt class="col-sm-3 text-muted">Giá</dt>
+                <dd class="col-sm-9">@Model.Price VNĐ</dd>
+
+                <dt class="col-sm-3 text-muted">Mô tả</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3 text-muted">Giảm giá</dt>
+                <dd class="col-sm-9">@Model.Discount%</dd>
+
+                <dt class="col-sm-3 text-muted">Lượt xem</dt>
+                <dd class="col-sm-9">@Model.ViewCount</dd>
+
+                <dt class="col-sm-3 text-muted">Đánh giá trung bình</dt>
+                <dd class="col-sm-9">@Model.AverageRating</dd>
+
+                <dt class="col-sm-3 text-muted">Tổng số lượng đã bán</dt>
+                <dd class="col-sm-9">@Model.TotalSold</dd>
+
+                <dt class="col-sm-3 text-muted">Ngày tạo</dt>
+                <dd class="col-sm-9">@Model.CreatedDate</dd>
+
+                <dt class="col-sm-3 text-muted">Danh mục</dt>
+                <dd class="col-sm-9">@Model.Category.CategoryName</dd>
+
+                <dt class="col-sm-3 text-muted">Hình ảnh</dt>
+                <dd class="col-sm-9">
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="mt-2">
+                            @{
+                                var imagePath = Url.Content("~/img/products/" + (string.IsNullOrEmpty(System.IO.Path.GetExtension(Model.ImageUrl)) ? Model.ImageUrl + ".jpg" : Model.ImageUrl));
+                            }
+                            <img src="@imagePath"
+                                 alt="@Model.ProductName"
+                                 class="img-thumbnail border shadow-sm rounded-3"
+                                 style="width: 100px; height: 100px; object-fit: cover;"
+                                 onerror="this.onerror=null; this.src='/img/products/default.jpg';" />
+                        </div>
+                    }
+                </dd>
+            </dl>
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <span>@TempData["Message"]</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <!-- Form xóa với xác nhận JavaScript -->
+            <form asp-action="DeleteProduct" asp-route-id="@Model.ProductId" onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?. Hành động này không thể hoàn tác')">
+                <input type="hidden" asp-for="ProductId" />
+                <div class="d-flex justify-content-end">
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="Product" class="btn btn-secondary me-2">Hủy bỏ</a>
+                    <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Script xác nhận xóa -->
+<script>
+    function confirmDelete() {
+        return confirm("Bạn có chắc chắn muốn xóa sản phẩm này không? Hành động này không thể hoàn tác.");
+    }
+</script>

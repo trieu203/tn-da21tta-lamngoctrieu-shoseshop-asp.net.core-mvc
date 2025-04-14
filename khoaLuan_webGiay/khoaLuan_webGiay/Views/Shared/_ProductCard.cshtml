@@ -1,0 +1,53 @@
+﻿@model khoaLuan_webGiay.ViewModels.ProductVM
+
+<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+    <div class="product-item bg-light mb-4">
+        <div class="product-img position-relative overflow-hidden">
+            <a asp-controller="Products" asp-action="Details" asp-route-id="@Model.ProductId">
+                <img class="img-fluid w-100" src="~/img/products/@(Model.ImageUrl ?? "default.jpg")" alt="@Model.ProductName" />
+            </a>
+            <div class="product-action">
+                <!-- Thêm vào giỏ hàng -->
+                <a title="Thêm vào giỏ hàng" asp-action="Details" asp-controller="Products" asp-route-id="@Model.ProductId" class="btn btn-outline-dark btn-square">
+                    <i class="fa fa-shopping-cart"></i>
+                </a>
+
+                <!-- Thêm vào danh sách yêu thích -->
+                <form method="post" asp-action="AddToWishList" asp-controller="WishLists" asp-route-productId="@Model.ProductId" class="d-inline-block">
+                    <button type="submit" class="btn btn-outline-dark btn-square" title="Thêm vào danh sách yêu thích">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center py-4">
+            <a class="h6 text-decoration-none" href="@Url.Action("Details", "Products", new { id = Model.ProductId })">@Model.ProductName</a>
+            <div class="d-flex justify-content-center mt-2">
+                <h5>@Model.Price.ToString("N0") VNĐ</h5>
+            </div>
+            <div class="d-flex justify-content-center mb-1">
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small class="fa fa-star text-primary mr-1"></small>
+                <small>(@Model.Rating)</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-img img {
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .product-item {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+</style>
+

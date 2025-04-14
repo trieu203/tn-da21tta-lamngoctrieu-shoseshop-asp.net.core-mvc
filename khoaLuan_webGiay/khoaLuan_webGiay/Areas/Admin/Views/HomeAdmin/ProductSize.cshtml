@@ -1,0 +1,73 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<khoaLuan_webGiay.Data.ProductSize>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ProductSize";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary">Quản lý kích thước sản phẩm</h2>
+        <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="CreateProductSize" class="btn btn-success">
+            + Tạo mới danh mục
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped shadow-sm">
+            <thead class="table-dark text-white">
+                <tr>
+                    <th scope="col">Kích thước</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Giá tại thời điểm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col" class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Size)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                        <td>@item.PriceAtTime.ToString("N0") VND</td>
+                        <td>@Html.DisplayFor(modelItem => item.Product.ProductName)</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" asp-area="admin" asp-action="EditProductSize" asp-route-id="@item.ProductSizeId">
+                                <i class="fa fa-edit"></i> Sửa
+                            </a>
+                            <a class="btn btn-info btn-sm" asp-area="admin" asp-action="DetailProductSize" asp-route-id="@item.ProductSizeId">
+                                <i class="fa fa-info-circle"></i> Chi Tiết
+                            </a>
+                            <a class="btn btn-danger btn-sm" asp-area="admin" asp-action="DeleteProductSize" asp-route-id="@item.ProductSizeId">
+                                <i class="fa fa-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phân trang -->
+    @if (Model.TotalItemCount > 7)
+    {
+    <div class="d-flex justify-content-center mt-4">
+        @Html.PagedListPager(
+                 Model,
+                 page => Url.Action("ProductSize", new { page }),
+                 new PagedListRenderOptions
+        {
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" },
+            UlElementClasses = new[] { "pagination", "pagination-sm" },
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always
+        })
+    </div>
+    }
+</div>

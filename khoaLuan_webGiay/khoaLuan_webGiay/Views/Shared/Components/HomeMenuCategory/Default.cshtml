@@ -1,0 +1,17 @@
+﻿@model List<khoaLuan_webGiay.Data.Category>
+
+<div class="navbar-nav w-100">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var cat in Model)
+        {
+            <a class="nav-item nav-link" href="@Url.Action("Details", "Categories", new { id = cat.CategoryId })">
+                @cat.CategoryName
+            </a>
+        }
+    }
+    else
+    {
+        <span class="nav-item nav-link text-muted">Không có danh mục</span>
+    }
+</div>

@@ -1,0 +1,80 @@
+﻿<!-- Footer Start -->
+<div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+    <div class="row px-xl-5 pt-5">
+        <div class="col-lg-4 col-md-12 mb-5">
+            <h5 class="text-secondary text-uppercase mb-4">Liên Hệ</h5>
+            <p class="mb-4">MILIONSHOP chuyên cung cấp các sản phẩm giày chất lượng cao với thiết kế đa dạng phong cách.</p>
+            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>114, Kiên Thị Nhẫn, P7, TP Trà Vinh</p>
+            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>trieungocgame123@gmail.com</p>
+            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+84 398 450 834</p>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-5">
+            <h5 class="text-secondary text-uppercase mb-4">Thông Tin Cửa Hàng</h5>
+            <div class="d-flex flex-column justify-content-start">
+                <a class="text-secondary mb-2 toggle-collapse" data-toggle="collapse" href="#shoeBrandList" role="button" aria-expanded="false" aria-controls="shoeBrandList">
+                    <i class="fa fa-angle-right mr-2"></i>Giới thiệu về hãng giày
+                </a>
+                <div class="collapse ml-4" id="shoeBrandList">
+                    <ul class="list-unstyled">
+                        <li><a title="Click để xem chi tiết" href="@Url.Action("Details", "Categories", new { id = 1 })" class="text-white">Nike</a></li>
+                        <li><a title="Click để xem chi tiết" href="@Url.Action("Details", "Categories", new { id = 2 })" class="text-white">Adidas</a></li>
+                        <li><a title="Click để xem chi tiết" href="@Url.Action("Details", "Categories", new { id = 5 })" class="text-white">Puma</a></li>
+                        <li><a title="Click để xem chi tiết" href="@Url.Action("Details", "Categories", new { id = 4 })" class="text-white">Onitsuka</a></li>
+                        <li><a title="Click để xem chi tiết" href="@Url.Action("Details", "Categories", new { id = 3 })" class="text-white">New Balance</a></li>
+                    </ul>
+                </div>
+
+                <a asp-controller="Products" asp-action="Index" class="text-secondary mb-2"><i class="fa fa-angle-right mr-2"></i>Cửa hàng</a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-5">
+            <h5 class="text-secondary text-uppercase mb-4">Tài Khoản Của Tôi</h5>
+            <div class="d-flex flex-column justify-content-start">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <!-- Nếu người dùng là Admin -->
+                        <a class="text-secondary mb-2" asp-controller="Users" asp-action="DangXuat"><i class="fa fa-angle-right mr-2"></i>Đăng xuất</a>
+                        <a class="text-secondary mb-2" asp-controller="Admin" asp-action="#"><i class="fa fa-angle-right mr-2"></i>Quản lý</a>
+                    }
+                    else
+                    {
+                        <!-- Nếu người dùng là người dùng thông thường -->
+                        <a class="text-secondary mb-2" asp-controller="Users" asp-action="DangXuat"><i class="fa fa-angle-right mr-2"></i>Đăng xuất</a>
+                        <a class="text-secondary mb-2" asp-controller="Users" asp-action="Details"><i class="fa fa-angle-right mr-2"></i>Thông tin tài khoản</a>
+                        <a class="text-secondary mb-2" asp-controller="Carts" asp-action="Index"><i class="fa fa-angle-right mr-2"></i>Giỏ hàng</a>
+                        <a class="text-secondary mb-2" asp-controller="WishLists" asp-action="Index"><i class="fa fa-angle-right mr-2"></i>Danh sách yêu thích</a>
+                        <a class="text-secondary mb-2" asp-controller="Orders" asp-action="History"><i class="fa fa-angle-right mr-2"></i>Lịch sử mua hàng</a>
+                    }
+                }
+                else
+                {
+                    <!-- Nếu người dùng chưa đăng nhập -->
+                    <a class="text-secondary mb-2" asp-controller="Users" asp-action="Login"><i class="fa fa-angle-right mr-2"></i>Đăng nhập</a>
+                    <a class="text-secondary mb-2" asp-controller="Users" asp-action="Register"><i class="fa fa-angle-right mr-2"></i>Đăng ký</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleLinks = document.querySelectorAll('.toggle-collapse');
+
+        toggleLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-angle-right')) {
+                    icon.classList.remove('fa-angle-right');
+                    icon.classList.add('fa-angle-down');
+                } else {
+                    icon.classList.remove('fa-angle-down');
+                    icon.classList.add('fa-angle-right');
+                }
+            });
+        });
+    });
+</script>
