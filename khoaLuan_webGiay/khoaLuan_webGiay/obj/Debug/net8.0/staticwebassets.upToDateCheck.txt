@@ -151,6 +151,7 @@ wwwroot\img\users\e2c5bbd7-f5cd-4af3-98cb-51bc678db217.jpg
 wwwroot\img\users\e52d88a8-324d-4cae-a3f5-72abd62a4d0b.jpg
 wwwroot\img\users\user_boy.jpg
 wwwroot\img\users\user_girl.jpg
+wwwroot\js\forgotpassword.js
 wwwroot\js\main.js
 wwwroot\js\register.js
 wwwroot\js\site.js

@@ -72,7 +72,7 @@ namespace khoaLuan_webGiay.Controllers
             {
                 Email = email,
                 OtpCode = otp,
-                CreatedAt = DateTime.Now,
+                CreatedAt = DateTime.UtcNow,
                 IsUsed = false
             };
 
@@ -95,15 +95,15 @@ namespace khoaLuan_webGiay.Controllers
                 .OrderByDescending(o => o.CreatedAt)
                 .FirstOrDefault();
 
-            if (record == null || (DateTime.Now - record.CreatedAt).TotalMinutes > 10)
+            if (record == null || (DateTime.UtcNow - record.CreatedAt).TotalMinutes > 10)
             {
                 return BadRequest("Mã OTP không hợp lệ hoặc đã hết hạn.");
             }
 
-            record.IsUsed = true;
-            _context.SaveChanges();
+            //record.IsUsed = true;
+            //_context.SaveChanges();
 
-            TempData["VerifiedEmail"] = email;
+            //TempData["VerifiedEmail"] = email;
             return Ok("Xác thực thành công");
         }
 
@@ -178,6 +178,113 @@ namespace khoaLuan_webGiay.Controllers
             await HttpContext.SignOutAsync("MyCookieAuth");
             return RedirectToAction("Login", "Users");
         }
+
+        //ForgotPassword
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("Email", "Không tìm thấy email này.");
+                return View(model);
+            }
+
+            var otp = new Random().Next(100000, 999999).ToString();
+
+            var existing = _context.OtpConfirmations.Where(x => x.Email == model.Email && !x.IsUsed);
+            _context.OtpConfirmations.RemoveRange(existing);
+
+            _context.Add(new OtpConfirmations
+            {
+                Email = model.Email,
+                OtpCode = otp,
+                CreatedAt = DateTime.Now,
+                IsUsed = false
+            });
+            await _context.SaveChangesAsync();
+
+            await _emailService.SendAsync(model.Email, "Khôi phục mật khẩu", $"Mã OTP của bạn là: {otp}");
+
+            TempData["Email"] = model.Email;
+            return RedirectToAction("ResetPassword");
+        }
+
+        //ResetPassword
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            var email = TempData["Email"] as string;
+            if (string.IsNullOrEmpty(email)) return RedirectToAction("ForgotPassword");
+
+            var model = new ResetPasswordVM { Email = email };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordVM model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Thông tin không hợp lệ.");
+
+            var record = _context.OtpConfirmations
+                .Where(o => o.Email == model.Email && o.OtpCode == model.Otp && !o.IsUsed)
+                .OrderByDescending(o => o.CreatedAt)
+                .FirstOrDefault();
+
+            if (record == null || (DateTime.UtcNow - record.CreatedAt).TotalMinutes > 15)
+                return BadRequest("Mã OTP không hợp lệ hoặc đã hết hạn.");
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null)
+                return BadRequest("Không tìm thấy người dùng.");
+
+            user.Password = model.NewPassword;
+            record.IsUsed = true;
+
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return Ok("Đặt lại mật khẩu thành công.");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendOtpForReset([FromBody] EmailRequest data)
+        {
+            var email = data.Email?.Trim();
+            if (string.IsNullOrWhiteSpace(email)) return BadRequest("Email không hợp lệ.");
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null) return BadRequest("Không tìm thấy địa chỉ email. Hyax nhập địa chỉ email tài khoản của bạn ");
+
+            var otp = new Random().Next(100000, 999999).ToString();
+
+            var body = $"Mã OTP khôi phục mật khẩu là: {otp}";
+            await _emailService.SendAsync(email, "Mã khôi phục mật khẩu", body);
+
+            var existing = _context.OtpConfirmations.Where(x => x.Email == email && !x.IsUsed);
+            _context.OtpConfirmations.RemoveRange(existing);
+
+            _context.Add(new OtpConfirmations
+            {
+                Email = email,
+                OtpCode = otp,
+                CreatedAt = DateTime.UtcNow,
+                IsUsed = false
+            });
+            await _context.SaveChangesAsync();
+
+            return Ok("Mã OTP đã gửi.");
+        }
+
 
         // GET: Users/Create
         public IActionResult Create()

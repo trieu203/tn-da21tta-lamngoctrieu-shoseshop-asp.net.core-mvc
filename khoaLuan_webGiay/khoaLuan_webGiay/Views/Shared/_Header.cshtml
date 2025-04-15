@@ -61,7 +61,7 @@
                             </button>
 
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a asp-controller="Users" asp-action="DangXuat" class="dropdown-item">Đăng xuất</a>
+                                <a asp-controller="Users" asp-action="Logout" class="dropdown-item">Đăng xuất</a>
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <a asp-controller="Admin" asp-action="Index" class="dropdown-item">Quản lý</a>

@@ -3637,6 +3637,10 @@
       "PackagePath": "staticwebassets\\img\\users\\user_girl.jpg"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\forgotpassword.js",
+      "PackagePath": "staticwebassets\\js\\forgotpassword.js"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
     },

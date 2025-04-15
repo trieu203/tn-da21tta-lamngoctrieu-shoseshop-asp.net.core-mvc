@@ -5,73 +5,166 @@
     Layout = "_Product";
 }
 
-<div class="card login-card shadow-sm">
-    <div class="card-header bg-primary text-white text-center rounded-top-4">
-        <h4 class="mb-0"><i class="bi bi-box-arrow-in-right me-2"></i>Đăng nhập</h4>
-    </div>
-    <div class="card-body px-4 py-4">
-        <form asp-action="Login" method="post">
-            <div class="mb-3 position-relative">
-                <label for="UserNameOrEmail" class="form-label">
-                    <i class="bi bi-person-circle me-1"></i> Tên đăng nhập hoặc Email
-                </label>
-                <input asp-for="UserNameOrEmail" class="form-control" placeholder="Nhập tên đăng nhập hoặc email" />
+<div class="d-flex justify-content-center align-items-center vh-100 login-bg">
+    <div class="card p-5 shadow-lg rounded-4 login-card animate-fade-in">
+        <h2 class="text-center mb-4">Đăng nhập tài khoản</h2>
+
+        <form asp-action="Login" method="post" autocomplete="off">
+            <div class="form-floating mb-4">
+                <input asp-for="UserNameOrEmail" class="form-control form-control-lg animate-input floating-check" id="floatingUserNameOrEmail" placeholder=" " />
+                <label for="floatingUserNameOrEmail">Tên đăng nhập hoặc Email</label>
                 <span asp-validation-for="UserNameOrEmail" class="text-danger small"></span>
             </div>
 
-            <div class="mb-3 position-relative">
-                <label for="Password" class="form-label">
-                    <i class="bi bi-lock-fill me-1"></i> Mật khẩu
-                </label>
-                <div class="position-relative">
-                    <input asp-for="Password" class="form-control" type="password" id="password-input" placeholder="Nhập mật khẩu" />
-                    <i class="bi bi-eye-slash-fill toggle-password text-secondary" id="togglePassword"></i>
-                </div>
+            <div class="form-floating mb-4 position-relative">
+                <input asp-for="Password" class="form-control form-control-lg animate-input floating-check" type="password" id="password-input" placeholder=" " />
+                <label for="password-input">Mật khẩu</label>
+                <i class="bi bi-eye-slash-fill toggle-password text-secondary" id="togglePassword"></i>
                 <span asp-validation-for="Password" class="text-danger small"></span>
             </div>
 
-            <div class="d-grid">
-                <button type="submit" class="btn btn-success">
+            <div asp-validation-summary="All" class="text-danger small mb-3"></div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg animate-button mb-2 w-75">
                     <i class="bi bi-box-arrow-in-right me-1"></i> Đăng nhập
-                </button>
+                </button><br />
+                <a href="/Users/ForgotPassword" class="text-decoration-none text-dark small">
+                    <h5><i class="bi bi-question-circle me-1"></i>Quên mật khẩu?</h5>
+                </a>
             </div>
         </form>
     </div>
 </div>
 
-<script>
-    const togglePassword = document.getElementById("togglePassword");
-    const passwordInput = document.getElementById("password-input");
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("password-input");
 
-    togglePassword.addEventListener("click", function () {
-        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-        passwordInput.setAttribute("type", type);
-        this.classList.toggle("bi-eye");
-        this.classList.toggle("bi-eye-slash-fill");
-    });
-</script>
+        togglePassword?.addEventListener("click", function () {
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
+            this.classList.toggle("bi-eye");
+            this.classList.toggle("bi-eye-slash-fill");
+        });
+
+        // Đảm bảo label nổi lên khi input có nội dung (với browser auto-fill hoặc user gõ vào)
+        document.querySelectorAll(".floating-check").forEach(input => {
+            input.addEventListener("input", () => {
+                if (input.value) {
+                    input.classList.add("has-content");
+                } else {
+                    input.classList.remove("has-content");
+                }
+            });
+
+            // Set sẵn nếu input đã có nội dung từ trước (ví dụ browser autofill)
+            if (input.value) {
+                input.classList.add("has-content");
+            }
+        });
+    </script>
+}
 
 <style>
+    .login-bg {
+        background: linear-gradient(to right, #e0ecff, #f7f9fc);
+        padding: 2rem;
+    }
+
     .login-card {
-        max-width: 500px;
-        margin: 60px auto;
-        border-radius: 1rem;
+        width: 600px;
+        max-width: 95vw;
+        background-color: #ffffff;
+        border: none;
+        animation: slideUp 0.7s ease;
+    }
+
+    .form-floating .form-control {
+        padding: 1.25rem 0.75rem 0.25rem;
+        font-size: 1.1rem;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .form-floating label {
+        top: 1rem;
+        left: 0.75rem;
+        font-size: 1rem;
+        color: #6c757d;
+        transition: all 0.2s ease;
+        pointer-events: none;
+    }
+
+    /* Nổi label khi có nội dung hoặc focus */
+    .form-floating .form-control:focus + label,
+    .form-floating .has-content + label {
+        top: -0.8rem;
+        left: 0.65rem;
+        font-size: 0.9rem;
+        color: #495057;
+        background-color: #fff;
+        padding: 0 0.25rem;
     }
 
     .form-control:focus {
-        border-color: #86b7fe;
-        box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
-    }
-
-    .form-label {
-        font-weight: 500;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        transform: scale(1.02);
     }
 
     .toggle-password {
-        cursor: pointer;
         position: absolute;
-        right: 1rem;
         top: 50%;
+        right: 1rem;
         transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .btn-lg {
+        padding: 0.75rem;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+        .btn-lg:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+        }
+
+    /* Animation */
+    .animate-fade-in {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    }
+
+    @@keyframes slideUp {
+        from
+
+    {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
     }
 </style>

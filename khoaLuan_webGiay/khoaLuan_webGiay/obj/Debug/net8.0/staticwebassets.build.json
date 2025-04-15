@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sh0+FhjO9JvBkjyFqoUBoiqvn4kqTdpEHUUJOD05laA=",
+  "Hash": "TXK7pmM5NdeEuBi9vG6buHAe3hrVv8AAf43AVduCqoE=",
   "Source": "khoaLuan_webGiay",
   "BasePath": "_content/khoaLuan_webGiay",
   "Mode": "Default",
@@ -3272,6 +3272,27 @@
       "OriginalItemSpec": "wwwroot\\img\\users\\user_girl.jpg"
     },
     {
+      "Identity": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\forgotpassword.js",
+      "SourceId": "khoaLuan_webGiay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\",
+      "BasePath": "_content/khoaLuan_webGiay",
+      "RelativePath": "js/forgotpassword#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "x4h0n3043y",
+      "Integrity": "wbnhHNkZdsJOuP+E6Stamc5k3P6QKT56Jblap8mS4NE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\forgotpassword.js"
+    },
+    {
       "Identity": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\main.js",
       "SourceId": "khoaLuan_webGiay",
       "SourceType": "Discovered",
@@ -3307,8 +3328,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "1o6avb0jxd",
-      "Integrity": "QYuq11MUux4H6EDYCAgTPHvNr81+ZHII/lw80R34HHo=",
+      "Fingerprint": "k6vz0j6n76",
+      "Integrity": "nNSU+CRpV/9416c1rbvlBOrmwPOQmpJcJ6ix9R9ZQPc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\register.js"
@@ -35308,6 +35329,88 @@
       ]
     },
     {
+      "Route": "js/forgotpassword.js",
+      "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\forgotpassword.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3900"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wbnhHNkZdsJOuP+E6Stamc5k3P6QKT56Jblap8mS4NE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 03:23:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wbnhHNkZdsJOuP+E6Stamc5k3P6QKT56Jblap8mS4NE="
+        }
+      ]
+    },
+    {
+      "Route": "js/forgotpassword.x4h0n3043y.js",
+      "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\forgotpassword.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3900"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wbnhHNkZdsJOuP+E6Stamc5k3P6QKT56Jblap8mS4NE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 03:23:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "x4h0n3043y"
+        },
+        {
+          "Name": "label",
+          "Value": "js/forgotpassword.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wbnhHNkZdsJOuP+E6Stamc5k3P6QKT56Jblap8mS4NE="
+        }
+      ]
+    },
+    {
       "Route": "js/main.f6ozz250gy.js",
       "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\main.js",
       "Selectors": [],
@@ -35330,7 +35433,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 03 Dec 2024 04:09:49 GMT"
+          "Value": "Tue, 15 Apr 2025 02:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35375,7 +35478,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 03 Dec 2024 04:09:49 GMT"
+          "Value": "Tue, 15 Apr 2025 02:25:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35390,51 +35493,6 @@
       ]
     },
     {
-      "Route": "js/register.1o6avb0jxd.js",
-      "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\register.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3295"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"QYuq11MUux4H6EDYCAgTPHvNr81+ZHII/lw80R34HHo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 14 Apr 2025 13:00:13 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "1o6avb0jxd"
-        },
-        {
-          "Name": "label",
-          "Value": "js/register.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-QYuq11MUux4H6EDYCAgTPHvNr81+ZHII/lw80R34HHo="
-        }
-      ]
-    },
-    {
       "Route": "js/register.js",
       "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\register.js",
       "Selectors": [],
@@ -35445,7 +35503,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3295"
+          "Value": "4820"
         },
         {
           "Name": "Content-Type",
@@ -35453,11 +35511,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QYuq11MUux4H6EDYCAgTPHvNr81+ZHII/lw80R34HHo=\""
+          "Value": "\"nNSU+CRpV/9416c1rbvlBOrmwPOQmpJcJ6ix9R9ZQPc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 14 Apr 2025 13:00:13 GMT"
+          "Value": "Tue, 15 Apr 2025 02:42:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35467,7 +35525,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-QYuq11MUux4H6EDYCAgTPHvNr81+ZHII/lw80R34HHo="
+          "Value": "sha256-nNSU+CRpV/9416c1rbvlBOrmwPOQmpJcJ6ix9R9ZQPc="
+        }
+      ]
+    },
+    {
+      "Route": "js/register.k6vz0j6n76.js",
+      "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\register.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4820"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nNSU+CRpV/9416c1rbvlBOrmwPOQmpJcJ6ix9R9ZQPc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 02:42:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k6vz0j6n76"
+        },
+        {
+          "Name": "label",
+          "Value": "js/register.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nNSU+CRpV/9416c1rbvlBOrmwPOQmpJcJ6ix9R9ZQPc="
         }
       ]
     },
@@ -35576,7 +35679,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 14 Apr 2025 13:37:03 GMT"
+          "Value": "Tue, 15 Apr 2025 01:35:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35613,7 +35716,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 14 Apr 2025 13:37:03 GMT"
+          "Value": "Tue, 15 Apr 2025 01:35:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35658,7 +35761,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 14 Apr 2025 13:37:03 GMT"
+          "Value": "Tue, 15 Apr 2025 01:35:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35703,7 +35806,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 14 Apr 2025 13:37:03 GMT"
+          "Value": "Tue, 15 Apr 2025 01:35:49 GMT"
         },
         {
           "Name": "Cache-Control",
