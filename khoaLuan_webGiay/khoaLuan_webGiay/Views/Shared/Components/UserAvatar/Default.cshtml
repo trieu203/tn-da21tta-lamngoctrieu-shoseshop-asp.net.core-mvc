@@ -1,0 +1,8 @@
+﻿@model string
+
+<img src="@Url.Content("~/img/users/" + Model)"
+     alt="User Avatar"
+     class="rounded-circle"
+     width="60"
+     height="60"
+     onerror="this.onerror=null;this.src='@Url.Content("~/img/users/user_boy.jpg")';" />

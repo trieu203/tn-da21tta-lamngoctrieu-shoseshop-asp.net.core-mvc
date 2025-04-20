@@ -68,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERldGFpbFByb2R1Y3RTaXplLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DetailUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERldGFpbFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/EditCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEVkaXRDYXRlZ29yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -80,6 +84,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEVkaXRQcm9kdWN0U2l6ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEVkaXRVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,6 +98,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/ProductSize.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFByb2R1Y3RTaXplLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/User.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/Shared/_Layout.cshtml]
@@ -234,6 +246,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Shared/Components/MenuCategory/_MenuCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudUNhdGVnb3J5XF9NZW51Q2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Shared/Components/UserAvatar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckF2YXRhclxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Shared/Components/WishList/WishListPanel.cshtml]

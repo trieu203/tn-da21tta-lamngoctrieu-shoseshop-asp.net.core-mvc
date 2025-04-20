@@ -34,7 +34,7 @@
                     <li class="nav-item nav-profile">
                         <a asp-controller="Admin" asp-action="Index" class="nav-link">
                             <div class="nav-profile-image">
-                                <img src="~/img/users/5112aa80-5f60-4ea0-aa12-5ab8421e5ac7.jpg" alt="profile" />
+                                <img src="~/img/users/avatar.jpg" alt="profile" />
                                 <span class="login-status online"></span>
                                 <!--change to offline or busy as needed-->
                             </div>
@@ -105,7 +105,7 @@
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Users" asp-action="DangXuat"> Đăng xuất </a>
+                                    <a class="nav-link" asp-controller="Users" asp-action="Logout"> Đăng xuất </a>
                                 </li>
                             </ul>
                         </div>
@@ -144,5 +144,6 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

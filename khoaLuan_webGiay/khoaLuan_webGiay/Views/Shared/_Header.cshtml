@@ -51,12 +51,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                                <img src="@Url.Content("~/img/users/" + (User.FindFirst("ImageUrl")?.Value ?? "user_boy.jpg"))"
-                                     alt="User Image"
-                                     class="rounded-circle"
-                                     width="60"
-                                     height="60"
-                                     onerror="this.onerror=null;this.src='~/img/users/user_boy.jpg';" />
+                                @await Component.InvokeAsync("UserAvatar")
                                 <span>@User.Identity.Name</span>
                             </button>
 

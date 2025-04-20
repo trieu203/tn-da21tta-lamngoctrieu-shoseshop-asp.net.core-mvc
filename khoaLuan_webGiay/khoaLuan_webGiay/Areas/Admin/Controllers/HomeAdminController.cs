@@ -824,6 +824,107 @@ namespace khoaLuan_webGiay.Areas.Admin.Controllers
             return View(productSize);
         }
 
+        //Index User
+
+        [Route("user")]
+        public async Task<IActionResult> User(int? page)
+        {
+            int pageSize = 10; // Số lượng bản ghi trên mỗi trang
+            int pageNumber = page ?? 1; // Nếu `page` là null thì mặc định là trang 1
+
+            try
+            {
+                // Lấy danh sách người dùng theo phân trang
+                var users = await _context.Users
+                    .OrderBy(u => u.UserName) // Sắp xếp theo tên người dùng
+                    .Skip((pageNumber - 1) * pageSize) // Bỏ qua các bản ghi của trang trước
+                    .Take(pageSize) // Lấy số lượng bản ghi theo kích thước trang
+                    .ToListAsync();
+
+                // Tính tổng số người dùng
+                var totalUsers = await _context.Users.CountAsync();
+
+                // Gán giá trị cho ViewBag để sử dụng trong View
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalUsers / pageSize); // Tổng số trang
+                ViewBag.CurrentPage = pageNumber; // Trang hiện tại
+
+                _logger.LogInformation("Lấy danh sách người dùng thành công. Số lượng: {Count}", users.Count);
+                return View(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi lấy danh sách người dùng.");
+                return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
+            }
+        }
+
+        // Detail User
+        [Route("DetailUser")]
+        [HttpGet]
+        public async Task<IActionResult> DetailUser(int id)
+        {
+            // Tìm danh mục theo ID
+            var user = await _context.Users
+                                         .Include(u => u.Carts)
+                                         .Include(u => u.Orders)
+                                         .Include(u => u.Reviews)
+                                         .Include(u => u.WishLists)
+                                         .FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (user == null)
+            {
+                TempData["Message"] = "Tài khoản không tồn tại.";
+                return RedirectToAction("User");
+            }
+
+            return View(user);
+        }
+
+        // Edit User
+        [Route("EditUser")]
+        [HttpGet]
+        public async Task<IActionResult> EditUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                TempData["Message"] = "Tài khoản không tồn tại.";
+                return RedirectToAction("User");
+            }
+
+            // Tạo danh sách quyền
+            ViewBag.Roles = new SelectList(new[] { "User", "Admin" }, user.Role);
+            return View(user);
+        }
+
+        [Route("EditUser")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUser(User model)
+        {
+            var user = await _context.Users.FindAsync(model.UserId);
+            if (user == null)
+            {
+                TempData["Message"] = "Tài khoản không tồn tại.";
+                return RedirectToAction("User");
+            }
+
+            if (string.IsNullOrEmpty(model.Role) || (model.Role != "Admin" && model.Role != "User"))
+            {
+                TempData["Message"] = "Quyền không hợp lệ.";
+                ViewBag.Roles = new SelectList(new[] { "User", "Admin" }, user.Role);
+                return View(user);
+            }
+
+            user.Role = model.Role;
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = "Cập nhật quyền tài khoản thành công.";
+            return RedirectToAction("User");
+        }
+
         //Index Review
         [Route("review")]
         public async Task<IActionResult> Review(int? page)

@@ -42,10 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById("step-email").classList.add("d-none");
                     document.getElementById("step-otp").classList.remove("d-none");
                     msgOtp.innerHTML = `
-                        <div class="text-success">OTP đã gửi, kiểm tra email.</div>
-                        <div class="alert alert-warning mt-2">
-                            <strong>Lưu ý:</strong> Nếu không thấy email, kiểm tra hộp thư <b>Spam</b> và đánh dấu là <b>Không phải spam</b>.
-                        </div>`;
+                        <div class="text-success">OTP đã gửi, kiểm tra email.</div>`;
                 } else {
                     return res.text().then(text => {
                         msgEmail.innerHTML = `<div class="text-danger">${text}</div>`;

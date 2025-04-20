@@ -2,9 +2,11 @@
 using khoaLuan_webGiay.Service;
 using khoaLuan_webGiay.ViewModels;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 
 namespace khoaLuan_webGiay.Controllers
 {
@@ -25,23 +27,6 @@ namespace khoaLuan_webGiay.Controllers
             return View(await _context.Users.ToListAsync());
         }
 
-        // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
-        }
 
         //Gửi OTP
         [HttpPost]
@@ -153,7 +138,8 @@ namespace khoaLuan_webGiay.Controllers
             {
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim("UserId", user.UserId.ToString()),
-                new Claim(ClaimTypes.Role, user.Role ?? "User")
+                new Claim(ClaimTypes.Role, user.Role ?? "User"),
+                new Claim("ImageUrl", user.ImageUrl ?? "user_boy.jpg")
             };
 
                     // Tạo identity và principal
@@ -163,10 +149,16 @@ namespace khoaLuan_webGiay.Controllers
                     // Đăng nhập bằng cookie
                     await HttpContext.SignInAsync("MyCookieAuth", principal);
 
+                    if (!string.IsNullOrEmpty(user.Role) && user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
 
                 ModelState.AddModelError("", "Sai tên đăng nhập hoặc mật khẩu");
+
             }
 
             return View(model);
@@ -286,29 +278,47 @@ namespace khoaLuan_webGiay.Controllers
         }
 
 
-        // GET: Users/Create
-        public IActionResult Create()
+        //Detals User
+        public async Task<IActionResult> Details()
         {
-            return View();
-        }
+            // Lấy UserName từ User.Identity.Name
+            string userName = User.Identity.Name;
 
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,UserName,Password,Email,FullName,Role,CreatedDate,PhoneNumber,Address,ImageUrl,Gender,DateOfBirth")] User user)
-        {
-            if (ModelState.IsValid)
+            if (string.IsNullOrEmpty(userName))
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Nếu không tìm thấy tên người dùng, trả về lỗi 404
+                return NotFound();
             }
-            return View(user);
+
+            // Truy vấn User từ cơ sở dữ liệu dựa trên UserName
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.UserName == userName);  // Giả sử UserName là tên người dùng
+
+            if (user == null)
+            {
+                // Nếu không tìm thấy người dùng, trả về lỗi 404
+                return NotFound();
+            }
+
+            // Tạo ViewModel để hiển thị thông tin người dùng
+            var userViewModel = new UserVM
+            {
+                UserId = user.UserId,
+                FullName = user.FullName,
+                Email = user.Email,
+                ImageUrl = user.ImageUrl,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address,
+                Gender = user.Gender,
+                DateOfBirth = user.DateOfBirth,
+                Role = user.Role
+            };
+
+            // Trả về View với dữ liệu của người dùng
+            return View(userViewModel);
         }
 
-        // GET: Users/Edit/5
+        //Edit User
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -321,45 +331,147 @@ namespace khoaLuan_webGiay.Controllers
             {
                 return NotFound();
             }
-            return View(user);
+
+            var userEditVM = new UserEditVM
+            {
+                UserId = user.UserId,
+                UserName = user.UserName,
+                Email = user.Email,
+                FullName = user.FullName,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address,
+                Gender = user.Gender,
+                DateOfBirth = user.DateOfBirth,
+                ImageUrl = user.ImageUrl,
+                Role = user.Role
+            };
+
+            return View(userEditVM);
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,Password,Email,FullName,Role,CreatedDate,PhoneNumber,Address,ImageUrl,Gender,DateOfBirth")] User user)
+        public async Task<IActionResult> Edit(int id, UserEditVM model)
         {
-            if (id != user.UserId)
+            if (id != model.UserId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                if (model.DateOfBirth.HasValue)
+                {
+                    var today = DateOnly.FromDateTime(DateTime.Today);
+                    var birthDate = model.DateOfBirth.Value;
+                    var age = today.Year - birthDate.Year;
+                    if (birthDate > today.AddYears(-age)) age--;
+
+                    if (age < 15)
+                    {
+                        ModelState.AddModelError(string.Empty, "Bạn phải ít nhất 15 tuổi để chỉnh sửa thông tin.");
+                        return View(model);
+                    }
+                }
+
+                var existingUserWithSameEmailOrUsername = await _context.Users
+                    .FirstOrDefaultAsync(u => (u.UserName == model.UserName || u.Email == model.Email) && u.UserId != model.UserId);
+                if (existingUserWithSameEmailOrUsername != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Tên người dùng hoặc email đã tồn tại.");
+                    return View(model);
+                }
+
+                var emailRegex = @"^[^\s@]+@[^\s@]+\.[^\s@]+$";
+                if (!Regex.IsMatch(model.Email, emailRegex))
+                {
+                    ModelState.AddModelError("Email", "Địa chỉ email không hợp lệ.");
+                    return View(model);
+                }
+
+                var user = await _context.Users.FindAsync(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                string imageFileName = user.ImageUrl;
+
+                if (model.Image != null)
+                {
+                    // Xóa ảnh cũ nếu có
+                    if (!string.IsNullOrEmpty(user.ImageUrl))
+                    {
+                        var oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "users", user.ImageUrl);
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+
+                    // Tạo tên file mới: 6 ký tự ngẫu nhiên + đuôi mở rộng
+                    var fileExtension = Path.GetExtension(model.Image.FileName);
+                    imageFileName = Guid.NewGuid().ToString("N").Substring(0, 6) + fileExtension;
+
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "users", imageFileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await model.Image.CopyToAsync(stream);
+                    }
+                }
+
                 try
                 {
+                    // Cập nhật dữ liệu người dùng
+                    user.UserName = model.UserName;
+                    user.Email = model.Email;
+                    user.FullName = model.FullName;
+                    user.PhoneNumber = model.PhoneNumber;
+                    user.Address = model.Address;
+                    user.Gender = model.Gender;
+                    user.DateOfBirth = model.DateOfBirth;
+                    user.ImageUrl = imageFileName;
+                    user.Role = model.Role ?? "User";
+
+                    if (!string.IsNullOrEmpty(model.Password))
+                    {
+                        user.Password = model.Password;
+                    }
+
                     _context.Update(user);
                     await _context.SaveChangesAsync();
+
+                    // Cập nhật Claims (để ảnh mới hiển thị ngay)
+                    await HttpContext.SignOutAsync();
+
+                    var claims = new List<Claim>{
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim("ImageUrl", user.ImageUrl ?? "user_boy.jpg"),
+                new Claim(ClaimTypes.Role, user.Role ?? "User")
+            };
+
+                    var claimsIdentity = new ClaimsIdentity(claims, "MyCookieAuth");
+                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                    await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserId))
-                    {
+                    if (!UserExists(model.UserId))
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
-                return RedirectToAction(nameof(Index));
+
+                TempData["SuccessMessage"] = "Cập nhật thông tin thành công!";
+                return RedirectToAction(nameof(Details));
             }
-            return View(user);
+
+            return View(model);
         }
 
-        // GET: Users/Delete/5
+        //Users Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -377,20 +489,43 @@ namespace khoaLuan_webGiay.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteAccount()
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user != null)
+            // Lấy UserId từ Claims
+            var userIdClaim = User.FindFirst("UserId")?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
             {
-                _context.Users.Remove(user);
+                return Unauthorized();
             }
 
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                return NotFound("Không tìm thấy tài khoản.");
+            }
+
+            // Xóa ảnh đại diện nếu có
+            if (!string.IsNullOrEmpty(user.ImageUrl))
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "users", user.ImageUrl);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+            }
+
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            // Đăng xuất sau khi xóa
+            await HttpContext.SignOutAsync("MyCookieAuth");
+
+            TempData["SuccessMessage"] = "Tài khoản đã được xóa vĩnh viễn.";
+            return RedirectToAction("Index", "Home");
         }
+
 
         private bool UserExists(int id)
         {

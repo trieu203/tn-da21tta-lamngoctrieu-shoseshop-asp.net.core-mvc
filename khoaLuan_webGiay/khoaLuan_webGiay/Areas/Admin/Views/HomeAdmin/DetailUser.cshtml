@@ -1,0 +1,76 @@
+﻿@model khoaLuan_webGiay.Data.User
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Chi tiết người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-primary text-white rounded-top-4">
+            <h4 class="mb-0"><i class="bi bi-person-badge-fill me-2"></i>Chi tiết người dùng</h4>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-3 text-center">
+                    <p class="fw-bold mt-2">Ảnh đại diện</p>
+                    @{
+                        var imageUrl = Model.ImageUrl?.ToString() ?? ""; // Đảm bảo ImageUrl không null
+                        var imageFile = string.IsNullOrEmpty(System.IO.Path.GetExtension(imageUrl))
+                        ? imageUrl + ".jpg"
+                        : imageUrl;
+
+                        var imagePath = Url.Content("~/img/users/" + imageFile);
+                    }
+                    <img src="@imagePath"
+                         alt=""
+                         class="img-thumbnail"
+                         style="width: 70px; height: 70px;"
+                         onerror="this.onerror=null; this.src='/img/users/user_boy.jpg';" />
+                    <p class="fw-bold mt-2">@Model.FullName</p>
+                </div>
+                <div class="col-md-9">
+                    <dl class="row">
+                        <dt class="col-sm-4">Tên đăng nhập</dt>
+                        <dd class="col-sm-8">@Model.UserName</dd>
+
+                        <dt class="col-sm-4">Email</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4">Họ tên</dt>
+                        <dd class="col-sm-8">@Model.FullName</dd>
+
+                        <dt class="col-sm-4">Vai trò</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-secondary">@Model.Role</span>
+                        </dd>
+
+                        <dt class="col-sm-4">Ngày tạo</dt>
+                        <dd class="col-sm-8">@Model.CreatedDate?.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4">Số điện thoại</dt>
+                        <dd class="col-sm-8">@Model.PhoneNumber</dd>
+
+                        <dt class="col-sm-4">Địa chỉ</dt>
+                        <dd class="col-sm-8">@Model.Address</dd>
+
+                        <dt class="col-sm-4">Giới tính</dt>
+                        <dd class="col-sm-8">@Model.Gender</dd>
+
+                        <dt class="col-sm-4">Ngày sinh</dt>
+                        <dd class="col-sm-8">@Model.DateOfBirth?.ToString("dd/MM/yyyy")</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-end bg-light rounded-bottom-4">
+            <a asp-area="admin" asp-action="EditUser" asp-route-id="@Model?.UserId" class="btn btn-warning me-2">
+                <i class="bi bi-pencil-square me-1"></i>Chỉnh sửa
+            </a>
+            <a asp-action="User" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Trở về danh sách
+            </a>
+        </div>
+    </div>
+</div>

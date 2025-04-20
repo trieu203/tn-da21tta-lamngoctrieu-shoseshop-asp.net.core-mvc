@@ -2286,48 +2286,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\statistical\rating.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\004b290e-a943-4bfb-a7e3-8be0cbdcdf8e.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\5f78f9.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>khoaLuan_webGiay</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/004b290e-a943-4bfb-a7e3-8be0cbdcdf8e.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\004b290e-a943-4bfb-a7e3-8be0cbdcdf8e.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\0228eafa-995b-4a92-a541-01dd681953e6.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/0228eafa-995b-4a92-a541-01dd681953e6.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\0228eafa-995b-4a92-a541-01dd681953e6.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\092d70e4-6568-4e38-9645-0cf569d6ffce.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/092d70e4-6568-4e38-9645-0cf569d6ffce.jpg</RelativePath>
+      <RelativePath>img/users/5f78f9.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -2338,104 +2302,14 @@
       <Integrity>nhAMe12M60EFhz+f2k/EuhqiW2C6ZAmk0odo39+WXS4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\092d70e4-6568-4e38-9645-0cf569d6ffce.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\5f78f9.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\0b37245c-a365-4637-be5d-7562e96e4b74.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\99e5bf.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>khoaLuan_webGiay</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/0b37245c-a365-4637-be5d-7562e96e4b74.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>j7gsxo5ons</Fingerprint>
-      <Integrity>8U2G/I/lz+yhOVvFspTRV7MrxKuBx50hRU01teeLkZU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\0b37245c-a365-4637-be5d-7562e96e4b74.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\146269df-6d6e-4c0b-a1be-2e5e260da246.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/146269df-6d6e-4c0b-a1be-2e5e260da246.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>j7gsxo5ons</Fingerprint>
-      <Integrity>8U2G/I/lz+yhOVvFspTRV7MrxKuBx50hRU01teeLkZU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\146269df-6d6e-4c0b-a1be-2e5e260da246.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\1968cba3-a830-4e68-aa93-c59e2c3baef8.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/1968cba3-a830-4e68-aa93-c59e2c3baef8.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\1968cba3-a830-4e68-aa93-c59e2c3baef8.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\1cf45173-89f3-4d67-ad1a-93659b8c765b.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/1cf45173-89f3-4d67-ad1a-93659b8c765b.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\1cf45173-89f3-4d67-ad1a-93659b8c765b.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\23def7ba-8548-41d7-827d-0a1be72cb2d0.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/23def7ba-8548-41d7-827d-0a1be72cb2d0.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>yw0if6u91t</Fingerprint>
-      <Integrity>3sM5/DRcJCXI2eqUQHwQtX3lha/GITqCDW+rr7tvtaE=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\23def7ba-8548-41d7-827d-0a1be72cb2d0.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\4e78c491-e534-4e52-8f78-465f6bf60584.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/4e78c491-e534-4e52-8f78-465f6bf60584.jpg</RelativePath>
+      <RelativePath>img/users/99e5bf.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -2446,14 +2320,14 @@
       <Integrity>nhAMe12M60EFhz+f2k/EuhqiW2C6ZAmk0odo39+WXS4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\4e78c491-e534-4e52-8f78-465f6bf60584.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\99e5bf.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\5112aa80-5f60-4ea0-aa12-5ab8421e5ac7.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\avatar.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>khoaLuan_webGiay</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/5112aa80-5f60-4ea0-aa12-5ab8421e5ac7.jpg</RelativePath>
+      <RelativePath>img/users/avatar.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -2464,259 +2338,7 @@
       <Integrity>nhAMe12M60EFhz+f2k/EuhqiW2C6ZAmk0odo39+WXS4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\5112aa80-5f60-4ea0-aa12-5ab8421e5ac7.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\5aa97ed7-7762-4e47-8348-9aa400ce4de5.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/5aa97ed7-7762-4e47-8348-9aa400ce4de5.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>g6hgzdt6rl</Fingerprint>
-      <Integrity>CJ4PvghPJ3f7VuGkXMoJk0fui8jRM/1EVBhTHTVsHwU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\5aa97ed7-7762-4e47-8348-9aa400ce4de5.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\9531e10a-34ce-4b8b-8a2c-b05ebb854f57.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/9531e10a-34ce-4b8b-8a2c-b05ebb854f57.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>y7g2u9zez4</Fingerprint>
-      <Integrity>nhAMe12M60EFhz+f2k/EuhqiW2C6ZAmk0odo39+WXS4=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\9531e10a-34ce-4b8b-8a2c-b05ebb854f57.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\995bc4e1-2988-4ba9-9ad6-50e96fca6c7e.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/995bc4e1-2988-4ba9-9ad6-50e96fca6c7e.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\995bc4e1-2988-4ba9-9ad6-50e96fca6c7e.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\9adff2d0-482c-4a59-b24a-9793a3dd7c5a.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/9adff2d0-482c-4a59-b24a-9793a3dd7c5a.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\9adff2d0-482c-4a59-b24a-9793a3dd7c5a.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\a299f077-add6-46e6-999b-1be95632e1fd.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/a299f077-add6-46e6-999b-1be95632e1fd.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\a299f077-add6-46e6-999b-1be95632e1fd.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\a8b15223-e8f7-4a24-ad5c-5498fdfdf5d6.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/a8b15223-e8f7-4a24-ad5c-5498fdfdf5d6.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>yw0if6u91t</Fingerprint>
-      <Integrity>3sM5/DRcJCXI2eqUQHwQtX3lha/GITqCDW+rr7tvtaE=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\a8b15223-e8f7-4a24-ad5c-5498fdfdf5d6.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\af29b564-cc89-4599-af17-5ac4b94f87c5.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/af29b564-cc89-4599-af17-5ac4b94f87c5.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>y7g2u9zez4</Fingerprint>
-      <Integrity>nhAMe12M60EFhz+f2k/EuhqiW2C6ZAmk0odo39+WXS4=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\af29b564-cc89-4599-af17-5ac4b94f87c5.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\afa9f6bd-9160-4fce-8313-9faece656909.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/afa9f6bd-9160-4fce-8313-9faece656909.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\afa9f6bd-9160-4fce-8313-9faece656909.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d218f8d7-20aa-41e7-af26-8be4f447ae68.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/d218f8d7-20aa-41e7-af26-8be4f447ae68.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>j7gsxo5ons</Fingerprint>
-      <Integrity>8U2G/I/lz+yhOVvFspTRV7MrxKuBx50hRU01teeLkZU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d218f8d7-20aa-41e7-af26-8be4f447ae68.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d6266f4e-4674-4d84-8197-c66e16185133.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/d6266f4e-4674-4d84-8197-c66e16185133.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>g6hgzdt6rl</Fingerprint>
-      <Integrity>CJ4PvghPJ3f7VuGkXMoJk0fui8jRM/1EVBhTHTVsHwU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d6266f4e-4674-4d84-8197-c66e16185133.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d801bf32-9bea-4beb-9c3e-44e5a6b54a95.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/d801bf32-9bea-4beb-9c3e-44e5a6b54a95.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>yw0if6u91t</Fingerprint>
-      <Integrity>3sM5/DRcJCXI2eqUQHwQtX3lha/GITqCDW+rr7tvtaE=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d801bf32-9bea-4beb-9c3e-44e5a6b54a95.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d915de4f-bf72-4057-8003-bed57225d0f6.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/d915de4f-bf72-4057-8003-bed57225d0f6.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\d915de4f-bf72-4057-8003-bed57225d0f6.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\e2c5bbd7-f5cd-4af3-98cb-51bc678db217.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/e2c5bbd7-f5cd-4af3-98cb-51bc678db217.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\e2c5bbd7-f5cd-4af3-98cb-51bc678db217.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\e52d88a8-324d-4cae-a3f5-72abd62a4d0b.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/users/e52d88a8-324d-4cae-a3f5-72abd62a4d0b.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w7n0gm0aqe</Fingerprint>
-      <Integrity>dOL64mmrrXCZaW+UEF5Q34LS4E4SfMkEMhpR+LF3Nks=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\e52d88a8-324d-4cae-a3f5-72abd62a4d0b.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\avatar.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\user_boy.jpg'))">
       <SourceType>Package</SourceType>
@@ -2802,8 +2424,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>k6vz0j6n76</Fingerprint>
-      <Integrity>nNSU+CRpV/9416c1rbvlBOrmwPOQmpJcJ6ix9R9ZQPc=</Integrity>
+      <Fingerprint>r814xfmpmy</Fingerprint>
+      <Integrity>tSOygPDVzG/Exbi8MdrJ713WZM7uSWYGNtBVvoJ6P5w=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\register.js'))</OriginalItemSpec>
