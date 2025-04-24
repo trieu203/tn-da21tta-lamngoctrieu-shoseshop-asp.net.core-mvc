@@ -137,6 +137,7 @@ namespace khoaLuan_webGiay.Controllers
                     var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim("UserId", user.UserId.ToString()),
                 new Claim(ClaimTypes.Role, user.Role ?? "User"),
                 new Claim("ImageUrl", user.ImageUrl ?? "user_boy.jpg")

@@ -104,22 +104,23 @@
                             <label class="custom-control-label" for="size-3">41</label>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center mb-4">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <button type="button" class="btn btn-warning btn-minus">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <input type="text" class="form-control bg-secondary text-center quantity-input" name="quantity"
-                                   value="@(TempData["SelectedQuantity"] != null ? TempData["SelectedQuantity"] : 1)"
-                                   style="max-width: 50px;" />
-                            <button type="button" class="btn btn-warning btn-plus">
-                                <i class="fa fa-plus"></i>
+                    <<form asp-controller="Carts" asp-action="AddToCart" method="post">
+                        <!-- BẮT BUỘC: ProductId phải được truyền -->
+                        <input type="hidden" name="ProductId" value="@Model.ProductId" />
+                        <input type="hidden" name="Size" id="selectedSize" />
+                        <input type="hidden" name="Quantity" class="quantity-hidden" value="1" />
+
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="input-group quantity mr-3" style="width: 130px;">
+                                <button type="button" class="btn btn-warning btn-minus"><i class="fa fa-minus"></i></button>
+                                <input type="text" class="form-control bg-secondary text-center quantity-input" value="1" readonly />
+                                <button type="button" class="btn btn-warning btn-plus"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-shopping-cart mr-1"></i> Thêm vào Giỏ hàng
                             </button>
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-shopping-cart mr-1"></i> Thêm vào Giỏ hàng
-                        </button>
-                    </div>
+                    </form>
                 </form>
 
                 @if (TempData["Message"] != null)
@@ -243,15 +244,14 @@
 
 @section Scripts {
     <script>
+        // ⭐⭐⭐⭐ ĐÁNH GIÁ SAO ⭐⭐⭐⭐
         function highlightStars(rating) {
-            // Reset tất cả sao về trạng thái ban đầu
             const stars = document.querySelectorAll(".star-rating .fa-star");
             stars.forEach(star => {
-                star.classList.remove("fas"); // Ngôi sao đầy
-                star.classList.add("far");   // Ngôi sao rỗng
+                star.classList.remove("fas"); // sao đầy
+                star.classList.add("far");    // sao rỗng
             });
 
-            // Làm nổi bật các sao từ 1 đến số sao được chọn
             for (let i = 1; i <= rating; i++) {
                 const star = document.querySelector(`.star-rating .fa-star[data-star="${i}"]`);
                 if (star) {
@@ -261,12 +261,32 @@
             }
         }
 
-        // Xử lý khi load trang nếu có sao được chọn trước đó
         document.addEventListener("DOMContentLoaded", function () {
             const selectedRating = document.querySelector('.star-rating input[name="rating"]:checked');
             if (selectedRating) {
                 highlightStars(selectedRating.value);
             }
+
+            // 👟 TĂNG / GIẢM SỐ LƯỢNG 👟
+            $(".btn-plus").click(function () {
+                let input = $(this).siblings(".quantity-input");
+                let hidden = $(this).closest("form").find(".quantity-hidden");
+                let quantity = parseInt(input.val()) || 1;
+                quantity += 1;
+                input.val(quantity);
+                hidden.val(quantity);
+            });
+
+            $(".btn-minus").click(function () {
+                let input = $(this).siblings(".quantity-input");
+                let hidden = $(this).closest("form").find(".quantity-hidden");
+                let quantity = parseInt(input.val()) || 1;
+                if (quantity > 1) {
+                    quantity -= 1;
+                    input.val(quantity);
+                    hidden.val(quantity);
+                }
+            });
         });
     </script>
 }

@@ -27,7 +27,6 @@ builder.Services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", opt
 });
 
 
-
 var app = builder.Build();
 
 
