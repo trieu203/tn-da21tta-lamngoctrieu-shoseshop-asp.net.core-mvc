@@ -1,77 +1,86 @@
 ﻿@model IEnumerable<khoaLuan_webGiay.Data.Order>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Đặt hàng thành công";
+    Layout = "_Product";
 }
 
-<h1>Index</h1>
+<div class="success-container">
+    <div class="success-message">
+        <h1>Đơn hàng của bạn đã được đặt mua thành công</h1>
+        <h2 class="thank-you">
+            CẢM ƠN! <span><a asp-controller="Orders" asp-action="History" class="btn btn-primary mt-3">Xem đơn hàng</a></span>
+        </h2>
+    </div>
+    <div class="confetti"></div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShippingAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsConfirmed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShippingAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsConfirmed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<style>
+    .success-container {
+        text-align: center;
+        margin-top: 50px;
+        font-family: Arial, sans-serif;
+    }
+
+    .success-message h1 {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .thank-you {
+        font-size: 48px;
+        font-weight: bold;
+        color: #ff6600;
+        position: relative;
+    }
+
+        .thank-you span {
+            display: block;
+            font-size: 20px;
+            color: #666;
+        }
+
+    /* Confetti effect */
+    .confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 999;
+    }
+
+    .confetti-piece {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ff6600;
+        opacity: 0.8;
+        animation: fall 3s linear infinite;
+    }
+
+    @@keyframes fall {
+        0% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(100vh) rotate(360deg);
+        }
+    }
+</style>
+
+<script>
+    // Create confetti effect
+    const confettiContainer = document.querySelector('.confetti');
+    for (let i = 0; i < 100; i++) {
+        const confettiPiece = document.createElement('div');
+        confettiPiece.classList.add('confetti-piece');
+        confettiPiece.style.left = `${Math.random() * 100}vw`;
+        confettiPiece.style.backgroundColor =
+            `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confettiPiece.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        confettiContainer.appendChild(confettiPiece);
+    }
+</script>

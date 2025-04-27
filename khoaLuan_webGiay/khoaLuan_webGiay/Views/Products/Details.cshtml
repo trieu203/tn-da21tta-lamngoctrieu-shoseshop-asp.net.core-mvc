@@ -272,7 +272,7 @@
                 let input = $(this).siblings(".quantity-input");
                 let hidden = $(this).closest("form").find(".quantity-hidden");
                 let quantity = parseInt(input.val()) || 1;
-                quantity += 1;
+                quantity += 0;
                 input.val(quantity);
                 hidden.val(quantity);
             });
@@ -282,7 +282,7 @@
                 let hidden = $(this).closest("form").find(".quantity-hidden");
                 let quantity = parseInt(input.val()) || 1;
                 if (quantity > 1) {
-                    quantity -= 1;
+                    quantity -= 0;
                     input.val(quantity);
                     hidden.val(quantity);
                 }

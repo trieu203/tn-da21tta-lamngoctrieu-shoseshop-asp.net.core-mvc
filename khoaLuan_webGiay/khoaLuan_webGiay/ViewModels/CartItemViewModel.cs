@@ -9,6 +9,7 @@
         public decimal PriceAtTime { get; set; }
         public string? ImageUrl { get; set; }
         public string? Size { get; set; }
+        public int Discount { get; set; }
         public decimal TotalPrice => Quantity * PriceAtTime;
     }
 

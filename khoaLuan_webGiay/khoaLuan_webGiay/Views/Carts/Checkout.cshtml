@@ -1,0 +1,222 @@
+﻿@model khoaLuan_webGiay.ViewModels.CheckoutViewModel
+
+@{
+    ViewData["Title"] = "Thanh toán";
+    Layout = "_Product";
+}
+
+<div class="container-fluid">
+    <form asp-action="Checkout" method="post">
+        <div class="row px-xl-5">
+
+            <!-- VÙNG ĐỊA CHỈ -->
+            <div class="col-lg-8" id="address-section">
+                <h5 class="section-title position-relative text-uppercase mb-3">
+                    <span class="bg-secondary pr-3">Địa chỉ thanh toán</span>
+                </h5>
+                <div class="bg-light p-30 mb-5">
+
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                    }
+
+                    <!-- Địa chỉ mặc định -->
+                    <div id="default-address">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Họ và tên</label>
+                                <input class="form-control" asp-for="FullName" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Địa chỉ E-mail</label>
+                                <input class="form-control" asp-for="Email" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Số điện thoại</label>
+                                <input class="form-control" asp-for="PhoneNumber" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Địa chỉ nhận hàng</label>
+                                <input class="form-control" asp-for="ShippingAddress" readonly>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="button" id="change-address-btn" class="btn btn-sm btn-outline-primary">Sử dụng địa chỉ khác</button>
+                        </div>
+                    </div>
+
+                    <!-- Địa chỉ mới -->
+                    <div id="new-address" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Họ và tên mới</label>
+                                <input class="form-control" name="NewFullName" placeholder="Nhập họ tên mới">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Email</label>
+                                <input class="form-control" asp-for="Email" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Số điện thoại mới</label>
+                                <input class="form-control" name="NewPhoneNumber" placeholder="Nhập số điện thoại mới">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Địa chỉ nhận hàng mới</label>
+                                <input class="form-control" name="NewShippingAddress" placeholder="Nhập địa chỉ mới">
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="button" id="cancel-change-address" class="btn btn-sm btn-secondary">Quay lại địa chỉ mặc định</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- VÙNG TÓM TẮT ĐƠN HÀNG (KHÔNG BỊ ẨN) -->
+            <div class="col-lg-4" id="order-summary">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Tổng đơn hàng</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div class="border-bottom">
+                        <h6 class="mb-3">Sản phẩm</h6>
+                        @foreach (var item in Model.CartItems)
+                        {
+                            <div class="d-flex justify-content-between">
+                                <h6>@item.ProductName</h6>
+                                <h6>@string.Format("{0:#,##0} VNĐ", item.PriceAtTime * item.Quantity)</h6>
+                            </div>
+                        }
+                    </div>
+                    <div class="border-bottom pt-3 pb-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Tạm tính</h6>
+                            <h6>@string.Format("{0:N0} VNĐ", Model.CartItems.Sum(x => x.PriceAtTime * x.Quantity))</h6>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Giảm giá</h6>
+                            <h6>
+                                -@string.Format("{0:N0} VNĐ",
+                                        Model.CartItems.Sum(x => (x.PriceAtTime * x.Quantity * x.Discount) / 100))
+                            </h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Phí vận chuyển</h6>
+                            <h6 class="font-weight-medium">50,000 VNĐ</h6>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h6>Tổng tiền</h6>
+                            <h6>
+                                @string.Format("{0:N0} VNĐ",
+                                         Model.CartItems.Sum(x => x.PriceAtTime * x.Quantity) -
+                                         Model.CartItems.Sum(x => (x.PriceAtTime * x.Quantity * x.Discount) / 100) + 50000)
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-light p-30">
+                    <div class="form-group">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" asp-for="PaymentMethod" value="COD" id="cod" class="custom-control-input" checked>
+                            <label class="custom-control-label" for="cod">Thanh toán khi nhận hàng</label>
+                        </div>
+                    </div>
+                    <center>
+                        <button type="submit" class="btn btn-block btn-primary font-weight-bold py-3">Xác nhận</button>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<style>
+    .is-invalid {
+        border-color: #dc3545;
+        background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" fill="%23dc3545" viewBox="0 0 12 12"%3e%3cpath d="M5.293 1.707a1 1 0 011.414 0l3.586 3.586a1 1 0 010 1.414l-3.586 3.586a1 1 0 01-1.414 0L1.707 6.707a1 1 0 010-1.414L5.293 1.707z"/%3e%3c/svg%3e');
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .shake {
+        animation: shake 0.3s;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#change-address-btn").click(function () {
+                $("#default-address").hide();
+                $("#new-address").show();
+            });
+
+            $("#cancel-change-address").click(function () {
+                $("#new-address").hide();
+                $("#default-address").show();
+            });
+
+            $("form").submit(function (e) {
+                if ($("#new-address").is(":visible")) {
+                    let isValid = true;
+
+                    const newFullName = $("input[name='NewFullName']").val().trim();
+                    const newPhoneNumber = $("input[name='NewPhoneNumber']").val().trim();
+                    const newShippingAddress = $("input[name='NewShippingAddress']").val().trim();
+
+                    // Reset lỗi cũ
+                    $(".invalid-feedback").remove();
+                    $("input[name='NewFullName'], input[name='NewPhoneNumber'], input[name='NewShippingAddress']").removeClass("is-invalid shake");
+
+                    // Định dạng regex Việt Nam
+                    const vietnamPhoneRegex = /^(0?(3|5|7|8|9))[0-9]{8}$/;
+
+                    let firstInvalidInput = null;
+
+                    // Kiểm tra họ tên
+                    if (newFullName === "") {
+                        const input = $("input[name='NewFullName']");
+                        input.addClass("is-invalid shake")
+                            .after('<div class="invalid-feedback">Vui lòng nhập họ tên.</div>');
+                        isValid = false;
+                        firstInvalidInput = firstInvalidInput || input;
+                    }
+
+                    // Kiểm tra số điện thoại Việt Nam
+                    if (newPhoneNumber === "" || !vietnamPhoneRegex.test(newPhoneNumber)) {
+                        const input = $("input[name='NewPhoneNumber']");
+                        input.addClass("is-invalid shake")
+                            .after('<div class="invalid-feedback">Số điện thoại không hợp lệ (bắt đầu 03, 05, 07, 08, 09 + 8 số).</div>');
+                        isValid = false;
+                        firstInvalidInput = firstInvalidInput || input;
+                    }
+
+                    // Kiểm tra địa chỉ
+                    if (newShippingAddress === "") {
+                        const input = $("input[name='NewShippingAddress']");
+                        input.addClass("is-invalid shake")
+                            .after('<div class="invalid-feedback">Vui lòng nhập địa chỉ nhận hàng.</div>');
+                        isValid = false;
+                        firstInvalidInput = firstInvalidInput || input;
+                    }
+
+                    if (!isValid) {
+                        e.preventDefault(); // Chặn submit
+
+                        if (firstInvalidInput) {
+                            firstInvalidInput.focus(); // Focus vào input lỗi đầu tiên
+                        }
+
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+}
+

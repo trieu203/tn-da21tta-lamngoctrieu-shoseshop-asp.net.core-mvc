@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\views\\carts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\views\\carts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\controllers\\cartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\controllers\\cartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\views\\carts\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\views\\carts\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Products\\Details.cshtml",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Views\\Products\\Details.cshtml",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Products\\Details.cshtml",
-              "RelativeToolTip": "khoaLuan_webGiay\\Views\\Products\\Details.cshtml",
-              "ViewState": "AgIAAA8BAAAAAAAAAADwvx8BAAARAAAAAAAAAA==",
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Carts\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Views\\Carts\\Checkout.cshtml",
+              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Carts\\Checkout.cshtml",
+              "RelativeToolTip": "khoaLuan_webGiay\\Views\\Carts\\Checkout.cshtml",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAAAJUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T01:37:18.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CartsController.cs",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Controllers\\CartsController.cs",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Controllers\\CartsController.cs",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Controllers\\CartsController.cs",
-              "RelativeToolTip": "khoaLuan_webGiay\\Controllers\\CartsController.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAowKEAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T01:20:23.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Carts\\Index.cshtml",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Views\\Carts\\Index.cshtml",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Carts\\Index.cshtml",
-              "RelativeToolTip": "khoaLuan_webGiay\\Views\\Carts\\Index.cshtml",
-              "ViewState": "AgIAAGcAAAAAAAAAAADwv30AAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T01:18:47.926Z",
+              "WhenOpened": "2025-04-27T03:10:45.592Z",
               "EditorCaption": ""
             }
           ]

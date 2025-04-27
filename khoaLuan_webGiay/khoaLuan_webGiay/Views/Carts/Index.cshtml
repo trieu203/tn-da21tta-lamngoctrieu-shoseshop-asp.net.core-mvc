@@ -78,7 +78,7 @@
                                     @((item.PriceAtTime * item.Quantity).ToString("N0")) VND
                                 </td>
                                 <td class="align-middle">
-                                    <form asp-action="RemoveFromCart" method="post">
+                                    <form asp-action="RemoveFromCart" method="post" class="remove-cart-item-form">
                                         <input type="hidden" name="id" value="@item.CartItemId" />
                                         <button type="submit" class="btn btn-sm btn-danger">
                                             <i class="fa fa-times"></i>
@@ -92,6 +92,7 @@
                 </table>
             </div>
 
+            
             <!-- Cart Summary -->
             <div class="col-lg-4">
                 <h5 class="section-title position-relative text-uppercase mb-3">
@@ -115,7 +116,11 @@
                                 @string.Format("{0:N0} VNĐ", Model.Items.Sum(x => x.PriceAtTime * x.Quantity) + 50000)
                             </h5>
                         </div>
-                        <a asp-action="Checkout"><button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Tiến hành thanh toán</button> </a>
+                        <form asp-action="Checkout" method="get">
+                            <button type="submit" class="btn btn-block btn-primary font-weight-bold my-3 py-3">
+                                Tiến hành thanh toán
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -204,7 +209,7 @@
             });
 
             // Lắng nghe sự kiện xóa sản phẩm
-            $("form").on("submit", function (e) {
+            $(".remove-cart-item-form").on("submit", function (e) {
                 if (!confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?")) {
                     e.preventDefault();
                 }
