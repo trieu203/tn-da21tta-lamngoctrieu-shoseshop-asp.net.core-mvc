@@ -1,0 +1,124 @@
+﻿@model IEnumerable<khoaLuan_webGiay.Data.Order>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Danh sách đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mb-4">Danh sách đơn hàng</h1>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Ngày đặt hàng
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            <th>
+                Trạng thái
+            </th>
+
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Người dùng
+            </th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                </td>
+                <td>
+                    @if (item.OrderStatus == "Pending")
+                    {
+                        <span class="badge status-pending">Đang chờ</span>
+                    }
+                    else if (item.OrderStatus == "Completed")
+                    {
+                        <span class="badge status-completed">Hoàn thành</span>
+                    }
+                    else if (item.OrderStatus == "Cancelled")
+                    {
+                        <span class="badge status-cancelled">Đã hủy</span>
+                    }
+                    else if (item.OrderStatus == "Confirmed")
+                    {
+                        <span class="badge status-confirmed">Đã xác nhận</span>
+                    }
+                    else if (item.OrderStatus == "Shipped")
+                    {
+                        <span class="badge status-shipped">Đã giao hàng</span>
+                    }
+                    else
+                    {
+                        <span class="badge status-default">@Html.DisplayFor(modelItem => item.OrderStatus)</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-action="EditOrder" asp-route-id="@item.OrderId">
+                        <i class="fa fa-edit"></i> Sửa
+                    </a>
+                    <a class="btn btn-info btn-sm" asp-action="DetailOrder" asp-route-id="@item.OrderId">
+                        <i class="fa fa-info-circle"></i> Chi Tiết
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .status-pending {
+        background-color: #ffc107; /* Màu vàng */
+        color: #000; /* Chữ đen */
+    }
+
+    .status-completed {
+        background-color: #28a745; /* Màu xanh lá */
+        color: #fff; /* Chữ trắng */
+    }
+
+    .status-cancelled {
+        background-color: #dc3545; /* Màu đỏ */
+        color: #fff; /* Chữ trắng */
+    }
+
+    .status-confirmed {
+        background-color: #007bff; /* Màu xanh dương */
+        color: #fff; /* Chữ trắng */
+    }
+
+    .status-shipped {
+        background-color: #17a2b8; /* Màu xanh nhạt */
+        color: #fff; /* Chữ trắng */
+    }
+
+    .status-default {
+        background-color: #6c757d; /* Màu xám */
+        color: #fff; /* Chữ trắng */
+    }
+
+    .badge {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9em;
+    }
+</style>

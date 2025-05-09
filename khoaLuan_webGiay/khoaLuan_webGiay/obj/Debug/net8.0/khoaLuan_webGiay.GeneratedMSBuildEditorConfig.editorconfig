@@ -60,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERldGFpbENhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DetailOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERldGFpbE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DetailProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERldGFpbFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,6 +78,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/EditCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEVkaXRDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/EditOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEVkaXRPcmRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/EditProduct.cshtml]
@@ -92,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -108,108 +120,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/CartItems/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydEl0ZW1zXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/CartItems/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydEl0ZW1zXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/CartItems/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydEl0ZW1zXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/CartItems/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydEl0ZW1zXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/CartItems/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydEl0ZW1zXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Carts/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ2hlY2tvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Carts/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Carts/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Carts/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Carts/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Carts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Categories/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Categories/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Categories/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Categories/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Categories/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/OrderItems/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/OrderItems/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/OrderItems/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/OrderItems/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/OrderItems/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Orders/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Orders/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Orders/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Orders/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Orders/History.cshtml]
@@ -220,20 +144,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Products/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Products/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Products/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Products/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Products/Index.cshtml]
@@ -292,14 +204,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Users/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Users/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -312,32 +216,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRm9yZ290UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Users/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Users/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Users/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUmVnaXN0ZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/WishLists/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/WishLists/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/WishLists/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/WishLists/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/WishLists/Index.cshtml]

@@ -60,7 +60,6 @@ namespace khoaLuan_webGiay.Controllers
             return View(model);
         }
 
-
         //Hủy đơn hàng
         [HttpPost]
         [HttpPost]
@@ -111,8 +110,6 @@ namespace khoaLuan_webGiay.Controllers
             return RedirectToAction("History");
         }
 
-
-
         //Xác nhận
         [HttpPost]
         public IActionResult ConfirmReceivedOrder(int orderId)
@@ -150,7 +147,6 @@ namespace khoaLuan_webGiay.Controllers
             TempData["SuccessMessage"] = "Đơn hàng đã được xác nhận thành công.";
             return RedirectToAction("History");
         }
-
 
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)

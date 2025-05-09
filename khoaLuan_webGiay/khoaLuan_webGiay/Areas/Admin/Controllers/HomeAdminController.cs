@@ -959,6 +959,120 @@ namespace khoaLuan_webGiay.Areas.Admin.Controllers
             }
         }
 
+        // Index Order
+        [Route("order")]
+        public async Task<IActionResult> Order(int? page)
+        {
+            int pageSize = 10; // Số lượng bản ghi trên mỗi trang
+            int pageNumber = page ?? 1; // Nếu `page` là null thì mặc định là trang 1
 
+            try
+            {
+                var orders = await _context.Orders
+                    .Include(o => o.User)
+                    .Where(o => o.OrderStatus != "Cancelled")
+                    .OrderByDescending(o => o.OrderDate)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+                var totalOrders = await _context.Orders
+                    .Where(o => o.OrderStatus != "Cancelled")
+                    .CountAsync();
+
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalOrders / pageSize);
+                ViewBag.CurrentPage = pageNumber;
+
+                return View(orders);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi lấy danh sách đơn hàng.");
+                return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
+            }
+        }
+
+        // Detail Order
+        [Route("orderdetail")]
+        public async Task<IActionResult> DetailOrder(int id)
+        {
+            try
+            {
+                var order = await _context.Orders
+                    .Include(o => o.OrderItems)
+                    .Include(o => o.User)
+                    .FirstOrDefaultAsync(o => o.OrderId == id);
+
+                if (order == null)
+                {
+                    TempData["Message"] = "Đơn hàng không tồn tại.";
+                    return RedirectToAction("Order");
+                }
+
+                return View(order);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi xem chi tiết đơn hàng với ID: {Id}", id);
+                return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
+            }
+        }
+
+        // Edit Order
+        [Route("orderedit")]
+        [HttpGet]
+        public async Task<IActionResult> EditOrder(int id)
+        {
+            try
+            {
+                var order = await _context.Orders.FindAsync(id);
+
+                if (order == null)
+                {
+                    TempData["Message"] = "Đơn hàng không tồn tại.";
+                    return RedirectToAction("Order");
+                }
+
+                return View(order);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi truy cập chỉnh sửa đơn hàng với ID: {Id}", id);
+                return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
+            }
+        }
+
+        [Route("orderedit")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditOrder(int id, Order updatedOrder)
+        {
+            try
+            {
+                var existingOrder = await _context.Orders.FindAsync(id);
+
+                if (existingOrder == null)
+                {
+                    TempData["Message"] = "Đơn hàng không tồn tại.";
+                    return RedirectToAction("Order");
+                }
+
+                // Chỉ cập nhật giá trị nếu có thay đổi
+                existingOrder.OrderStatus = string.IsNullOrEmpty(updatedOrder.OrderStatus) ? existingOrder.OrderStatus : updatedOrder.OrderStatus;
+
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = "Cập nhật trạng thái đơn hàng thành công.";
+                return RedirectToAction("Order");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi chỉnh sửa đơn hàng với ID: {Id}", id);
+                return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
+            }
+        }
+
+
+  
     }
 }

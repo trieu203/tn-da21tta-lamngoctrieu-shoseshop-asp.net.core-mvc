@@ -2,7 +2,6 @@
 using khoaLuan_webGiay.Service;
 using khoaLuan_webGiay.ViewModels;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -368,9 +367,9 @@ namespace khoaLuan_webGiay.Controllers
                     var age = today.Year - birthDate.Year;
                     if (birthDate > today.AddYears(-age)) age--;
 
-                    if (age < 15)
+                    if (age < 15 || age > 100)
                     {
-                        ModelState.AddModelError(string.Empty, "Bạn phải ít nhất 15 tuổi để chỉnh sửa thông tin.");
+                        ModelState.AddModelError(string.Empty, "Tuổi phải nằm trong khoảng từ 15 đến 100.");
                         return View(model);
                     }
                 }

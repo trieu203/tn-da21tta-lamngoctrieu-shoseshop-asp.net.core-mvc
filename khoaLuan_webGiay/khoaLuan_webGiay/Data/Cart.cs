@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace khoaLuan_webGiay.Data;
+﻿namespace khoaLuan_webGiay.Data;
 
 public partial class Cart
 {
