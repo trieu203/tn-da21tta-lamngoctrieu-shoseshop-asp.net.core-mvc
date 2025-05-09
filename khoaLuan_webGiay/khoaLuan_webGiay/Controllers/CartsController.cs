@@ -49,6 +49,7 @@ namespace khoaLuan_webGiay.Controllers
             return View(model);
         }
 
+        //Thêm sản phẩm vào giỏ
         [HttpPost]
         public async Task<IActionResult> AddToCart(AddToCartViewModel model)
         {
@@ -58,30 +59,17 @@ namespace khoaLuan_webGiay.Controllers
 
             var userIdInt = int.Parse(userId);
 
-            // Bảo vệ: kiểm tra ProductId
             if (model.ProductId <= 0)
             {
                 TempData["Message"] = "Sản phẩm không hợp lệ.";
                 return RedirectToAction("Index", "Products");
             }
 
-            // Bảo vệ: kiểm tra size
             if (model.Size == 0)
             {
                 TempData["Message"] = "Vui lòng chọn kích thước sản phẩm.";
                 TempData["SelectedSize"] = model.Size;
                 TempData["SelectedQuantity"] = model.Quantity;
-                return RedirectToAction("Details", "Products", new { id = model.ProductId });
-            }
-
-            // Lấy sản phẩm theo kích cỡ
-            var productSize = await _context.ProductSizes
-                .Include(ps => ps.Product)
-                .FirstOrDefaultAsync(ps => ps.ProductId == model.ProductId && ps.Size == model.Size.ToString());
-
-            if (productSize == null)
-            {
-                TempData["Message"] = "Kích thước sản phẩm không hợp lệ.";
                 return RedirectToAction("Details", "Products", new { id = model.ProductId });
             }
 
@@ -93,12 +81,15 @@ namespace khoaLuan_webGiay.Controllers
                 return RedirectToAction("Details", "Products", new { id = model.ProductId });
             }
 
-            // Nếu số lượng yêu cầu lớn hơn tồn kho
-            if (model.Quantity > productSize.Quantity)
+            using var transaction = await _context.Database.BeginTransactionAsync(System.Data.IsolationLevel.RepeatableRead);
+
+            var productSize = await _context.ProductSizes
+                .Include(ps => ps.Product)
+                .FirstOrDefaultAsync(ps => ps.ProductId == model.ProductId && ps.Size == model.Size.ToString());
+
+            if (productSize == null)
             {
-                TempData["Message"] = $"Chỉ còn {productSize.Quantity} sản phẩm.";
-                TempData["SelectedSize"] = model.Size;
-                TempData["SelectedQuantity"] = model.Quantity;
+                TempData["Message"] = "Kích thước sản phẩm không hợp lệ.";
                 return RedirectToAction("Details", "Products", new { id = model.ProductId });
             }
 
@@ -107,7 +98,6 @@ namespace khoaLuan_webGiay.Controllers
                 .Include(c => c.CartItems)
                 .FirstOrDefaultAsync(c => c.UserId == userIdInt && c.IsActive);
 
-            // Nếu chưa có thì tạo mới
             if (cart == null)
             {
                 cart = new Cart
@@ -117,28 +107,38 @@ namespace khoaLuan_webGiay.Controllers
                     IsActive = true
                 };
                 _context.Carts.Add(cart);
-                await _context.SaveChangesAsync(); // Để có CartId
+                await _context.SaveChangesAsync(); // để có CartId
             }
 
-            // Kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng
-            var existingItem = cart.CartItems.FirstOrDefault(ci => ci.ProductId == model.ProductId && ci.Size == model.Size.ToString());
+            // Số lượng đã giữ trong tất cả giỏ (gồm user này)
+            var reservedQty = await _context.CartItems
+                .Include(ci => ci.Cart)
+                .Where(ci => ci.ProductId == model.ProductId
+                          && ci.Size == model.Size.ToString()
+                          && ci.Cart.IsActive)
+                .SumAsync(ci => ci.Quantity);
+
+            var availableQty = productSize.Quantity - reservedQty;
+
+            // Kiểm tra sản phẩm đã có trong giỏ chưa
+            var existingItem = cart.CartItems
+                .FirstOrDefault(ci => ci.ProductId == model.ProductId && ci.Size == model.Size.ToString());
+
+            var newTotalQty = (existingItem?.Quantity ?? 0) + model.Quantity;
+
+            if (newTotalQty > productSize.Quantity)
+            {
+                var canAddMore = productSize.Quantity - (existingItem?.Quantity ?? 0);
+                TempData["Message"] = $"Chỉ còn {canAddMore} sản phẩm có thể thêm vào giỏ.";
+                return RedirectToAction("Details", "Products", new { id = model.ProductId });
+            }
 
             if (existingItem != null)
             {
-                var updatedQty = existingItem.Quantity + model.Quantity;
-                if (updatedQty > productSize.Quantity)
-                {
-                    TempData["Message"] = $"Không đủ hàng. Có thể thêm tối đa {productSize.Quantity - existingItem.Quantity} sản phẩm.";
-                    TempData["SelectedSize"] = model.Size;
-                    TempData["SelectedQuantity"] = model.Quantity;
-                    return RedirectToAction("Details", "Products", new { id = model.ProductId });
-                }
-
-                existingItem.Quantity = updatedQty;
+                existingItem.Quantity += model.Quantity;
             }
             else
             {
-                // Thêm mới vào giỏ hàng
                 var cartItem = new CartItem
                 {
                     CartId = cart.CartId,
@@ -153,9 +153,24 @@ namespace khoaLuan_webGiay.Controllers
             }
 
             await _context.SaveChangesAsync();
-            TempData["Message"] = "Sản phẩm đã được thêm vào giỏ hàng.";
+            await transaction.CommitAsync();
 
+            TempData["Message"] = "Sản phẩm đã được thêm vào giỏ hàng.";
             return RedirectToAction("Index");
+        }
+
+
+
+        // Kiểm tra số lượng sản phẩm
+        private async Task<int> GetReservedQuantity(int productId, string size, int excludingUserId)
+        {
+            return await _context.CartItems
+                .Include(ci => ci.Cart)
+                .Where(ci => ci.ProductId == productId
+                    && ci.Size == size
+                    && ci.Cart.IsActive
+                    && ci.Cart.UserId != excludingUserId)
+                .SumAsync(ci => ci.Quantity);
         }
 
 
@@ -289,20 +304,16 @@ namespace khoaLuan_webGiay.Controllers
         }
 
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Checkout(CheckoutViewModel model)
         {
             var userIdString = User.FindFirst("UserId")?.Value;
             if (string.IsNullOrEmpty(userIdString))
-            {
                 return RedirectToAction("Login", "Users");
-            }
 
             int userId = int.Parse(userIdString);
 
-            // Lấy thông tin người dùng
             var user = await _context.Users.FindAsync(userId);
             if (user == null)
             {
@@ -310,7 +321,6 @@ namespace khoaLuan_webGiay.Controllers
                 return RedirectToAction("Index", "Carts");
             }
 
-            // Nếu ModelState không hợp lệ => quay lại form + load lại giỏ
             if (!ModelState.IsValid)
             {
                 var cartReload = await _context.Carts
@@ -333,7 +343,8 @@ namespace khoaLuan_webGiay.Controllers
                 return View(model);
             }
 
-            // Kiểm tra giỏ hàng
+            using var transaction = await _context.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable);
+
             var cart = await _context.Carts
                 .Include(c => c.CartItems)
                 .ThenInclude(ci => ci.Product)
@@ -345,13 +356,32 @@ namespace khoaLuan_webGiay.Controllers
                 return RedirectToAction("Index", "Carts");
             }
 
-            // Tính tiền
+            // ✅ Kiểm tra tồn kho trước khi tạo Order
+            foreach (var item in cart.CartItems)
+            {
+                var productSize = await _context.ProductSizes
+                    .FirstOrDefaultAsync(ps => ps.ProductId == item.ProductId && ps.Size == item.Size);
+
+                if (productSize == null)
+                {
+                    await transaction.RollbackAsync();
+                    TempData["ErrorMessage"] = $"Không tìm thấy kho cho sản phẩm {item.Product.ProductName} size {item.Size}.";
+                    return RedirectToAction("Index", "Carts");
+                }
+
+                if (productSize.Quantity < item.Quantity)
+                {
+                    await transaction.RollbackAsync();
+                    TempData["ErrorMessage"] = $"Sản phẩm {item.Product.ProductName} size {item.Size} chỉ còn {productSize.Quantity} sản phẩm trong kho.";
+                    return RedirectToAction("Index", "Carts");
+                }
+            }
+
             var subtotal = cart.CartItems.Sum(ci => ci.PriceAtTime * ci.Quantity);
             var totalDiscount = cart.CartItems.Sum(ci => (ci.PriceAtTime * ci.Quantity * ci.Product.Discount) / 100);
             var shippingFee = 50000;
             var total = subtotal - totalDiscount + shippingFee;
 
-            // === 📍 Quan trọng: Ưu tiên lấy địa chỉ mới nếu có nhập ===
             var fullName = Request.Form["NewFullName"].FirstOrDefault();
             var phoneNumber = Request.Form["NewPhoneNumber"].FirstOrDefault();
             var shippingAddress = Request.Form["NewShippingAddress"].FirstOrDefault();
@@ -360,7 +390,7 @@ namespace khoaLuan_webGiay.Controllers
             if (string.IsNullOrWhiteSpace(phoneNumber)) phoneNumber = model.PhoneNumber;
             if (string.IsNullOrWhiteSpace(shippingAddress)) shippingAddress = model.ShippingAddress;
 
-            // === Tạo đơn hàng ===
+            // ✅ Tạo đơn hàng **sau khi đã kiểm tra tồn kho**
             var order = new Order
             {
                 UserId = userId,
@@ -372,21 +402,16 @@ namespace khoaLuan_webGiay.Controllers
                 Email = model.Email,
                 ShippingAddress = shippingAddress
             };
+
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            // Kiểm tra tồn kho và lưu OrderItems
             foreach (var item in cart.CartItems)
             {
                 var productSize = await _context.ProductSizes
                     .FirstOrDefaultAsync(ps => ps.ProductId == item.ProductId && ps.Size == item.Size);
 
-                if (productSize == null || productSize.Quantity < item.Quantity)
-                {
-                    TempData["ErrorMessage"] = $"Sản phẩm {item.Product.ProductName} size {item.Size} không đủ tồn kho.";
-                    return RedirectToAction("Index", "Carts");
-                }
-
+                // Đã được kiểm tra trước đó
                 productSize.Quantity -= item.Quantity;
                 _context.ProductSizes.Update(productSize);
 
@@ -401,17 +426,16 @@ namespace khoaLuan_webGiay.Controllers
                 _context.OrderItems.Add(orderItem);
             }
 
-            // Xóa giỏ
             _context.CartItems.RemoveRange(cart.CartItems);
             cart.IsActive = false;
             _context.Carts.Update(cart);
 
             await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
 
             TempData["SuccessMessage"] = "Đơn hàng của bạn đã được tạo thành công.";
             return RedirectToAction("Index", "Orders");
         }
-
 
         private bool CartExists(int id)
         {

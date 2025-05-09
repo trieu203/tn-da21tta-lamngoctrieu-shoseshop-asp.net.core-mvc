@@ -15,6 +15,10 @@
 <!-- Cart Start -->
 <div class="container-fluid">
     <div class="row px-xl-5">
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
         @if (Model == null || Model.Items == null || !Model.Items.Any())
         {
             <!-- Thông báo khi giỏ hàng trống -->

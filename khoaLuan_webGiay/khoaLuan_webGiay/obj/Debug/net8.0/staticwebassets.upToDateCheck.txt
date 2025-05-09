@@ -128,6 +128,7 @@ wwwroot\img\statistical\rating.jpg
 wwwroot\img\users\5f78f9.jpg
 wwwroot\img\users\99e5bf.jpg
 wwwroot\img\users\avatar.jpg
+wwwroot\img\users\e28b7c.jpg
 wwwroot\img\users\user_boy.jpg
 wwwroot\img\users\user_girl.jpg
 wwwroot\js\forgotpassword.js
