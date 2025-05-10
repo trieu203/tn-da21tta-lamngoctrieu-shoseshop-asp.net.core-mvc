@@ -6,36 +6,39 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Cập Nhật Vai Trò Người Dùng</h1>
+
     <div class="card shadow-sm rounded-4">
-        <div class="card-header bg-warning text-dark rounded-top-4">
-            <h4 class="mb-0"><i class="bi bi-pencil-square me-2"></i> Chỉnh sửa thông tin người dùng</h4>
+        <div class="card-header bg-primary text-white rounded-top-4">
+            
         </div>
-        <div class="card-body">
-            <form asp-action="EditUser">
+
+        <form asp-action="EditUser">
+            <div class="card-body">
                 <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                 <input type="hidden" asp-for="UserId" />
 
                 <div class="row g-3">
-                    <div class="col-md-3">
-                        <label asp-for="Role" class="form-label"></label>
+                    <div class="col-md-4">
+                        <label asp-for="Role" class="form-label fw-bold">Vai trò</label>
                         <select asp-for="Role" class="form-select" asp-items="ViewBag.Roles">
                             <option value="">-- Chọn --</option>
                         </select>
                         <span asp-validation-for="Role" class="text-danger small"></span>
                     </div>
                 </div>
+            </div>
 
-                <div class="text-end mt-4">
-                    <button type="submit" class="btn btn-success">
-                        <i class="bi bi-save me-1"></i> Lưu thay đổi
-                    </button>
-                    <a asp-action="User" class="btn btn-outline-secondary ms-2">
-                        <i class="bi bi-arrow-left me-1"></i> Trở về
-                    </a>
-                </div>
-            </form>
-        </div>
+            <div class="card-footer bg-light text-end rounded-bottom-4">
+                <button type="submit" class="btn btn-primary me-2">
+                    <i class="bi bi-check-circle"></i> Lưu
+                </button>
+                <a asp-action="User" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left-circle"></i> Quay lại danh sách
+                </a>
+            </div>
+        </form>
     </div>
 </div>
 

@@ -959,6 +959,34 @@ namespace khoaLuan_webGiay.Areas.Admin.Controllers
             }
         }
 
+        //Detail Review
+        [Route("detail-review")]
+        [HttpGet]
+        public async Task<IActionResult> DetailReview(int id)
+        {
+            try
+            {
+                // Lấy dữ liệu đánh giá theo ID
+                var review = await _context.Reviews
+                    .Include(r => r.User)
+                    .Include(r => r.Product)
+                    .FirstOrDefaultAsync(r => r.ReviewId == id);
+
+                if (review == null)
+                {
+                    return NotFound("Không tìm thấy đánh giá.");
+                }
+
+                return View(review); // Trả về View chi tiết
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi xem chi tiết đánh giá.");
+                return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
+            }
+        }
+
+
         // Index Order
         [Route("order")]
         public async Task<IActionResult> Order(int? page)

@@ -7,9 +7,10 @@
 }
 
 <div class="container mt-5">
+    <h1 class="text-center mb-4">Chi tiết tài khoản người dùng</h1>
+
     <div class="card shadow-sm rounded-4">
         <div class="card-header bg-primary text-white rounded-top-4">
-            <h4 class="mb-0"><i class="bi bi-person-badge-fill me-2"></i>Chi tiết người dùng</h4>
         </div>
         <div class="card-body">
             <div class="row mb-4">
@@ -64,9 +65,9 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer text-end bg-light rounded-bottom-4">
-            <a asp-area="admin" asp-action="EditUser" asp-route-id="@Model?.UserId" class="btn btn-warning me-2">
-                <i class="bi bi-pencil-square me-1"></i>Chỉnh sửa
+        <div class="card-footer bg-light text-end rounded-bottom-4">
+            <a form="form0" asp-area="admin" asp-action="EditUser" asp-route-id="@Model?.UserId" class="btn btn-primary me-2">
+                <i class="bi bi-check-circle"></i>Chỉnh sửa
             </a>
             <a asp-action="User" class="btn btn-outline-secondary">
                 <i class="bi bi-arrow-left me-1"></i>Trở về danh sách
