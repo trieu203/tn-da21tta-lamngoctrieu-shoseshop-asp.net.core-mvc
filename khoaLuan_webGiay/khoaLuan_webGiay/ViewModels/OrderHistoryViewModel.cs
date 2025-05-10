@@ -31,5 +31,8 @@
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public string? Size { get; set; }
+        public int Discount { get; set; }
+        public decimal FinalPrice => Math.Round(Price * (1 - Discount / 100.0m));
+
     }
 }

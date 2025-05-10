@@ -64,7 +64,7 @@
                     </div>
                     <div class="modal-body text-center">
                         <!-- Zoomed Image -->
-                        <img id="zoomedImage" class="img-fluid" src="@Url.Content("~/img/Products/" + Model.ImageUrl + ".jpg")" alt="@Model.ProductName">
+                        <img id="zoomedImage" class="img-fluid" src="@Url.Content("~/img/Products/" + Model.ImageUrl )" alt="@Model.ProductName">
                     </div>
                 </div>
             </div>
@@ -192,45 +192,40 @@
                                     <p>Chưa có đánh giá nào.</p>
                                 }
                             </div>
-
-                            <!-- Form để gửi đánh giá -->
-                            <div class="col-md-6">
-                                <h4 class="mb-4">Để lại một đánh giá và bình luận</h4>
-                                <small>Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu *</small>
-                                <form method="post" asp-action="AddReview" asp-route-productId="@Model.ProductId">
-                                    <!-- Chọn số sao -->
-                                    <div class="d-flex my-3">
-                                        <p class="mb-0 mr-2">Sản phẩm đạt số sao * :</p>
-                                        <div class="text-primary star-rating">
-                                            @for (int i = 1; i <= 5; i++)
-                                            {
-                                                <label for="rating-@i" class="star">
-                                                    <input type="radio" id="rating-@i" name="rating" value="@i" class="d-none" onclick="highlightStars(@i)">
-                                                    <i class="far fa-star" data-star="@i"></i>
-                                                </label>
-                                            }
+                            @if (User.Identity.IsAuthenticated && ViewBag.CanReview == true)
+                            {
+                                <div class="col-md-6">
+                                    <h4 class="mb-4">Để lại một đánh giá và bình luận</h4>
+                                    <form method="post" asp-action="AddReview" asp-route-productId="@Model.ProductId" asp-route-orderItemId="@ViewBag.OrderItemId">
+                                        <div class="d-flex my-3">
+                                            <p class="mb-0 mr-2">Sản phẩm đạt số sao * :</p>
+                                            <div class="text-primary star-rating">
+                                                @for (int i = 1; i <= 5; i++)
+                                                {
+                                                    <label for="rating-@i" class="star">
+                                                        <input type="radio" id="rating-@i" name="rating" value="@i" class="d-none" onclick="highlightStars(@i)">
+                                                        <i class="far fa-star" data-star="@i"></i>
+                                                    </label>
+                                                }
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <!-- Bình luận -->
-                                    <div class="form-group">
-                                        <label for="comment">Đánh giá *</label>
-                                        <textarea name="comment" id="comment" cols="30" rows="5" class="form-control" required></textarea>
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="comment">Đánh giá *</label>
+                                            <textarea name="comment" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+                                        </div>
 
-                                    <!-- Tên và Email -->
-                                    <div class="form-group">
-                                        <label for="name">Tên của bạn *</label>
-                                        <input type="text" class="form-control" id="name" value="@User.Identity.Name" readonly>
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="name">Tên của bạn *</label>
+                                            <input type="text" class="form-control" id="name" value="@User.Identity.Name" readonly>
+                                        </div>
 
-                                    <!-- Nút gửi -->
-                                    <div class="form-group mb-0">
-                                        <button type="submit" class="btn btn-primary px-3">Để lại đánh giá của bạn</button>
-                                    </div>
-                                </form>
-                            </div>
-
+                                        <div class="form-group mb-0">
+                                            <button type="submit" class="btn btn-primary px-3">Để lại đánh giá của bạn</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            }
                         </div>
                     </div>
 

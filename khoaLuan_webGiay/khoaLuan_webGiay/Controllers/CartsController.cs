@@ -378,7 +378,11 @@ namespace khoaLuan_webGiay.Controllers
             }
 
             var subtotal = cart.CartItems.Sum(ci => ci.PriceAtTime * ci.Quantity);
-            var totalDiscount = cart.CartItems.Sum(ci => (ci.PriceAtTime * ci.Quantity * ci.Product.Discount) / 100);
+            var totalDiscount = cart.CartItems.Sum(ci =>
+            {
+                var discount = ci.Product?.Discount ?? 0;
+                return (ci.PriceAtTime * ci.Quantity * discount) / 100;
+            });
             var shippingFee = 50000;
             var total = subtotal - totalDiscount + shippingFee;
 

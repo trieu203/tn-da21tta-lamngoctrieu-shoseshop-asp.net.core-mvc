@@ -33,7 +33,12 @@
                                         </a>
                                     </div>
                                     <div>
-                                        @item.Quantity x @string.Format("{0:N0} VNĐ", item.Price)
+                                        @item.Quantity x
+                                        <del>@string.Format("{0:N0} VNĐ", item.Price)</del>
+                                        <strong class="text-danger ml-2">
+                                            @string.Format("{0:N0} VNĐ", item.FinalPrice)
+                                        </strong>
+                                        <small class="text-muted">(Đã giảm @item.Discount%)</small>
                                     </div>
                                 </div>
                             </li>

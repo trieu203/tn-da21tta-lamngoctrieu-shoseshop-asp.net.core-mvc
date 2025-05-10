@@ -130,6 +130,36 @@ namespace khoaLuan_webGiay.Controllers
 
                 _logger.LogInformation("Lấy chi tiết sản phẩm thành công. ID: {Id}", id);
 
+
+                product.ViewCount++;
+                _context.Products.Update(product);
+                await _context.SaveChangesAsync();
+
+                ViewBag.CanReview = false;
+                ViewBag.OrderItemId = null;
+                if (User.Identity.IsAuthenticated)
+                {
+                    var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+                    var hasReviewable = await _context.Orders
+                        .Include(o => o.OrderItems)
+                        .Where(o => o.UserId == currentUserId && o.OrderStatus == "Completed")
+                        .SelectMany(o => o.OrderItems)
+                        .Where(oi => oi.ProductId == id && !oi.IsReviewed)
+                        .FirstOrDefaultAsync();
+
+                    if (hasReviewable != null)
+                    {
+                        ViewBag.CanReview = true;
+                        ViewBag.OrderItemId = hasReviewable.OrderItemId;
+                    }
+                    else if (TempData["EnableReview"] != null && (bool)TempData["EnableReview"])
+                    {
+                        ViewBag.CanReview = true;
+                        ViewBag.OrderItemId = TempData["OrderItemId"];
+                    }
+                }
+
+
                 ViewBag.QuantityAvailable = product.ProductSizes.Sum(ps => ps.Quantity);
                 var reviews = product.Reviews
                     .Where(r => r.ProductId == id)
@@ -169,82 +199,122 @@ namespace khoaLuan_webGiay.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> AddReview(int productId, int rating, string comment)
+        public async Task<IActionResult> AddReview(int productId, int rating, string comment, int orderItemId)
         {
-            _logger.LogInformation("Bắt đầu thêm đánh giá cho sản phẩm ID: {ProductId}", productId);
-
-            if (!User.Identity.IsAuthenticated)
-            {
-                _logger.LogWarning("Người dùng chưa đăng nhập khi gửi đánh giá.");
-                return RedirectToAction("Login", "Users");
-            }
-
-            // Kiểm tra tất cả các claims
-            var allClaims = User.Claims.ToList();
-            foreach (var claim in allClaims)
-            {
-                _logger.LogInformation("Claim: {Type} - {Value}", claim.Type, claim.Value);
-            }
-
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
-            {
-                _logger.LogWarning("Không tìm thấy UserId từ Claim.");
-                return RedirectToAction("Login", "Users");
-            }
+            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login", "Users");
 
-
-            //var userId = userIdClaim.Value;
-
-            // Kiểm tra tính hợp lệ của rating và comment
             if (rating < 1 || rating > 5 || string.IsNullOrWhiteSpace(comment))
             {
-                _logger.LogWarning("Dữ liệu đánh giá không hợp lệ. Rating: {Rating}, Comment: {Comment}", rating, comment);
-                ModelState.AddModelError("", "Vui lòng chọn số sao và nhập đánh giá.");
+                TempData["ErrorMessage"] = "Vui lòng chọn số sao và nhập đánh giá.";
                 return RedirectToAction("Details", "Products", new { id = productId });
             }
 
-            try
+            var orderItem = await _context.OrderItems.FirstOrDefaultAsync(oi => oi.OrderItemId == orderItemId && !oi.IsReviewed);
+            if (orderItem == null)
             {
-                // Tạo đối tượng Review mới
-                var review = new Review
-                {
-                    ProductId = productId,
-                    UserId = int.Parse(userId),
-                    Rating = rating,
-                    Comment = comment,
-                    ReviewDate = DateTime.Now
-                };
+                TempData["ErrorMessage"] = "Bạn đã đánh giá sản phẩm này rồi.";
+                return RedirectToAction("Details", "Products", new { id = productId });
+            }
 
-                // Tìm sản phẩm theo ProductId
-                var product = await _context.Products
-                    .Include(p => p.Reviews)
-                    .SingleOrDefaultAsync(p => p.ProductId == productId);
+            var review = new Review
+            {
+                ProductId = productId,
+                UserId = int.Parse(userId),
+                Rating = rating,
+                Comment = comment,
+                ReviewDate = DateTime.Now
+            };
 
-                if (product == null)
-                {
-                    _logger.LogWarning("Sản phẩm không tồn tại với ID: {ProductId}", productId);
-                    return NotFound();
-                }
+            _context.Reviews.Add(review);
+            orderItem.IsReviewed = true;
+            _context.OrderItems.Update(orderItem);
+            await _context.SaveChangesAsync();
 
-                // Thêm Review vào sản phẩm
-                product.Reviews.Add(review);
-
-                // Lưu thay đổi vào cơ sở dữ liệu
+            var product = await _context.Products.Include(p => p.Reviews).FirstOrDefaultAsync(p => p.ProductId == productId);
+            if (product != null)
+            {
+                product.AverageRating = product.Reviews.Any()
+                ? (decimal)product.Reviews.Average(r => r.Rating ?? 0)
+                : 0;
+                _context.Products.Update(product);
                 await _context.SaveChangesAsync();
-
-                _logger.LogInformation("Thêm đánh giá thành công. Product ID: {ProductId}, User ID: {UserId}", productId, userId);
-
-                TempData["SuccessMessage"] = "Đánh giá của bạn đã được gửi!";
-                return RedirectToAction("Details", "Products", new { id = productId });
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Lỗi khi thêm đánh giá cho sản phẩm ID: {ProductId}", productId);
-                return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
-            }
+
+            TempData["SuccessMessage"] = "Cảm ơn bạn đã đánh giá sản phẩm!";
+            return RedirectToAction("Details", "Products", new { id = productId });
         }
-        
+
+        [Authorize]
+        public IActionResult ReviewPurchasedProducts(int orderId)
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+
+            var order = _context.Orders
+                .Include(o => o.OrderItems).ThenInclude(oi => oi.Product)
+                .FirstOrDefault(o => o.OrderId == orderId && o.UserId == userId && o.OrderStatus == "Completed");
+
+            if (order == null)
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy đơn hàng để đánh giá.";
+                return RedirectToAction("History", "Orders");
+            }
+
+            var model = order.OrderItems
+                .Where(oi => !oi.IsReviewed)
+                .Select(oi => new ProductReviewInputVM
+                {
+                    ProductId = oi.ProductId ?? 0,
+                    ProductName = oi.Product?.ProductName ?? "",
+                    OrderItemId = oi.OrderItemId
+                }).ToList();
+
+            return View("ReviewPurchasedProducts", model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> SubmitProductReviews(List<ProductReviewInputVM> reviews)
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+
+            foreach (var review in reviews)
+            {
+                if (review.Rating >= 1 && review.Rating <= 5 && !string.IsNullOrWhiteSpace(review.Comment))
+                {
+                    var newReview = new Review
+                    {
+                        ProductId = review.ProductId,
+                        UserId = userId,
+                        Rating = review.Rating,
+                        Comment = review.Comment,
+                        ReviewDate = DateTime.Now
+                    };
+
+                    _context.Reviews.Add(newReview);
+
+                    var orderItem = await _context.OrderItems.FindAsync(review.OrderItemId);
+                    if (orderItem != null)
+                    {
+                        orderItem.IsReviewed = true;
+                        _context.OrderItems.Update(orderItem);
+                    }
+
+                    var product = await _context.Products.Include(p => p.Reviews).FirstOrDefaultAsync(p => p.ProductId == review.ProductId);
+                    if (product != null)
+                    {
+                        product.AverageRating = product.Reviews.Any()
+                        ? (decimal)product.Reviews.Average(r => r.Rating ?? 0)
+                        : 0;
+                        _context.Products.Update(product);
+                    }
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Cảm ơn bạn đã đánh giá sản phẩm!";
+            return RedirectToAction("History", "Orders");
+        }
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.ProductId == id);

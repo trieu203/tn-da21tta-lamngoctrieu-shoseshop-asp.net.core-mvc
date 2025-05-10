@@ -40,6 +40,21 @@ namespace khoaLuan_webGiay.Controllers
                 .OrderByDescending(o => o.OrderDate)
                 .ToList();
 
+            // Tăng view count cho mỗi sản phẩm đã mua
+            foreach (var order in orders)
+            {
+                foreach (var item in order.OrderItems)
+                {
+                    var product = item.Product;
+                    if (product != null)
+                    {
+                        product.ViewCount += 1;
+                        _context.Products.Update(product);
+                    }
+                }
+            }
+            _context.SaveChanges();
+
             // Tạo ViewModel
             var model = orders.Select(o => new OrderHistoryViewModel
             {
@@ -51,6 +66,7 @@ namespace khoaLuan_webGiay.Controllers
                 {
                     ProductId = oi.ProductId ?? 0,
                     ProductName = oi.Product?.ProductName ?? "Sản phẩm không tồn tại",
+                    Discount = oi.Product?.Discount ?? 0,
                     Quantity = oi.Quantity,
                     Price = oi.Price,
                     Size = oi.Size
@@ -61,7 +77,6 @@ namespace khoaLuan_webGiay.Controllers
         }
 
         //Hủy đơn hàng
-        [HttpPost]
         [HttpPost]
         public async Task<IActionResult> CancelOrder(int orderId)
         {
@@ -112,7 +127,7 @@ namespace khoaLuan_webGiay.Controllers
 
         //Xác nhận
         [HttpPost]
-        public IActionResult ConfirmReceivedOrder(int orderId)
+        public async Task<IActionResult> ConfirmReceivedOrder(int orderId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
@@ -121,9 +136,9 @@ namespace khoaLuan_webGiay.Controllers
                 return RedirectToAction("Login", "Users");
             }
 
-            // Tìm đơn hàng dựa trên orderId và userId
-            var order = _context.Orders
-                .FirstOrDefault(o => o.OrderId == orderId && o.UserId == int.Parse(userId));
+            var order = await _context.Orders
+                .Include(o => o.OrderItems)
+                .FirstOrDefaultAsync(o => o.OrderId == orderId && o.UserId == int.Parse(userId));
 
             if (order == null)
             {
@@ -137,16 +152,37 @@ namespace khoaLuan_webGiay.Controllers
                 return RedirectToAction("History");
             }
 
-            // Cập nhật trạng thái đơn hàng thành "Completed"
             order.OrderStatus = "Completed";
             _context.Orders.Update(order);
 
-            // Lưu thay đổi vào cơ sở dữ liệu
-            _context.SaveChanges();
+            // 👉 Cập nhật TotalSold cho từng sản phẩm
+            foreach (var item in order.OrderItems)
+            {
+                if (item.ProductId.HasValue)
+                {
+                    var product = await _context.Products.FindAsync(item.ProductId.Value);
+                    if (product != null)
+                    {
+                        product.TotalSold += item.Quantity;
+                        _context.Products.Update(product);
+                    }
+                }
+            }
 
-            TempData["SuccessMessage"] = "Đơn hàng đã được xác nhận thành công.";
+            await _context.SaveChangesAsync();
+
+            // 👉 Chuyển hướng về trang chi tiết sản phẩm đầu tiên để đánh giá
+            var firstItem = order.OrderItems.FirstOrDefault(oi => oi.IsReviewed == false);
+            if (firstItem != null)
+            {
+                TempData["EnableReview"] = true;
+                TempData["OrderItemId"] = firstItem.OrderItemId;
+                return RedirectToAction("Details", "Products", new { id = firstItem.ProductId });
+            }
+
             return RedirectToAction("History");
         }
+
 
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)

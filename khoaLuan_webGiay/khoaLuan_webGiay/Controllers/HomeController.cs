@@ -1,9 +1,8 @@
-﻿using System.Diagnostics;
-using khoaLuan_webGiay.Data;
-using khoaLuan_webGiay.Models;
+﻿using khoaLuan_webGiay.Data;
 using khoaLuan_webGiay.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace khoaLuan_webGiay.Controllers
 {
@@ -12,14 +11,14 @@ namespace khoaLuan_webGiay.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly KhoaLuanContext _context;
 
-        public HomeController(KhoaLuanContext context)
+        public HomeController(KhoaLuanContext context, ILogger<HomeController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index(int? Category, int page = 1, int pageSize = 9)
         {
-            ViewBag.CategoryList = await _context.Categories.ToListAsync();
             var productQuery = _context.Products.AsQueryable();
 
             if (Category.HasValue)
@@ -30,79 +29,69 @@ namespace khoaLuan_webGiay.Controllers
             int totalItems = await productQuery.CountAsync();
 
             var products = await productQuery
+                .OrderByDescending(p => p.CreatedDate)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(p => new ProductVM
-                {
-                    ProductId = p.ProductId,
-                    ProductName = p.ProductName,
-                    Price = p.Price,
-                    Discount = p.Discount,
-                    ImageUrl = p.ImageUrl,
-                    Rating = p.AverageRating != null ? (int?)Math.Round(p.AverageRating) : null
+                .Select(ProjectToProductVM())
+                .ToListAsync();
 
-                }).ToListAsync();
+            var featuredProducts = await _context.Products
+                .Where(p =>
+                    (p.TotalSold >= 1 && p.AverageRating >= 4.0m) ||
+                    (p.ViewCount >= 5 && p.AverageRating >= 3.5m) ||
+                    (p.ViewCount >= 10 && p.TotalSold == 0 && p.AverageRating == 0))
+                .OrderByDescending(p => p.AverageRating)
+                .ThenByDescending(p => p.TotalSold)
+                .ThenByDescending(p => p.ViewCount)
+                .Take(8)
+                .Select(ProjectToProductVM())
+                .ToListAsync();
 
-            // Sản phẩm mới
             var newProducts = await _context.Products
                 .OrderByDescending(p => p.CreatedDate)
                 .Take(8)
-                .Select(p => new ProductVM
-                {
-                    ProductId = p.ProductId,
-                    ProductName = p.ProductName,
-                    Price = p.Price,
-                    Discount = p.Discount,
-                    ImageUrl = p.ImageUrl,
-                    Rating = p.AverageRating != null ? (int?)Math.Round(p.AverageRating) : null
-                }).ToListAsync();
+                .Select(ProjectToProductVM())
+                .ToListAsync();
 
-            // Sản phẩm nổi bật
-            var featuredProducts = await _context.Products
-                .Where(p => p.AverageRating >= 4.0m && p.Reviews.Count >= 5)
-                .OrderByDescending(p => p.AverageRating)
-                .Take(8)
-                .Select(p => new ProductVM
-                {
-                    ProductId = p.ProductId,
-                    ProductName = p.ProductName,
-                    Price = p.Price,
-                    Discount = p.Discount,
-                    ImageUrl = p.ImageUrl,
-                    Rating = p.AverageRating != null ? (int?)Math.Round(p.AverageRating) : null
-                }).ToListAsync();
-
-            // Sản phẩm bán chạy
             var bestSellingProducts = await _context.Products
                 .OrderByDescending(p => p.TotalSold)
                 .Take(8)
-                .Select(p => new ProductVM
-                {
-                    ProductId = p.ProductId,
-                    ProductName = p.ProductName,
-                    Price = p.Price,
-                    Discount = p.Discount,
-                    ImageUrl = p.ImageUrl,
-                    Rating = p.AverageRating != null ? (int?)Math.Round(p.AverageRating) : null
-                }).ToListAsync();
+                .Select(ProjectToProductVM())
+                .ToListAsync();
 
-            var viewModel = new HomeVM
+            var paginatedResult = new PaginatedList<ProductVM>(products, totalItems, page, pageSize);
+
+            var homeVM = new HomeVM
             {
-                PaginatedProducts = new PaginatedList<ProductVM>(products, totalItems, page, pageSize),
-                NewProducts = newProducts,
+                PaginatedProducts = paginatedResult,
                 FeaturedProducts = featuredProducts,
+                NewProducts = newProducts,
                 BestSellingProducts = bestSellingProducts
             };
 
             ViewBag.CurrentCategory = Category;
-            return View(viewModel);
+
+            return View(homeVM);
         }
 
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        private static Expression<Func<Product, ProductVM>> ProjectToProductVM()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return p => new ProductVM
+            {
+                ProductId = p.ProductId,
+                ProductName = p.ProductName,
+                Price = p.Price,
+                Discount = p.Discount,
+                ImageUrl = p.ImageUrl,
+                Rating = (int?)Math.Round(p.AverageRating),
+                TotalSold = p.TotalSold,
+                ViewCount = p.ViewCount
+            };
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.ProductId == id);
         }
     }
 }

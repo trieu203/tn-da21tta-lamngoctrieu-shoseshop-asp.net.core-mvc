@@ -15,6 +15,9 @@ namespace khoaLuan_webGiay.ViewModels
         public string? Description { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string? CategoryName { get; set; }
+        public int TotalSold { get; set; }
+        public int ViewCount { get; set; }
+
     }
 
     public class ProductVMDT
@@ -58,4 +61,14 @@ namespace khoaLuan_webGiay.ViewModels
         public int UserRating { get; set; }
         public Review? NewReview { get; set; }
     }
+
+    public class ProductReviewInputVM
+    {
+        public int OrderItemId { get; set; }
+        public int ProductId { get; set; }
+        public string ProductName { get; set; } = string.Empty;
+        public int Rating { get; set; }
+        public string Comment { get; set; } = string.Empty;
+    }
+
 }
