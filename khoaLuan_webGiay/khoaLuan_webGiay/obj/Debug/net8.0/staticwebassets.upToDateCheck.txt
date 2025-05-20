@@ -7,6 +7,7 @@ wwwroot\css\bootstrap-reboot.min.css
 wwwroot\css\site.css
 wwwroot\css\style.css
 wwwroot\css\style.min.css
+wwwroot\detail.html
 wwwroot\favicon.ico
 wwwroot\img\admin\danhmuc.jpg
 wwwroot\img\admin\order.jpg
@@ -22,6 +23,7 @@ wwwroot\img\categories\newbalance.jpg
 wwwroot\img\categories\nike.jpg
 wwwroot\img\categories\ontiger.jpg
 wwwroot\img\categories\puma.jpg
+wwwroot\img\categories\tuutcv.jpg
 wwwroot\img\categories\vn3v4l.jpg
 wwwroot\img\categories\xe4zle.jpg
 wwwroot\img\chat\chat.jpg
@@ -125,6 +127,7 @@ wwwroot\img\sale\new.jpg
 wwwroot\img\sale\sale.jpg
 wwwroot\img\statistical\discount.jpg
 wwwroot\img\statistical\rating.jpg
+wwwroot\img\users\29018c.jpg
 wwwroot\img\users\5f78f9.jpg
 wwwroot\img\users\99e5bf.jpg
 wwwroot\img\users\avatar.jpg
@@ -1060,3 +1063,9 @@ wwwroot\scss\bootstrap\scss\utilities\_text.scss
 wwwroot\scss\bootstrap\scss\utilities\_visibility.scss
 wwwroot\scss\bootstrap\scss\vendor\_rfs.scss
 wwwroot\scss\style.scss
+wwwroot\shop.html
+wwwroot\uploads\reviews\609a9796-b759-42d5-9aa0-7370aebe88e1.jpg
+wwwroot\uploads\reviews\test_1cb.mp4
+wwwroot\uploads\reviews\test_80b.mp4
+wwwroot\uploads\reviews\vit2_939.jpg
+wwwroot\uploads\reviews\vit2_be7.jpg

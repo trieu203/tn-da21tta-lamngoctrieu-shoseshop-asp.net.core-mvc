@@ -1,4 +1,5 @@
-﻿@model khoaLuan_webGiay.Data.User
+﻿@model khoaLuan_webGiay.ViewModels.RegisterVM
+
 @{
     ViewData["Title"] = "Đăng ký thành viên";
     Layout = "_Product";
@@ -7,7 +8,7 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Đăng ký tài khoản</h2>
 
-    <form id="registerForm">
+    <form id="registerForm" method="post" enctype="multipart/form-data" action="/Users/Register">
         <!-- Bước 1: Nhập Email -->
         <div id="step-email" class="mt-5">
             <div class="card shadow-sm border-0 rounded-4">
@@ -16,15 +17,11 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-3">
-                        <label for="emailInput" class="form-label">
-                            <i class="bi bi-envelope-fill me-1"></i> Email
-                        </label>
-                        <input id="emailInput" name="email" class="form-control" type="email" required placeholder="Nhập địa chỉ email của bạn" />
+                        <label for="emailInput" class="form-label">Email</label>
+                        <input id="emailInput" name="Email" class="form-control" type="email" required placeholder="Nhập email" />
                         <div id="message-email" class="text-danger mt-2" style="min-height: 20px;"></div>
                     </div>
-                    <button type="button" class="btn btn-primary w-100" onclick="sendOtp()">
-                        <i class="bi bi-send-fill me-1"></i> Gửi mã OTP
-                    </button>
+                    <button type="button" id="btnSendOtp" class="btn btn-primary w-100">Gửi mã OTP</button>
                 </div>
             </div>
         </div>
@@ -33,66 +30,86 @@
         <div id="step-otp" class="d-none mt-4">
             <div class="card shadow-sm border-0 rounded-4">
                 <div class="card-header bg-success text-white rounded-top-4">
-                    <h5 class="mb-0"><i class="bi bi-shield-lock-fill me-2"></i>Nhập mã xác thực OTP</h5>
+                    <h5 class="mb-0">Xác thực mã OTP</h5>
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-3">
-                        <label for="otpInput" class="form-label">
-                            <i class="bi bi-key-fill me-1"></i> Mã OTP
-                        </label>
-                        <input id="otpInput" class="form-control" type="text" required placeholder="Nhập mã OTP gồm 6 chữ số" />
+                        <label for="otpInput" class="form-label">Mã OTP</label>
+                        <input id="otpInput" class="form-control" type="text" placeholder="Nhập 6 số OTP" />
                     </div>
-
                     <div id="message-otp" class="text-danger mb-3"></div>
-
                     <div class="alert alert-warning d-flex align-items-center">
                         <i class="bi bi-exclamation-triangle-fill me-2 fs-4"></i>
                         <div>
                             <strong>Lưu ý:</strong> Nếu không thấy email, vui lòng kiểm tra <strong>Hộp thư rác (Spam)</strong> và đánh dấu là <strong>Không phải @@spam</strong>.
                         </div>
                     </div>
-
-                    <button type="button" class="btn btn-success w-100" onclick="verifyOtp()">
-                        <i class="bi bi-shield-check me-1"></i> Xác nhận OTP
-                    </button>
+                    <button type="button" class="btn btn-success w-100" onclick="verifyOtp()">Xác nhận OTP</button>
                 </div>
             </div>
         </div>
 
-        <!-- Bước 3: Nhập thông tin cá nhân -->
+        <!-- Bước 3: Thông tin cá nhân -->
         <div id="step-info" class="d-none mt-5">
             <div class="card shadow-sm border-0 rounded-4">
                 <div class="card-header bg-primary text-white rounded-top-4">
-                    <h5 class="mb-0"><i class="bi bi-person-fill-add me-2"></i>Thông tin cá nhân</h5>
+                    <h5 class="mb-0">Thông tin cá nhân</h5>
                 </div>
                 <div class="card-body row g-3 px-4 py-3">
-                    <div class="col-md-6">
-                        <label class="form-label"><i class="bi bi-person-circle me-1"></i> Tên đăng nhập</label>
-                        <input name="UserName" class="form-control" required placeholder="Nhập tên đăng nhập" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label"><i class="bi bi-lock-fill me-1"></i> Mật khẩu</label>
-                        <input name="Password" type="password" class="form-control" required placeholder="Nhập mật khẩu" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label"><i class="bi bi-card-text me-1"></i> Họ tên</label>
-                        <input name="FullName" class="form-control" placeholder="Nhập họ và tên" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label"><i class="bi bi-telephone-fill me-1"></i> Số điện thoại</label>
-                        <input name="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại" />
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label"><i class="bi bi-geo-alt-fill me-1"></i> Địa chỉ</label>
-                        <input name="Address" class="form-control" placeholder="Nhập địa chỉ của bạn" />
-                    </div>
                     <input type="hidden" name="Email" id="emailHidden" />
+
+                    <div class="col-md-6">
+                        <label class="form-label">Tên đăng nhập</label>
+                        <input name="UserName" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Mật khẩu</label>
+                        <input name="Password" class="form-control" type="password" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Xác nhận mật khẩu</label>
+                        <input name="ConfirmPassword" class="form-control" type="password" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Họ tên</label>
+                        <input name="FullName" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Số điện thoại</label>
+                        <input name="PhoneNumber" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Địa chỉ</label>
+                        <input name="Address" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Giới tính</label>
+                        <select name="Gender" class="form-select">
+                            <option value="true">Nam</option>
+                            <option value="false">Nữ</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Ngày sinh</label>
+                        <input name="DateOfBirth" type="date" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Ảnh đại diện</label>
+                        <input type="file" name="Image" class="form-control" />
+                    </div>
                 </div>
-                <div class="card-footer bg-light text-end rounded-bottom-4 px-4 py-3">
+
+                <div class="card-footer text-end bg-light p-3">
                     <div id="message-register" class="text-danger mb-2"></div>
-                    <button type="submit" class="btn btn-success">
-                        <i class="bi bi-check2-circle me-1"></i> Hoàn tất đăng ký
-                    </button>
+                    <button type="submit" class="btn btn-success">Hoàn tất đăng ký</button>
                 </div>
             </div>
         </div>

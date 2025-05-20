@@ -99,20 +99,59 @@ namespace khoaLuan_webGiay.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(User user)
+        public async Task<IActionResult> Register([FromForm] RegisterVM model)
         {
-            if (_context.Users.Any(u => u.Email == user.Email))
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Email", "Email đã được sử dụng");
-                return View("RegisterForm", user);
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                return BadRequest("Thông tin không hợp lệ:\n" + string.Join("; ", errors));
             }
 
-            user.CreatedDate = DateOnly.FromDateTime(DateTime.Now);
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Home"); // hoặc login
+            // Kiểm tra email hoặc username đã tồn tại
+            if (_context.Users.Any(u => u.Email == model.Email))
+            {
+                return BadRequest("Email đã được sử dụng");
+            }
+
+            if (_context.Users.Any(u => u.UserName == model.UserName))
+            {
+                ModelState.AddModelError("UserName", "Tên đăng nhập đã tồn tại");
+                return View("Register", model);
+            }
+
+            // Map từ VM sang entity
+            var user = new User
+            {
+                UserName = model.UserName,
+                Password = model.Password,
+                Email = model.Email,
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address,
+                Gender = model.Gender,
+                DateOfBirth = model.DateOfBirth,
+                Role = model.Role ?? "User",
+                CreatedDate = DateOnly.FromDateTime(DateTime.Now)
+            };
+
+            // upload image
+            if (model.Image != null && model.Image.Length > 0)
+            {
+                var fileName = Guid.NewGuid() + Path.GetExtension(model.Image.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/users", fileName);
+                using var stream = new FileStream(path, FileMode.Create);
+                await model.Image.CopyToAsync(stream);
+                user.ImageUrl = fileName;
+            }
+
+            _context.Users.Add(user);
+            var result = await _context.SaveChangesAsync();
+            Console.WriteLine("SaveChangesAsync result: " + result);
+
+            return RedirectToAction("Login", "Users");
         }
+
 
         //Login
         [HttpGet]
@@ -181,7 +220,12 @@ namespace khoaLuan_webGiay.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordVM model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                Console.WriteLine("Validation Errors: " + string.Join("; ", allErrors));
+                return BadRequest("Dữ liệu không hợp lệ.");
+            }
 
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
             if (user == null)
@@ -276,7 +320,6 @@ namespace khoaLuan_webGiay.Controllers
 
             return Ok("Mã OTP đã gửi.");
         }
-
 
         //Detals User
         public async Task<IActionResult> Details()
@@ -525,7 +568,6 @@ namespace khoaLuan_webGiay.Controllers
             TempData["SuccessMessage"] = "Tài khoản đã được xóa vĩnh viễn.";
             return RedirectToAction("Index", "Home");
         }
-
 
         private bool UserExists(int id)
         {

@@ -61,6 +61,14 @@
                     {
                         <span class="badge status-shipped">Đã giao hàng</span>
                     }
+                    else if (item.OrderStatus == "ReturnRequested")
+                    {
+                        <span class="badge status-return-requested">Yêu cầu trả hàng</span>
+                    }
+                    else if (item.OrderStatus == "ReturnConfirmed")
+                    {
+                        <span class="badge status-return-confirmed">Đã xác nhận trả hàng</span>
+                    }
                     else
                     {
                         <span class="badge status-default">@Html.DisplayFor(modelItem => item.OrderStatus)</span>
@@ -114,6 +122,16 @@
     .status-default {
         background-color: #6c757d; /* Màu xám */
         color: #fff; /* Chữ trắng */
+    }
+
+    .status-return-requested {
+        background-color: #fd7e14; /* Màu cam */
+        color: #fff;
+    }
+
+    .status-return-confirmed {
+        background-color: #20c997; /* Màu xanh mint */
+        color: #fff;
     }
 
     .badge {

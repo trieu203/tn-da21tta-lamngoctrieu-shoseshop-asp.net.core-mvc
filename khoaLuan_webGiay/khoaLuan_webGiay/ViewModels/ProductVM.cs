@@ -49,8 +49,10 @@ namespace khoaLuan_webGiay.ViewModels
         public int? ProductId { get; set; }
         public string? ImageUrl { get; set; }
         public string UserName { get; set; } = "Ẩn danh";
+        public string? FullName { get; set; }
         public string Email { get; set; } = "Không có email";
         public DateTime ReviewDate { get; set; }
+        public string? MediaUrls { get; set; }
     }
 
     public class ProductDetailsViewModel
@@ -69,6 +71,7 @@ namespace khoaLuan_webGiay.ViewModels
         public string ProductName { get; set; } = string.Empty;
         public int Rating { get; set; }
         public string Comment { get; set; } = string.Empty;
+        public List<IFormFile>? MediaFiles { get; set; }
     }
 
 }

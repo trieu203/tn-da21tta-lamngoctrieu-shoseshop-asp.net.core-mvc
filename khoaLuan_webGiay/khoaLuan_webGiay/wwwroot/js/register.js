@@ -1,12 +1,19 @@
+// register.js - Xử lý luồng đăng ký 3 bước: Email -> OTP -> Thông tin cá nhân
+
+// Chờ khi DOM đã sẵn sàng
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("registerForm");
     const emailInput = document.getElementById("emailInput");
     const otpInput = document.getElementById("otpInput");
     const emailHidden = document.getElementById("emailHidden");
-
+    const btnSendOtp = document.getElementById("btnSendOtp");
     const msgEmail = document.getElementById("message-email");
     const msgOtp = document.getElementById("message-otp");
     const msgRegister = document.getElementById("message-register");
+
+    const stepEmail = document.getElementById("step-email");
+    const stepOtp = document.getElementById("step-otp");
+    const stepInfo = document.getElementById("step-info");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -14,13 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return emailRegex.test(email);
     }
 
-    // Gửi OTP
-    window.sendOtp = function () {
+    // Bước 1: Gửi OTP
+    btnSendOtp?.addEventListener("click", function () {
         const email = emailInput.value.trim();
         msgEmail.innerHTML = "";
-
-        console.log("Email nhập:", email);
-        console.log("Hợp lệ?", isValidEmail(email));
 
         if (!email) {
             msgEmail.innerHTML = `<div class="text-danger">Vui lòng nhập email.</div>`;
@@ -28,40 +32,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!isValidEmail(email)) {
-            msgEmail.innerHTML = `<div class="text-danger">Email không hợp lệ. Vui lòng nhập đúng định dạng (ví dụ: ten@example.com).</div>`;
+            msgEmail.innerHTML = `<div class="text-danger">Email không hợp lệ.</div>`;
             return;
         }
 
         fetch("/Users/SendOtp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: email })
+            body: JSON.stringify({ email })
         })
             .then(res => {
                 if (res.ok) {
-                    document.getElementById("step-email").classList.add("d-none");
-                    document.getElementById("step-otp").classList.remove("d-none");
-                    msgOtp.innerHTML = `
-                        <div class="text-success">OTP đã gửi, kiểm tra email.</div>`;
+                    stepEmail.classList.add("d-none");
+                    stepOtp.classList.remove("d-none");
+                    msgOtp.innerHTML = `<div class='text-success'>OTP đã gửi. Vui lòng kiểm tra email.</div>`;
                 } else {
                     return res.text().then(text => {
-                        msgEmail.innerHTML = `<div class="text-danger">${text}</div>`;
+                        msgEmail.innerHTML = `<div class='text-danger'>${text}</div>`;
                     });
                 }
             })
             .catch(err => {
-                msgEmail.innerHTML = `<div class="text-danger">Đã xảy ra lỗi khi gửi OTP.</div>`;
-                console.error("Lỗi gửi OTP:", err);
+                msgEmail.innerHTML = `<div class='text-danger'>Lỗi gửi OTP.</div>`;
+                console.error(err);
             });
-    };
+    });
 
-    // Xác nhận OTP
+    // Bước 2: Xác nhận OTP
     window.verifyOtp = function () {
         const email = emailInput.value.trim();
         const otp = otpInput.value.trim();
         msgOtp.innerHTML = "";
 
-        if (!otp || otp.length !== 6 || !/^\d+$/.test(otp)) {
+        if (!otp || otp.length !== 6 || !/^\d{6}$/.test(otp)) {
             msgOtp.innerHTML = `<div class="text-danger">Mã OTP phải gồm 6 chữ số.</div>`;
             return;
         }
@@ -69,12 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch("/Users/VerifyOtp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: email, otp: otp })
+            body: JSON.stringify({ email, otp })
         })
             .then(res => {
                 if (res.ok) {
-                    document.getElementById("step-otp").classList.add("d-none");
-                    document.getElementById("step-info").classList.remove("d-none");
+                    stepOtp.classList.add("d-none");
+                    stepInfo.classList.remove("d-none");
                     emailHidden.value = email;
                 } else {
                     return res.text().then(text => {
@@ -83,35 +86,44 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(err => {
-                msgOtp.innerHTML = `<div class="text-danger">Đã xảy ra lỗi xác thực OTP.</div>`;
-                console.error("Lỗi xác thực OTP:", err);
+                msgOtp.innerHTML = `<div class="text-danger">Lỗi xác thực OTP.</div>`;
+                console.error(err);
             });
     };
 
-    // Đăng ký tài khoản
-    if (form) {
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            msgRegister.innerHTML = "";
+    // Bước 3: Gửi form đăng ký
+    form?.addEventListener("submit", function (e) {
+        e.preventDefault();
+        msgRegister.innerHTML = "";
 
-            const formData = new FormData(form);
+        const username = form.querySelector('[name="UserName"]').value.trim();
+        const password = form.querySelector('[name="Password"]').value.trim();
+        const email = emailHidden.value.trim();
 
-            fetch("/Users/Register", {
-                method: "POST",
-                body: formData
+        if (!username || !password || !email) {
+            msgRegister.innerHTML = `<div class='text-danger'>Vui lòng điền đầy đủ thông tin bắt buộc.</div>`;
+            return;
+        }
+
+        const formData = new FormData(form);
+
+        fetch("/Users/Register", {
+            method: "POST",
+            body: formData
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Đăng ký thành công!");
+                    window.location.href = "/Users/Login";
+                } else {
+                    return res.text().then(text => {
+                        msgRegister.innerHTML = `<div class='text-danger'>Đăng ký thất bại: ${text}</div>`;
+                    });
+                }
             })
-                .then(res => {
-                    if (res.ok) {
-                        alert("Đăng ký thành công!");
-                        window.location.href = "/";
-                    } else {
-                        msgRegister.innerHTML = `<div class="text-danger">Đăng ký thất bại.</div>`;
-                    }
-                })
-                .catch(err => {
-                    msgRegister.innerHTML = `<div class="text-danger">Có lỗi xảy ra khi đăng ký.</div>`;
-                    console.error("Lỗi đăng ký:", err);
-                });
-        });
-    }
+            .catch(err => {
+                msgRegister.innerHTML = `<div class='text-danger'>Có lỗi xảy ra khi đăng ký.</div>`;
+                console.error("Lỗi đăng ký:", err);
+            });
+    });
 });

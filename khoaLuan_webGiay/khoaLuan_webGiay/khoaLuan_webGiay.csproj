@@ -27,6 +27,7 @@
   <ItemGroup>
     <Folder Include="Views\CartItems\" />
     <Folder Include="Views\OrderItems\" />
+    <Folder Include="wwwroot\uploads\reviews\" />
   </ItemGroup>
 
 </Project>

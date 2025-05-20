@@ -69,12 +69,24 @@
                                 case "Confirmed":
                                     <span class="badge bg-primary">Đã xác nhận</span>
                                     break;
+                                case "ReturnRequested":
+                                    <span class="badge bg-warning text-dark">Đã yêu cầu trả hàng</span>
+                                    break;
+                                case "ReturnConfirmed":
+                                    <span class="badge bg-info text-dark">Trả hàng thành công</span>
+                                    break;
                                 case "Shipped":
                                     <div>
                                         <span class="badge bg-info">Đã giao hàng</span>
+
                                         <form asp-action="ConfirmReceivedOrder" method="post" style="display: inline;">
                                             <input type="hidden" name="orderId" value="@order.OrderId" />
                                             <button type="submit" class="btn btn-success btn-sm">Xác nhận đã nhận</button>
+                                        </form>
+
+                                        <form asp-action="RequestReturn" method="post" style="display: inline; margin-left: 10px;">
+                                            <input type="hidden" name="orderId" value="@order.OrderId" />
+                                            <button type="submit" class="btn btn-warning btn-sm">Yêu cầu trả hàng</button>
                                         </form>
                                     </div>
                                     break;

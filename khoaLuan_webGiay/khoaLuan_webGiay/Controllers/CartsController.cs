@@ -200,7 +200,7 @@ namespace khoaLuan_webGiay.Controllers
 
                 if (remainingItems == 0)
                 {
-                    cart.IsActive = false; 
+                    cart.IsActive = false;
                     _context.Carts.Update(cart);
                     await _context.SaveChangesAsync();
                 }

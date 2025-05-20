@@ -1,5 +1,7 @@
 ﻿@using System.Security.Claims
 @model khoaLuan_webGiay.ViewModels.ProductVMDT
+@using khoaLuan_webGiay.ViewModels
+
 
 @{
     ViewData["Title"] = "Chi tiết sản phẩm";
@@ -104,7 +106,24 @@
                             <label class="custom-control-label" for="size-3">41</label>
                         </div>
                     </div>
-                    <<form asp-controller="Carts" asp-action="AddToCart" method="post">
+                    @{
+                        var sizeQuantities = ViewBag.SizeQuantities as Dictionary<string, int> ?? new Dictionary<string, int>();
+                    }
+
+                    @if (sizeQuantities.Any())
+                    {
+                        <div class="mb-3">
+                            <strong>Số lượng theo size:</strong>
+                            <ul class="list-unstyled mt-2">
+                                @foreach (var kv in sizeQuantities.OrderBy(k => k.Key))
+                                {
+                                    <li>- Size @kv.Key: <span class="text-danger">@kv.Value</span> sản phẩm</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    <form asp-controller="Carts" asp-action="AddToCart" method="post">
                         <!-- BẮT BUỘC: ProductId phải được truyền -->
                         <input type="hidden" name="ProductId" value="@Model.ProductId" />
                         <input type="hidden" name="Size" id="selectedSize" />
@@ -162,13 +181,12 @@
                                     {
                                         <div class="media mb-4">
                                             <img src="@Url.Content("~/img/users/" + review.ImageUrl)"
-                                                 alt="@review.UserName"
+                                                 alt="@review.FullName"
                                                  class="img-fluid mr-3 mt-1"
                                                  style="width: 45px; height: 45px; object-fit: cover;">
 
-
                                             <div class="media-body">
-                                                <h6>@review.UserName<small> - <i>@review.ReviewDate.ToString("dd MMM yyyy")</i></small></h6>
+                                                <h6>@review.FullName<small> - <i>@review.ReviewDate.ToString("dd MMM yyyy")</i></small></h6>
                                                 <div class="text-primary mb-2">
                                                     @for (int i = 1; i <= 5; i++)
                                                     {
@@ -183,6 +201,26 @@
                                                     }
                                                 </div>
                                                 <p>@review.Comment</p>
+
+                                                @if (!string.IsNullOrEmpty(review.MediaUrls))
+                                                {
+                                                    var mediaList = review.MediaUrls.Split(';');
+                                                    foreach (var media in mediaList)
+                                                    {
+                                                        var ext = System.IO.Path.GetExtension(media).ToLower();
+                                                        if (ext == ".mp4" || ext == ".mov")
+                                                        {
+                                                            <video controls class="mt-2" width=100px>
+                                                                <source src="@media" type="video/mp4" />
+                                                                Trình duyệt không hỗ trợ video.
+                                                            </video>
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="@media" alt="Ảnh đánh giá" class="img-fluid mt-2" style="max-height: 100px;" />
+                                                        }
+                                                    }
+                                                }
                                             </div>
                                         </div>
                                     }
@@ -196,7 +234,7 @@
                             {
                                 <div class="col-md-6">
                                     <h4 class="mb-4">Để lại một đánh giá và bình luận</h4>
-                                    <form method="post" asp-action="AddReview" asp-route-productId="@Model.ProductId" asp-route-orderItemId="@ViewBag.OrderItemId">
+                                    <form method="post" enctype="multipart/form-data" asp-action="AddReview" asp-route-productId="@Model.ProductId" asp-route-orderItemId="@ViewBag.OrderItemId">
                                         <div class="d-flex my-3">
                                             <p class="mb-0 mr-2">Sản phẩm đạt số sao * :</p>
                                             <div class="text-primary star-rating">
@@ -216,24 +254,77 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="name">Tên của bạn *</label>
-                                            <input type="text" class="form-control" id="name" value="@User.Identity.Name" readonly>
+                                            <label for="MediaFiles">Tải ảnh hoặc video (tuỳ chọn)</label>
+                                            <input type="file" name="MediaFiles" multiple accept="image/*,video/*" class="form-control" />
                                         </div>
 
                                         <div class="form-group mb-0">
                                             <button type="submit" class="btn btn-primary px-3">Để lại đánh giá của bạn</button>
                                         </div>
                                     </form>
+                                    <small class="text-muted">Giữ Ctrl (hoặc Cmd trên Mac) để chọn nhiều ảnh/video một lúc.</small>
                                 </div>
                             }
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
+    
+    <!--Sản phẩm tương tự-->
+    @if (ViewBag.RelatedProducts != null && ViewBag.RelatedProducts.Count > 0)
+    {
+        <div class="container-fluid py-5">
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+                <span class="bg-secondary pr-3">Sản phẩm tương tự</span>
+            </h2>
+            <div class="row px-xl-5">
+                <div class="col">
+                    <div class="owl-carousel related-carousel">
+                        @foreach (var item in ViewBag.RelatedProducts as List<ProductVM>)
+                        {
+                            <div class="product-item bg-light">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="@Url.Content("~/img/products/" + item.ImageUrl)" alt="@item.ProductName"
+                                         onerror="this.onerror=null; this.src='/img/products/default.jpg';">
+                                    <div class="product-action">
+                                        <a title="Thêm vào giỏ hàng" asp-action="Details" asp-controller="Products" asp-route-id="@item.ProductId" class="btn btn-outline-dark btn-square">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </a>
+                                        <form method="post" asp-action="AddToWishList" asp-controller="WishLists" asp-route-productId="@item.ProductId" class="d-inline-block">
+                                            <button type="submit" class="btn btn-outline-dark btn-square" title="Thêm vào yêu thích">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none product-title" asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">
+                                        @item.ProductName
+                                    </a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>@item.Price.ToString("N0") VND</h5>
+                                        @if (item.Discount > 0)
+                                        {
+                                            <h6 class="text-muted ml-2"><del>@item.Discount%</del></h6>
+                                        }
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mb-1">
+                                        @for (int i = 0; i < 5; i++)
+                                        {
+                                            <small class="fa fa-star text-primary mr-1"></small>
+                                        }
+                                        <small>(@item.Rating)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 
 </div>
 

@@ -125,6 +125,40 @@ namespace khoaLuan_webGiay.Controllers
             return RedirectToAction("History");
         }
 
+        //Yêu cầu trả hàng
+        [HttpPost]
+        public async Task<IActionResult> RequestReturn(int orderId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
+            var order = await _context.Orders
+                .FirstOrDefaultAsync(o => o.OrderId == orderId && o.UserId == int.Parse(userId));
+
+            if (order == null)
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy đơn hàng.";
+                return RedirectToAction("History");
+            }
+
+            if (order.OrderStatus != "Shipped")
+            {
+                TempData["ErrorMessage"] = "Chỉ có thể yêu cầu trả hàng đối với đơn chưa hoàn thành.";
+                return RedirectToAction("History");
+            }
+
+            order.OrderStatus = "ReturnRequested";
+            _context.Orders.Update(order);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Yêu cầu trả hàng của bạn đã được gửi thành công.";
+            return RedirectToAction("History");
+        }
+
+
         //Xác nhận
         [HttpPost]
         public async Task<IActionResult> ConfirmReceivedOrder(int orderId)

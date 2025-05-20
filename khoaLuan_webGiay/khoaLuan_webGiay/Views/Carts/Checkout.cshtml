@@ -5,7 +5,8 @@
     Layout = "_Product";
     var subtotal = Model.CartItems.Sum(x => x.PriceAtTime * x.Quantity);
     var discount = Model.CartItems.Sum(x => (x.PriceAtTime * x.Quantity * x.Discount) / 100);
-    var shippingFee = 50000;
+    var freeShippingThreshold = 5000000;
+    var shippingFee = (subtotal - discount) > freeShippingThreshold ? 0 : 50000;
     var total = subtotal - discount + shippingFee;
     var vn = new System.Globalization.CultureInfo("vi-VN");
 }
@@ -93,7 +94,9 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <h6 class="font-weight-medium">Phí vận chuyển</h6>
-                        <h6 class="font-weight-medium">@shippingFee.ToString("C0", vn)</h6>
+                        <h6 class="font-weight-medium">
+                            @(shippingFee == 0 ? "Miễn phí" : shippingFee.ToString("C0", vn))
+                        </h6>
                     </div>
                 </div>
                 <div class="pt-2">

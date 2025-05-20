@@ -33,7 +33,7 @@ namespace khoaLuan_webGiay.ViewModels
         [Display(Name = "Số điện thoại")]
         [MaxLength(10, ErrorMessage = "Số điện thoại tối đa 10 ký tự")]
         [RegularExpression(@"^0(3[2-9]|5[6|8|9]|7[0|6|7|8|9]|8[1-5|8]|9[0|1|3|4|7|8|9])\d{7}$", ErrorMessage = "Chưa đúng định dạng số điện thoại Việt Nam")]
-        public string? SDT { get; set; }
+        public string? PhoneNumber { get; set; }
 
         [Display(Name = "Địa chỉ")]
         [Required(ErrorMessage = "Địa chỉ là bắt buộc")]
@@ -45,12 +45,12 @@ namespace khoaLuan_webGiay.ViewModels
 
         [Display(Name = "Giới tính")]
         [Required(ErrorMessage = "Giới tính là bắt buộc")]
-        public bool GioiTinh { get; set; } = true;
+        public bool Gender { get; set; } = true;
 
         [Display(Name = "Ngày sinh")]
         [Required(ErrorMessage = "Ngày sinh là bắt buộc")]
         [DataType(DataType.Date, ErrorMessage = "Định dạng ngày sinh không hợp lệ")]
-        public DateOnly? NgaySinh { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
 
         [MaxLength(50, ErrorMessage = "Vai trò tối đa 50 ký tự")]
         public string? Role { get; set; } = "User";

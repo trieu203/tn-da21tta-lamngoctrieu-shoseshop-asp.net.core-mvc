@@ -3061,6 +3061,10 @@
       "PackagePath": "staticwebassets\\css\\style.min.css"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\detail.html",
+      "PackagePath": "staticwebassets\\detail.html"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -3119,6 +3123,10 @@
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\categories\\puma.jpg",
       "PackagePath": "staticwebassets\\img\\categories\\puma.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\categories\\tuutcv.jpg",
+      "PackagePath": "staticwebassets\\img\\categories\\tuutcv.jpg"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\categories\\vn3v4l.jpg",
@@ -3531,6 +3539,10 @@
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\statistical\\rating.jpg",
       "PackagePath": "staticwebassets\\img\\statistical\\rating.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\29018c.jpg",
+      "PackagePath": "staticwebassets\\img\\users\\29018c.jpg"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\5f78f9.jpg",
@@ -4251,6 +4263,30 @@
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\scss\\style.scss",
       "PackagePath": "staticwebassets\\scss\\style.scss"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\shop.html",
+      "PackagePath": "staticwebassets\\shop.html"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\609a9796-b759-42d5-9aa0-7370aebe88e1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\reviews\\609a9796-b759-42d5-9aa0-7370aebe88e1.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\test_1cb.mp4",
+      "PackagePath": "staticwebassets\\uploads\\reviews\\test_1cb.mp4"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\test_80b.mp4",
+      "PackagePath": "staticwebassets\\uploads\\reviews\\test_80b.mp4"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\vit2_939.jpg",
+      "PackagePath": "staticwebassets\\uploads\\reviews\\vit2_939.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\vit2_be7.jpg",
+      "PackagePath": "staticwebassets\\uploads\\reviews\\vit2_be7.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.khoaLuan_webGiay.props",

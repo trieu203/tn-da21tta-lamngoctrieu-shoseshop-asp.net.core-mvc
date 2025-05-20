@@ -23,11 +23,20 @@
                 <div class="col-12 pb-1">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <div>
+                            <h4> Có <b>@Model.Count()</b> Sản phẩm </h4>
                         </div>
                         <div class="ml-2">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Lọc theo giá</button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { Category = ViewBag.CurrentCategory, priceRange = "0-1000000" })">Dưới 1 triệu</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { Category = ViewBag.CurrentCategory, priceRange = "1000000-2500000" })">1 triệu - 2 triệu 5 trăm</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { Category = ViewBag.CurrentCategory, priceRange = "2500000-999999999" })">Trên 2 triệu 5 trăm</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { Category = ViewBag.CurrentCategory })">Tất cả</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <h4> Có <b>@Model.Count()</b> Sản phẩm </h4>
                 </div>
 
                 @foreach (var item in Model)

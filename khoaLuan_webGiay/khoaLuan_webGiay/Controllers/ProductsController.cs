@@ -18,9 +18,9 @@ namespace khoaLuan_webGiay.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index(int? Category, int page = 1, int pageSize = 9)
+        public async Task<IActionResult> Index(int? Category, string? priceRange, int page = 1, int pageSize = 9)
         {
-            _logger.LogInformation("Truy cập danh sách sản phẩm. Category: {Category}, Page: {Page}, PageSize: {PageSize}", Category, page, pageSize);
+            _logger.LogInformation("Truy cập danh sách sản phẩm. Category: {Category}, PriceRange: {PriceRange}, Page: {Page}, PageSize: {PageSize}", Category, priceRange, page, pageSize);
 
             try
             {
@@ -32,8 +32,20 @@ namespace khoaLuan_webGiay.Controllers
                     productQuery = productQuery.Where(p => p.CategoryId == Category.Value);
                 }
 
+                // Lọc theo giá
+                if (!string.IsNullOrEmpty(priceRange))
+                {
+                    var parts = priceRange.Split("-");
+                    if (parts.Length == 2 &&
+                        decimal.TryParse(parts[0], out decimal minPrice) &&
+                        decimal.TryParse(parts[1], out decimal maxPrice))
+                    {
+                        _logger.LogInformation("Lọc theo khoảng giá: {Min} - {Max}", minPrice, maxPrice);
+                        productQuery = productQuery.Where(p => p.Price >= minPrice && p.Price <= maxPrice);
+                    }
+                }
+
                 int totalItems = await productQuery.CountAsync();
-                _logger.LogInformation("Tổng số sản phẩm: {TotalItems}", totalItems);
 
                 var products = await productQuery
                     .Skip((page - 1) * pageSize)
@@ -52,10 +64,10 @@ namespace khoaLuan_webGiay.Controllers
                     })
                     .ToListAsync();
 
-                _logger.LogInformation("Lấy sản phẩm thành công. Số lượng: {ProductCount}", products.Count);
-
                 var paginatedResult = new PaginatedList<ProductVM>(products, totalItems, page, pageSize);
+
                 ViewBag.CurrentCategory = Category;
+                ViewBag.CurrentPriceRange = priceRange;
 
                 return View(paginatedResult);
             }
@@ -66,9 +78,8 @@ namespace khoaLuan_webGiay.Controllers
             }
         }
 
-
         //Search
-        public async Task<IActionResult> Search(string? query, int page = 1, int pageSize = 9)
+        public async Task<IActionResult> Search(string? query, string? priceRange, int page = 1, int pageSize = 9)
         {
             // Khởi tạo truy vấn cơ bản
             var productQuery = _context.Products.AsQueryable();
@@ -77,6 +88,19 @@ namespace khoaLuan_webGiay.Controllers
             if (!string.IsNullOrWhiteSpace(query))
             {
                 productQuery = productQuery.Where(p => p.ProductName.Contains(query));
+            }
+
+            // Lọc theo giá
+            if (!string.IsNullOrEmpty(priceRange))
+            {
+                var parts = priceRange.Split("-");
+                if (parts.Length == 2 &&
+                    decimal.TryParse(parts[0], out decimal minPrice) &&
+                    decimal.TryParse(parts[1], out decimal maxPrice))
+                {
+                    _logger.LogInformation("Lọc theo khoảng giá: {Min} - {Max}", minPrice, maxPrice);
+                    productQuery = productQuery.Where(p => p.Price >= minPrice && p.Price <= maxPrice);
+                }
             }
 
             // Tính toán tổng số sản phẩm và phân trang
@@ -130,6 +154,11 @@ namespace khoaLuan_webGiay.Controllers
 
                 _logger.LogInformation("Lấy chi tiết sản phẩm thành công. ID: {Id}", id);
 
+                ViewBag.SizeQuantities = product.ProductSizes
+                .GroupBy(ps => ps.Size)
+                .Select(g => new { Size = g.Key, Quantity = g.Sum(p => p.Quantity) })
+                .ToDictionary(x => x.Size, x => x.Quantity);
+
 
                 product.ViewCount++;
                 _context.Products.Update(product);
@@ -159,6 +188,26 @@ namespace khoaLuan_webGiay.Controllers
                     }
                 }
 
+                // Lấy sản phẩm tương tự: cùng danh mục, loại trừ chính nó
+                var relatedProducts = await _context.Products
+                    .Where(p => p.CategoryId == product.CategoryId && p.ProductId != product.ProductId)
+                    .OrderByDescending(p => p.ViewCount) // hoặc theo Rating
+                    .Take(6)
+                    .Select(p => new ProductVM
+                    {
+                        ProductId = p.ProductId,
+                        ProductName = p.ProductName,
+                        Price = p.Price,
+                        Discount = p.Discount,
+                        ImageUrl = p.ImageUrl,
+                        Rating = _context.Reviews
+                                    .Where(r => r.ProductId == p.ProductId)
+                                    .Select(r => r.Rating)
+                                    .FirstOrDefault()
+                    })
+                    .ToListAsync();
+
+                ViewBag.RelatedProducts = relatedProducts;
 
                 ViewBag.QuantityAvailable = product.ProductSizes.Sum(ps => ps.Quantity);
                 var reviews = product.Reviews
@@ -167,10 +216,11 @@ namespace khoaLuan_webGiay.Controllers
                     {
                         Rating = r.Rating ?? 0,
                         Comment = r.Comment,
-                        UserName = r.User?.UserName ?? "Ẩn danh",
+                        FullName = r.User?.FullName ?? "Ẩn danh",
                         Email = r.User?.Email ?? "Không có email",
                         ReviewDate = r.ReviewDate ?? DateTime.MinValue,
-                        ImageUrl = r.User?.ImageUrl ?? "user_boy.jpg"
+                        ImageUrl = r.User?.ImageUrl ?? "user_boy.jpg",
+                        MediaUrls = r.MediaUrls
                     })
                     .ToList();
 
@@ -198,8 +248,9 @@ namespace khoaLuan_webGiay.Controllers
         //Review
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequestSizeLimit(104857600)]
         [Authorize]
-        public async Task<IActionResult> AddReview(int productId, int rating, string comment, int orderItemId)
+        public async Task<IActionResult> AddReview(int productId, int rating, string comment, int orderItemId, List<IFormFile> MediaFiles)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login", "Users");
@@ -226,24 +277,54 @@ namespace khoaLuan_webGiay.Controllers
                 ReviewDate = DateTime.Now
             };
 
+            // Xử lý file upload
+            if (MediaFiles != null && MediaFiles.Count > 0)
+            {
+                var paths = new List<string>();
+                var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "reviews");
+                Directory.CreateDirectory(uploadFolder);
+
+                string[] allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".mp4", ".mov" };
+
+                foreach (var file in MediaFiles)
+                {
+                    if (file.Length > 0)
+                    {
+                        var ext = Path.GetExtension(file.FileName);
+                        if (!allowedExtensions.Contains(ext)) continue;
+
+                        var baseName = Path.GetFileNameWithoutExtension(file.FileName);
+                        if (baseName.Length > 6)
+                            baseName = baseName.Substring(0, 6);
+
+                        // Gắn thêm một phần định danh ngắn gọn để tránh trùng (3 ký tự random)
+                        var shortId = Guid.NewGuid().ToString("N").Substring(0, 3);
+
+                        var uniqueName = $"{baseName}_{shortId}{ext}";
+                        var savePath = Path.Combine(uploadFolder, uniqueName);
+
+                        using (var stream = new FileStream(savePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        paths.Add($"/uploads/reviews/{uniqueName}");
+                    }
+                }
+
+                review.MediaUrls = string.Join(";", paths);
+            }
+
+
             _context.Reviews.Add(review);
             orderItem.IsReviewed = true;
             _context.OrderItems.Update(orderItem);
             await _context.SaveChangesAsync();
 
-            var product = await _context.Products.Include(p => p.Reviews).FirstOrDefaultAsync(p => p.ProductId == productId);
-            if (product != null)
-            {
-                product.AverageRating = product.Reviews.Any()
-                ? (decimal)product.Reviews.Average(r => r.Rating ?? 0)
-                : 0;
-                _context.Products.Update(product);
-                await _context.SaveChangesAsync();
-            }
-
             TempData["SuccessMessage"] = "Cảm ơn bạn đã đánh giá sản phẩm!";
             return RedirectToAction("Details", "Products", new { id = productId });
         }
+
 
         [Authorize]
         public IActionResult ReviewPurchasedProducts(int orderId)
@@ -276,38 +357,73 @@ namespace khoaLuan_webGiay.Controllers
         [Authorize]
         public async Task<IActionResult> SubmitProductReviews(List<ProductReviewInputVM> reviews)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-
-            foreach (var review in reviews)
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(userIdClaim, out var userId) || userId == 0)
             {
-                if (review.Rating >= 1 && review.Rating <= 5 && !string.IsNullOrWhiteSpace(review.Comment))
+                return Unauthorized();
+            }
+
+            foreach (var reviewVm in reviews)
+            {
+                if (reviewVm.Rating < 1 || reviewVm.Rating > 5 || string.IsNullOrWhiteSpace(reviewVm.Comment))
+                    continue;
+
+                var newReview = new Review
                 {
-                    var newReview = new Review
-                    {
-                        ProductId = review.ProductId,
-                        UserId = userId,
-                        Rating = review.Rating,
-                        Comment = review.Comment,
-                        ReviewDate = DateTime.Now
-                    };
+                    ProductId = reviewVm.ProductId,
+                    UserId = userId,
+                    Rating = reviewVm.Rating,
+                    Comment = reviewVm.Comment.Trim(),
+                    ReviewDate = DateTime.UtcNow
+                };
 
-                    _context.Reviews.Add(newReview);
+                if (reviewVm.MediaFiles != null && reviewVm.MediaFiles.Any())
+                {
+                    var uploadPaths = new List<string>();
+                    var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "reviews");
+                    Directory.CreateDirectory(uploadFolder);
 
-                    var orderItem = await _context.OrderItems.FindAsync(review.OrderItemId);
-                    if (orderItem != null)
+                    foreach (var file in reviewVm.MediaFiles)
                     {
-                        orderItem.IsReviewed = true;
-                        _context.OrderItems.Update(orderItem);
+                        if (file.Length > 0)
+                        {
+                            var originalName = Path.GetFileNameWithoutExtension(file.FileName);
+                            var extension = Path.GetExtension(file.FileName);
+
+                            if (originalName.Length > 6)
+                                originalName = originalName.Substring(0, 6);
+
+                            var uniqueName = $"{Guid.NewGuid()}_{originalName}{extension}";
+                            var path = Path.Combine(uploadFolder, uniqueName);
+
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+
+                            uploadPaths.Add("/uploads/reviews/" + uniqueName);
+                        }
                     }
 
-                    var product = await _context.Products.Include(p => p.Reviews).FirstOrDefaultAsync(p => p.ProductId == review.ProductId);
-                    if (product != null)
-                    {
-                        product.AverageRating = product.Reviews.Any()
-                        ? (decimal)product.Reviews.Average(r => r.Rating ?? 0)
-                        : 0;
-                        _context.Products.Update(product);
-                    }
+                    newReview.MediaUrls = string.Join(";", uploadPaths);
+                }
+
+                _context.Reviews.Add(newReview);
+
+                var orderItem = await _context.OrderItems.FindAsync(reviewVm.OrderItemId);
+                if (orderItem != null && !orderItem.IsReviewed)
+                {
+                    orderItem.IsReviewed = true;
+                    _context.OrderItems.Update(orderItem);
+                }
+
+                var product = await _context.Products.Include(p => p.Reviews).FirstOrDefaultAsync(p => p.ProductId == reviewVm.ProductId);
+                if (product != null)
+                {
+                    var ratings = product.Reviews.Select(r => r.Rating ?? 0).ToList();
+                    ratings.Add(reviewVm.Rating);
+                    product.AverageRating = (decimal)ratings.Average();
+                    _context.Products.Update(product);
                 }
             }
 
@@ -315,6 +431,7 @@ namespace khoaLuan_webGiay.Controllers
             TempData["SuccessMessage"] = "Cảm ơn bạn đã đánh giá sản phẩm!";
             return RedirectToAction("History", "Orders");
         }
+
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.ProductId == id);
