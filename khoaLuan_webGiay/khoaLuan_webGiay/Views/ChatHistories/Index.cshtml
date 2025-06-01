@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "Chatbot";
+    var userId = User.Identity.IsAuthenticated ? User.FindFirst("UserId")?.Value : null;
+}
+
+<h2>Chatbot hỗ trợ</h2>
+
+<div id="chat-window" style="border:1px solid #ccc; padding:10px; height:300px; overflow-y:auto;">
+    <!-- Tin nhắn chat sẽ hiển thị ở đây -->
+</div>
+
+<input type="text" id="txtMessage" placeholder="Nhập tin nhắn..." style="width:80%;" />
+<button id="btnSend">Gửi</button>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        // Lấy userId từ Razor biến (nếu có)
+        const userId = @Html.Raw(userId ?? "null");
+
+        const chatWindow = document.getElementById('chat-window');
+        const txtMessage = document.getElementById('txtMessage');
+        const btnSend = document.getElementById('btnSend');
+
+        // Tạo kết nối SignalR
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chathub")
+            .build();
+
+        // Bắt đầu kết nối
+        connection.start()
+            .then(() => {
+                console.log("Kết nối SignalR thành công.");
+                btnSend.disabled = false;
+            })
+            .catch(err => {
+                console.error(err.toString());
+                btnSend.disabled = true;
+            });
+
+        // Khi nhận tin nhắn từ server
+        connection.on("ReceiveMessage", (chat) => {
+            appendMessage("Bạn", chat.message);
+            appendMessage("Bot", chat.response);
+        });
+
+        // Thêm tin nhắn vào chat window
+        function appendMessage(sender, message) {
+            if (!message) return;
+            const msgDiv = document.createElement('div');
+            msgDiv.style.margin = '5px 0';
+            msgDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatWindow.appendChild(msgDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        // Gửi tin nhắn
+        btnSend.addEventListener('click', () => {
+            const message = txtMessage.value.trim();
+            if (!message) return;
+
+            connection.invoke("SendMessage", userId ? parseInt(userId) : null, message)
+                .catch(err => console.error(err.toString()));
+
+            txtMessage.value = '';
+            txtMessage.focus();
+        });
+
+        // Có thể nhấn Enter để gửi tin nhắn
+        txtMessage.addEventListener('keyup', (event) => {
+            if (event.key === "Enter") {
+                btnSend.click();
+            }
+        });
+    </script>
+}

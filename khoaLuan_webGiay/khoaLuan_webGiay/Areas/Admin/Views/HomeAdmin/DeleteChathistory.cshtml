@@ -1,0 +1,67 @@
+﻿@model khoaLuan_webGiay.Data.ChatHistory
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Xóa lịch sử chat";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0">Xác nhận xóa lịch sử chat</h3>
+        </div>
+        <div class="card-body">
+            <p class="lead">Bạn có chắc chắn muốn xóa bản ghi lịch sử chat này không?</p>
+
+            <dl class="row">
+                <dt class="col-sm-3 text-muted">Tin nhắn</dt>
+                <dd class="col-sm-9" style="white-space: pre-wrap;">@Model.Message</dd>
+
+                <dt class="col-sm-3 text-muted">Phản hồi</dt>
+                <dd class="col-sm-9" style="white-space: pre-wrap;">
+                    @if (string.IsNullOrEmpty(Model.Response))
+                    {
+                        <span class="text-muted">Không có phản hồi</span>
+                    }
+                    else
+                    {
+                        @Model.Response
+                    }
+                </dd>
+
+                <dt class="col-sm-3 text-muted">Thời gian gửi</dt>
+                <dd class="col-sm-9">@Model.SentAt.ToString("dd/MM/yyyy HH:mm:ss")</dd>
+
+                <dt class="col-sm-3 text-muted">Người dùng</dt>
+                <dd class="col-sm-9">
+                    @if (Model.User != null)
+                    {
+                        @(Model.User.UserName != null ? Model.User.UserName : $"User ID: {Model.User.UserId}")
+                    }
+                    else
+                    {
+                        <span class="text-muted">Không xác định</span>
+                    }
+                </dd>
+            </dl>
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <span>@TempData["Message"]</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form asp-action="DeleteChathistory" asp-route-id="@Model.ChatId"
+                  onsubmit="return confirm('Bạn có chắc chắn muốn xóa bản ghi này? Hành động này không thể hoàn tác.')">
+                <input type="hidden" asp-for="ChatId" />
+                <div class="d-flex justify-content-end">
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="ChatHistory" class="btn btn-secondary me-2">Hủy bỏ</a>
+                    <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

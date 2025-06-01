@@ -23,7 +23,7 @@ namespace khoaLuan_webGiay.Controllers
         }
 
         //Lịch sử mua hàng
-        public IActionResult History()
+        public IActionResult History(int pageNumber = 1, int pageSize = 5)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
@@ -32,12 +32,18 @@ namespace khoaLuan_webGiay.Controllers
                 return RedirectToAction("Login", "Users");
             }
 
-            // Lấy danh sách đơn hàng của người dùng
-            var orders = _context.Orders
+            var userOrdersQuery = _context.Orders
                 .Include(o => o.OrderItems)
                 .ThenInclude(oi => oi.Product)
                 .Where(o => o.UserId == (int?)int.Parse(userId))
-                .OrderByDescending(o => o.OrderDate)
+                .OrderByDescending(o => o.OrderDate);
+
+            int totalOrders = userOrdersQuery.Count();
+
+            // Lấy dữ liệu phân trang
+            var orders = userOrdersQuery
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
 
             // Tăng view count cho mỗi sản phẩm đã mua
@@ -55,7 +61,8 @@ namespace khoaLuan_webGiay.Controllers
             }
             _context.SaveChanges();
 
-            // Tạo ViewModel
+            var totalPages = (int)Math.Ceiling((double)totalOrders / pageSize);
+
             var model = orders.Select(o => new OrderHistoryViewModel
             {
                 OrderId = o.OrderId,
@@ -73,8 +80,14 @@ namespace khoaLuan_webGiay.Controllers
                 }).ToList()
             }).ToList();
 
+            // Truyền thêm thông tin phân trang qua ViewBag
+            ViewBag.PageNumber = pageNumber;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalPages = totalPages;
+
             return View(model);
         }
+
 
         //Hủy đơn hàng
         [HttpPost]

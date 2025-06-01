@@ -489,11 +489,12 @@ namespace khoaLuan_webGiay.Controllers
                     await HttpContext.SignOutAsync();
 
                     var claims = new List<Claim>{
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim("ImageUrl", user.ImageUrl ?? "user_boy.jpg"),
-                new Claim(ClaimTypes.Role, user.Role ?? "User")
-            };
+                        new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                        new Claim(ClaimTypes.Name, user.UserName),
+                        new Claim("ImageUrl", user.ImageUrl ?? "user_boy.jpg"),
+                        new Claim(ClaimTypes.Role, user.Role ?? "User"),
+                        new Claim("UserId", user.UserId.ToString())
+                    };
 
                     var claimsIdentity = new ClaimsIdentity(claims, "MyCookieAuth");
                     var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);

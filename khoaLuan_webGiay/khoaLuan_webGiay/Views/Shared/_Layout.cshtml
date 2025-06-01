@@ -7,7 +7,7 @@
     <meta charset="utf-8">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    @* <link href="img/favicon.ico" rel="icon"> *@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,7 +23,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="~/css/style.css" rel="stylesheet">
 </head>
-<body>
+<body data-user-id="@User.FindFirst("UserId")?.Value">
     <div>
         <!-- Topbar Start -->
         @await Html.PartialAsync("_Header")
@@ -184,5 +184,10 @@
             });
         });
     </script>
+
+    @await Html.PartialAsync("_ChatbotPartial")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="~/js/chatbot.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<khoaLuan_webGiay.Data.ChatHistory>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Lịch sử Chat";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 text-primary">Quản lý lịch sử trò chuyện của khách hàng.</h1>
+    </div>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <span>@TempData["Message"]</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tin nhắn</th>
+                    <th>Phản hồi</th>
+                    <th class="text-center">Thời gian gửi</th>
+                    <th>Người dùng</th>
+                    <th class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="max-width:300px; word-wrap:break-word;">
+                            @Html.DisplayFor(modelItem => item.Message)
+                        </td>
+                        <td style="max-width:300px; word-wrap:break-word;">
+                            @Html.DisplayFor(modelItem => item.Response)
+                        </td>
+                        <td class="text-center">
+                            @item.SentAt.ToString("dd/MM/yyyy HH:mm:ss")
+                        </td>
+                        <td>
+                            @if (item.User != null)
+                            {
+                                @(item.User.UserName != null ? item.User.UserName : $"User ID: {item.User.UserId}")
+                            }
+                            else
+                            {
+                                <span class="text-muted">Không xác định</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-info btn-sm me-1" asp-action="DetailChatHistory" asp-route-id="@item.ChatId" title="Xem chi tiết">
+                                <i class="bi bi-eye"></i> Chi tiết
+                            </a>
+                            <a class="btn btn-danger btn-sm" asp-action="DeleteChatHistory" asp-route-id="@item.ChatId" title="Xóa bản ghi">
+                                <i class="bi bi-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-3 d-flex justify-content-center">
+        @if (ViewBag.TotalPages != null && ViewBag.CurrentPage != null)
+        {
+            for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
+            {
+                <a asp-action="ChatHistory" asp-route-page="@i" class="btn @(i == (int)ViewBag.CurrentPage ? "btn-primary" : "btn-light") mx-1">
+                    @i
+                </a>
+            }
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            Hiện tại chưa có lịch sử chat nào.
+        </div>
+    }
+</div>

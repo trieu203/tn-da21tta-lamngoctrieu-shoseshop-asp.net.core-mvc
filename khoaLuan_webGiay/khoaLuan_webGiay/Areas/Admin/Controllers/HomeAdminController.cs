@@ -1101,6 +1101,94 @@ namespace khoaLuan_webGiay.Areas.Admin.Controllers
         }
 
 
-  
+        // Index Chathistory
+        [HttpGet("chathistory")]
+        public async Task<IActionResult> Chathistory(int? userId, string? search, int page = 1, int pageSize = 20)
+        {
+            var query = _context.ChatHistories.Include(c => c.User).AsQueryable();
+
+            if (userId.HasValue)
+            {
+                query = query.Where(c => c.UserId == userId.Value);
+            }
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(c => c.Message.Contains(search) || (c.Response != null && c.Response.Contains(search)));
+            }
+
+            query = query.OrderByDescending(c => c.SentAt);
+
+            var totalItems = await query.CountAsync();
+            var chatHistories = await query.Skip((page - 1) * pageSize)
+                                           .Take(pageSize)
+                                           .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+            ViewBag.UserIdFilter = userId;
+            ViewBag.SearchTerm = search;
+
+            return View(chatHistories);
+        }
+
+        // Chathistory Detail
+        [HttpGet]
+        [Route("detailchathistory")]
+        public async Task<IActionResult> DetailChathistory(int id)
+        {
+            var chatHistory = await _context.ChatHistories
+                                    .Include(c => c.User)
+                                    .FirstOrDefaultAsync(c => c.ChatId == id);
+
+            if (chatHistory == null)
+            {
+                TempData["Message"] = "Lịch sử chat không tồn tại.";
+                return RedirectToAction("Index");
+            }
+
+            return View(chatHistory);
+        }
+
+        // GET: admin/chathistory/delete/5
+        [HttpGet("delete")]
+        public async Task<IActionResult> DeleteChathistory(int id)
+        {
+            var chatHistory = await _context.ChatHistories.FindAsync(id);
+            if (chatHistory == null)
+            {
+                TempData["Message"] = "Lịch sử chat không tồn tại.";
+                return RedirectToAction("Index");
+            }
+            return View(chatHistory);
+        }
+
+        // POST: admin/chathistory/delete/5
+        [Route("deletechathistory")]
+        [HttpPost("delete"), ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteChathistoryConfirmed(int id)
+        {
+            var chatHistory = await _context.ChatHistories.FindAsync(id);
+            if (chatHistory == null)
+            {
+                TempData["Message"] = "Lịch sử chat không tồn tại.";
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                _context.ChatHistories.Remove(chatHistory);
+                await _context.SaveChangesAsync();
+                TempData["Message"] = "Xóa lịch sử chat thành công.";
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi xóa lịch sử chat ID {ChatId}", id);
+                TempData["Message"] = "Có lỗi xảy ra khi xóa lịch sử chat.";
+            }
+            return RedirectToAction("Chathistory");
+        }
+
     }
 }

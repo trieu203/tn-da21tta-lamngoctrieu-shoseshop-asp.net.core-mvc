@@ -383,9 +383,12 @@ namespace khoaLuan_webGiay.Controllers
                 var discount = ci.Product?.Discount ?? 0;
                 return (ci.PriceAtTime * ci.Quantity * discount) / 100;
             });
-            var shippingFee = 50000;
+            var shippingFee = (subtotal - totalDiscount) > 5000000 ? 0 : 50000;
             var total = subtotal - totalDiscount + shippingFee;
-
+            if (shippingFee == 0)
+            {
+                TempData["ShippingNotice"] = "Bạn được miễn phí vận chuyển vì đơn hàng trên 5 triệu!";
+            }
             var fullName = Request.Form["NewFullName"].FirstOrDefault();
             var phoneNumber = Request.Form["NewPhoneNumber"].FirstOrDefault();
             var shippingAddress = Request.Form["NewShippingAddress"].FirstOrDefault();

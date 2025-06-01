@@ -32,6 +32,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Chathistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENoYXRoaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/CreateCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENyZWF0ZUNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERlbGV0ZUNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DeleteChathistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERlbGV0ZUNoYXRoaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DeleteProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERlbGV0ZVByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DetailCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERldGFpbENhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DetailChathistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERldGFpbENoYXRoaXN0b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DetailOrder.cshtml]
@@ -140,6 +152,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/ChatHistories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdEhpc3Rvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -186,6 +202,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Shared/_ChatbotPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DaGF0Ym90UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Views/Shared/_Footer.cshtml]

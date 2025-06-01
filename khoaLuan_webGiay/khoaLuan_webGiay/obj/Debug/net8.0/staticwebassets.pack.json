@@ -3069,6 +3069,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\admin\\chatbot.jpg",
+      "PackagePath": "staticwebassets\\img\\admin\\chatbot.jpg"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\admin\\danhmuc.jpg",
       "PackagePath": "staticwebassets\\img\\admin\\danhmuc.jpg"
     },
@@ -3137,8 +3141,24 @@
       "PackagePath": "staticwebassets\\img\\categories\\xe4zle.jpg"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\chat\\chat-icon.png",
+      "PackagePath": "staticwebassets\\img\\chat\\chat-icon.png"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\chat\\chat.jpg",
       "PackagePath": "staticwebassets\\img\\chat\\chat.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\chat\\chatbot.jpg",
+      "PackagePath": "staticwebassets\\img\\chat\\chatbot.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\chat\\send-icon.png",
+      "PackagePath": "staticwebassets\\img\\chat\\send-icon.png"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\favicon.ico",
+      "PackagePath": "staticwebassets\\img\\favicon.ico"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\products\\0aaa146e-bde5-4dd4-ba8a-82b8e886b57c.jpg",
@@ -3541,6 +3561,14 @@
       "PackagePath": "staticwebassets\\img\\statistical\\rating.jpg"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\104c2f.png",
+      "PackagePath": "staticwebassets\\img\\users\\104c2f.png"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\205b22.png",
+      "PackagePath": "staticwebassets\\img\\users\\205b22.png"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\29018c.jpg",
       "PackagePath": "staticwebassets\\img\\users\\29018c.jpg"
     },
@@ -3549,16 +3577,36 @@
       "PackagePath": "staticwebassets\\img\\users\\5f78f9.jpg"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\8b847f.jpg",
+      "PackagePath": "staticwebassets\\img\\users\\8b847f.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\8c4b6d.jfif",
+      "PackagePath": "staticwebassets\\img\\users\\8c4b6d.jfif"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\99e5bf.jpg",
       "PackagePath": "staticwebassets\\img\\users\\99e5bf.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\a51802.jpg",
+      "PackagePath": "staticwebassets\\img\\users\\a51802.jpg"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\avatar.jpg",
       "PackagePath": "staticwebassets\\img\\users\\avatar.jpg"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\bb3206.jpg",
+      "PackagePath": "staticwebassets\\img\\users\\bb3206.jpg"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\e28b7c.jpg",
       "PackagePath": "staticwebassets\\img\\users\\e28b7c.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\fe5636.png",
+      "PackagePath": "staticwebassets\\img\\users\\fe5636.png"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\user_boy.jpg",
@@ -3567,6 +3615,10 @@
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\user_girl.jpg",
       "PackagePath": "staticwebassets\\img\\users\\user_girl.jpg"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\chatbot.js",
+      "PackagePath": "staticwebassets\\js\\chatbot.js"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\forgotpassword.js",
@@ -4273,8 +4325,16 @@
       "PackagePath": "staticwebassets\\uploads\\reviews\\609a9796-b759-42d5-9aa0-7370aebe88e1.jpg"
     },
     {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\nenmoi_328.jpg",
+      "PackagePath": "staticwebassets\\uploads\\reviews\\nenmoi_328.jpg"
+    },
+    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\test_1cb.mp4",
       "PackagePath": "staticwebassets\\uploads\\reviews\\test_1cb.mp4"
+    },
+    {
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\test_7fc.mp4",
+      "PackagePath": "staticwebassets\\uploads\\reviews\\test_7fc.mp4"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\test_80b.mp4",

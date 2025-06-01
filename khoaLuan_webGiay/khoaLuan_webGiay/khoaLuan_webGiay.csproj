@@ -30,4 +30,8 @@
     <Folder Include="wwwroot\uploads\reviews\" />
   </ItemGroup>
 
+	<PropertyGroup>
+		<SuppressHotReload>true</SuppressHotReload>
+	</PropertyGroup>
+
 </Project>
