@@ -1,0 +1,55 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Biểu đồ tồn kho";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    var products = Model.Select(m => m.ProductName).Distinct().ToList();
+    var sizes = Model.Select(m => m.Size).Distinct().OrderBy(s => s).ToList();
+
+    var datasets = sizes.Select(size => new
+    {
+        label = $"Size {size}",
+        data = products.Select(p => Model.Where(m => m.ProductName == p && m.Size == size).Select(x => x.TotalQuantity).FirstOrDefault()).ToList()
+    }).ToList();
+}
+
+<h2 class="text-center">📦 Biểu đồ tồn kho theo size sản phẩm</h2>
+<canvas id="stockChart" width="800" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('stockChart').getContext('2d');
+
+    const data = {
+        labels: @Html.Raw(Json.Serialize(products)),
+        datasets: @Html.Raw(Json.Serialize(datasets))
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tồn kho theo từng size của sản phẩm'
+                }
+            },
+            scales: {
+                x: { stacked: true },
+                y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    ticks: { precision: 0 }
+                }
+            }
+        }
+    };
+
+    new Chart(ctx, config);
+</script>
+
+

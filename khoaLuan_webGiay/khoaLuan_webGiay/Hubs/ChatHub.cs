@@ -21,11 +21,7 @@ namespace khoaLuan_webGiay.Hubs
         {
             try
             {
-                Console.WriteLine("👉 Bắt đầu SendMessage");
-
                 var userIdStr = Context.User?.FindFirst("UserId")?.Value;
-                Console.WriteLine("🔍 UserId claim = " + userIdStr);
-                Console.WriteLine("✅ IsAuthenticated: " + Context.User?.Identity?.IsAuthenticated);
 
                 if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int userId))
                 {
@@ -45,33 +41,49 @@ namespace khoaLuan_webGiay.Hubs
                     return;
                 }
 
+                // Gửi message lên service để lấy phản hồi từ bot
                 var response = await _chatbotService.GetResponseAsync(message, userId);
 
-                var chatHistory = new ChatHistory
+                // Tạo mốc thời gian chung
+                var now = DateTime.Now;
+
+                // Lưu message của user
+                _context.ChatHistories.Add(new ChatHistory
                 {
                     UserId = userId,
                     Message = message,
-                    Response = response,
-                    SentAt = DateTime.Now
-                };
+                    Sender = "user",
+                    SentAt = now
+                });
 
-                _context.ChatHistories.Add(chatHistory);
+                // Lưu phản hồi của bot
+                _context.ChatHistories.Add(new ChatHistory
+                {
+                    UserId = userId,
+                    Message = response,
+                    Sender = "bot",
+                    SentAt = now.AddMilliseconds(1)
+                });
+
                 await _context.SaveChangesAsync();
+
+                // Gửi lại cả hai message (nếu muốn show cả đôi bên)
+                await Clients.Caller.SendAsync("ReceiveMessage", new
+                {
+                    sender = "user",
+                    message = message,
+                    sentAt = now
+                });
 
                 await Clients.Caller.SendAsync("ReceiveMessage", new
                 {
-                    userId,
-                    message,
-                    response,
-                    sentAt = chatHistory.SentAt
+                    sender = "bot",
+                    message = response,
+                    sentAt = now.AddMilliseconds(1)
                 });
             }
             catch (Exception ex)
             {
-                Console.WriteLine("❌ LỖI ChatHub:");
-                Console.WriteLine("Message: " + ex.Message);
-                Console.WriteLine("StackTrace: " + ex.StackTrace);
-
                 await Clients.Caller.SendAsync("ReceiveMessage", new
                 {
                     response = "⚠️ Lỗi server: " + ex.Message

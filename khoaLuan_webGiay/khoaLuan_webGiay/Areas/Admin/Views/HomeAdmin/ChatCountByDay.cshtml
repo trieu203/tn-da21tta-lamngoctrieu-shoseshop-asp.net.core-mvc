@@ -1,0 +1,40 @@
+﻿@model IEnumerable<dynamic>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Thống kê số tin nhắn mỗi ngày";
+
+    var labels = Model.Select(x => x.Date).ToList();
+    var values = Model.Select(x => x.Count).ToList();
+}
+
+<h2 class="text-center">💬 Số tin nhắn được gửi mỗi ngày</h2>
+<canvas id="chatChart" width="1000" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('chatChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(Json.Serialize(labels)),
+            datasets: [{
+                label: 'Số tin nhắn',
+                data: @Html.Raw(Json.Serialize(values)),
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.3)',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { precision: 0 }
+                }
+            }
+        }
+    });
+</script>

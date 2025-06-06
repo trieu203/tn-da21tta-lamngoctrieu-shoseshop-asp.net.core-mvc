@@ -24,7 +24,6 @@ wwwroot\img\categories\newbalance.jpg
 wwwroot\img\categories\nike.jpg
 wwwroot\img\categories\ontiger.jpg
 wwwroot\img\categories\puma.jpg
-wwwroot\img\categories\tuutcv.jpg
 wwwroot\img\categories\vn3v4l.jpg
 wwwroot\img\categories\xe4zle.jpg
 wwwroot\img\chat\chat.jpg
@@ -130,8 +129,7 @@ wwwroot\img\products\wjua4b.jpg
 wwwroot\img\products\xixzbm.jpg
 wwwroot\img\sale\new.jpg
 wwwroot\img\sale\sale.jpg
-wwwroot\img\statistical\discount.jpg
-wwwroot\img\statistical\rating.jpg
+wwwroot\img\statistical\thong_ke.jpg
 wwwroot\img\users\104c2f.png
 wwwroot\img\users\205b22.png
 wwwroot\img\users\29018c.jpg

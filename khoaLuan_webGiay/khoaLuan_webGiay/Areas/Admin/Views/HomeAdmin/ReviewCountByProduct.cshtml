@@ -1,0 +1,39 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Thống kê lượt đánh giá";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    var labels = Model.Select(m => m.ProductName).ToList();
+    var values = Model.Select(m => m.Count).ToList();
+}
+
+<h2 class="text-center">⭐ Top 10 sản phẩm có nhiều lượt đánh giá</h2>
+<canvas id="reviewChart" width="1000" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('reviewChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Serialize(labels)),
+            datasets: [{
+                label: 'Số lượt đánh giá',
+                data: @Html.Raw(Json.Serialize(values)),
+                backgroundColor: 'rgba(255, 206, 86, 0.7)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { precision: 0 }
+                }
+            }
+        }
+    });
+</script>

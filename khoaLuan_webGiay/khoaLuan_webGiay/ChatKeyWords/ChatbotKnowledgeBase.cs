@@ -6,7 +6,7 @@
     {
         {
             new[] { "chào", "hi", "hello", "xin chào" },
-            "Xin chào bạn 👋. Mình có thể hỗ trợ gì hôm nay?"
+            "Milion Sneaker xin chào bạn 👋. Mình có thể hỗ trợ gì hôm nay?"
         },
         {
             new[] { "giảm giá", "khuyến mãi", "sale", "ưu đãi", "voucher" },

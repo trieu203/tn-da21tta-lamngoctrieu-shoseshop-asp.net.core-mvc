@@ -468,24 +468,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\categories\puma.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\categories\tuutcv.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/categories/tuutcv.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>j7gsxo5ons</Fingerprint>
-      <Integrity>8U2G/I/lz+yhOVvFspTRV7MrxKuBx50hRU01teeLkZU=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\categories\tuutcv.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\categories\vn3v4l.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>khoaLuan_webGiay</SourceId>
@@ -2376,41 +2358,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\sale\sale.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\statistical\discount.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\statistical\thong_ke.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>khoaLuan_webGiay</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/statistical/discount.jpg</RelativePath>
+      <RelativePath>img/statistical/thong_ke.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>a9vrbvezqh</Fingerprint>
-      <Integrity>AsKkvofhLfa/hla1YjTBbxvZttWmBPFXNxfaWfLomAA=</Integrity>
+      <Fingerprint>kol0abwmsb</Fingerprint>
+      <Integrity>PLz2CuwOBAK40PO3k0HbHEeukGhaNLzThopph7ZGUZg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\statistical\discount.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\statistical\rating.jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>khoaLuan_webGiay</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/khoaLuan_webGiay</BasePath>
-      <RelativePath>img/statistical/rating.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>dv7rbjtzw6</Fingerprint>
-      <Integrity>mQdnm1qfxzoHCY5ZjqQ4AhR8PcwjF0TCM9gH3TMtnFo=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\statistical\rating.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\statistical\thong_ke.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\users\104c2f.png'))">
       <SourceType>Package</SourceType>
@@ -2676,8 +2640,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>q42edfqqbb</Fingerprint>
-      <Integrity>SuuHIPu68p4M57COZJZ/oCY31/4lPUHo9IlGAwwkiSs=</Integrity>
+      <Fingerprint>sthox08mdd</Fingerprint>
+      <Integrity>wM6d3Elt6rW5dyC0PQd+TH673j/a8E9PX6Kt5blw+QM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\chatbot.js'))</OriginalItemSpec>

@@ -24,7 +24,6 @@
             <thead class="table-dark">
                 <tr>
                     <th>Tin nhắn</th>
-                    <th>Phản hồi</th>
                     <th class="text-center">Thời gian gửi</th>
                     <th>Người dùng</th>
                     <th class="text-center">Hành động</th>
@@ -34,12 +33,10 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td style="max-width:300px; word-wrap:break-word;">
-                            @Html.DisplayFor(modelItem => item.Message)
+                        <td style="max-width: 350px; white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word;">
+                            @Html.Raw(Html.Encode(item.Message))
                         </td>
-                        <td style="max-width:300px; word-wrap:break-word;">
-                            @Html.DisplayFor(modelItem => item.Response)
-                        </td>
+
                         <td class="text-center">
                             @item.SentAt.ToString("dd/MM/yyyy HH:mm:ss")
                         </td>

@@ -268,3 +268,6 @@ D:\KHOA_LUAN_TOT_NGHIEP\src\KhoaLuan\khoaLuan_webGiay\khoaLuan_webGiay\obj\Debug
 D:\KHOA_LUAN_TOT_NGHIEP\src\KhoaLuan\khoaLuan_webGiay\khoaLuan_webGiay\obj\Debug\net8.0\khoaLuan_webGiay.pdb
 D:\KHOA_LUAN_TOT_NGHIEP\src\KhoaLuan\khoaLuan_webGiay\khoaLuan_webGiay\obj\Debug\net8.0\khoaLuan_webGiay.genruntimeconfig.cache
 D:\KHOA_LUAN_TOT_NGHIEP\src\KhoaLuan\khoaLuan_webGiay\khoaLuan_webGiay\obj\Debug\net8.0\ref\khoaLuan_webGiay.dll
+D:\KHOA_LUAN_TOT_NGHIEP\src\KhoaLuan\khoaLuan_webGiay\khoaLuan_webGiay\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+D:\KHOA_LUAN_TOT_NGHIEP\src\KhoaLuan\khoaLuan_webGiay\khoaLuan_webGiay\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\KHOA_LUAN_TOT_NGHIEP\src\KhoaLuan\khoaLuan_webGiay\khoaLuan_webGiay\bin\Debug\net8.0\Microsoft.Extensions.Http.dll

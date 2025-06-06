@@ -3129,10 +3129,6 @@
       "PackagePath": "staticwebassets\\img\\categories\\puma.jpg"
     },
     {
-      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\categories\\tuutcv.jpg",
-      "PackagePath": "staticwebassets\\img\\categories\\tuutcv.jpg"
-    },
-    {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\categories\\vn3v4l.jpg",
       "PackagePath": "staticwebassets\\img\\categories\\vn3v4l.jpg"
     },
@@ -3553,12 +3549,8 @@
       "PackagePath": "staticwebassets\\img\\sale\\sale.jpg"
     },
     {
-      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\statistical\\discount.jpg",
-      "PackagePath": "staticwebassets\\img\\statistical\\discount.jpg"
-    },
-    {
-      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\statistical\\rating.jpg",
-      "PackagePath": "staticwebassets\\img\\statistical\\rating.jpg"
+      "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\statistical\\thong_ke.jpg",
+      "PackagePath": "staticwebassets\\img\\statistical\\thong_ke.jpg"
     },
     {
       "Id": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\img\\users\\104c2f.png",

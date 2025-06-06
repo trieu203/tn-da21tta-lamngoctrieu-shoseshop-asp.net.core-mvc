@@ -1112,10 +1112,6 @@ namespace khoaLuan_webGiay.Areas.Admin.Controllers
                 query = query.Where(c => c.UserId == userId.Value);
             }
 
-            if (!string.IsNullOrEmpty(search))
-            {
-                query = query.Where(c => c.Message.Contains(search) || (c.Response != null && c.Response.Contains(search)));
-            }
 
             query = query.OrderByDescending(c => c.SentAt);
 
@@ -1190,5 +1186,112 @@ namespace khoaLuan_webGiay.Areas.Admin.Controllers
             return RedirectToAction("Chathistory");
         }
 
+        //Thống kê
+        [Route("dashboard")]
+        public async Task<IActionResult> Dashboard()
+        {
+            var categoryStats = await _context.Categories
+                .Select(c => new {
+                    CategoryName = c.CategoryName,
+                    ProductCount = c.Products.Count()
+                }).ToListAsync();
+
+            return View(categoryStats);
+        }
+
+        [Route("dashboard2")]
+        public async Task<IActionResult> Dashboard2()
+        {
+            var bestSellers = await _context.Products
+                .OrderByDescending(p => p.TotalSold)
+                .Take(5)
+                .Select(p => new {
+                    p.ProductName,
+                    p.TotalSold
+                }).ToListAsync();
+
+            ViewBag.BestSellers = bestSellers;
+
+            return View();
+        }
+
+        [Route("StockChart")]
+        public async Task<IActionResult> StockChart()
+        {
+            // Lấy dữ liệu tồn kho theo từng size
+            var stockData = await _context.ProductSizes
+                .Include(ps => ps.Product)
+                .GroupBy(ps => new { ps.Product.ProductName, ps.Size })
+                .Select(g => new
+                {
+                    ProductName = g.Key.ProductName,
+                    Size = g.Key.Size,
+                    TotalQuantity = g.Sum(x => x.Quantity)
+                })
+                .ToListAsync();
+
+            return View(stockData);
+        }
+
+        //Doanh thu theo tháng
+        [Route("RevenueByMonth")]
+        public async Task<IActionResult> RevenueByMonth()
+        {
+            var data = await _context.Orders
+                .Where(o => o.OrderDate.HasValue)
+                .GroupBy(o => new { o.OrderDate.Value.Year, o.OrderDate.Value.Month })
+                .Select(g => new
+                {
+                    Year = g.Key.Year,
+                    Month = g.Key.Month,
+                    Total = g.Sum(o => o.TotalAmount)
+                })
+                .ToListAsync();
+
+            // Xử lý format sau khi đã lấy dữ liệu từ DB
+            var formatted = data
+                .OrderBy(x => x.Year).ThenBy(x => x.Month)
+                .Select(x => new
+                {
+                    Month = $"{x.Month:00}/{x.Year}", // định dạng chuỗi sau
+                    x.Total
+                }).ToList();
+
+            return View(formatted);
+        }
+
+        [Route("ReviewCountByProduct")]
+        public async Task<IActionResult> ReviewCountByProduct()
+        {
+            var data = await _context.Reviews
+                .Where(r => r.ProductId != null)
+                .GroupBy(r => r.Product.ProductName)
+                .Select(g => new
+                {
+                    ProductName = g.Key,
+                    Count = g.Count()
+                })
+                .OrderByDescending(x => x.Count)
+                .Take(10)
+                .ToListAsync();
+
+            return View(data);
+        }
+
+        [Route("ChatCountByDay")]
+        public async Task<IActionResult> ChatCountByDay()
+        {
+            var data = await _context.ChatHistories
+                .GroupBy(c => c.SentAt.Date)
+                .OrderBy(g => g.Key)
+                .Select(g => new
+                {
+                    Date = g.Key.ToString("dd/MM/yyyy"),
+                    Count = g.Count()
+                })
+                .ToListAsync();
+
+            return View(data);
+        }
     }
 }

@@ -8,9 +8,9 @@ public partial class ChatHistory
 
     public string Message { get; set; } = null!;
 
-    public string? Response { get; set; }
-
     public DateTime SentAt { get; set; }
 
     public virtual User? User { get; set; }
+    public string Sender { get; set; } = "user"; // hoặc "bot"
+
 }

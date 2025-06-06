@@ -187,7 +187,7 @@
 
     @await Html.PartialAsync("_ChatbotPartial")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-    <script src="~/js/chatbot.js"></script>
+    <script src="@Url.Content("~/js/chatbot.js")"></script>
 
 </body>
 </html>

@@ -20,16 +20,7 @@
                 <dd class="col-sm-8" style="white-space: pre-wrap;">@Model.Message</dd>
 
                 <dt class="col-sm-4">Phản hồi:</dt>
-                <dd class="col-sm-8" style="white-space: pre-wrap;">
-                    @if (string.IsNullOrEmpty(Model.Response))
-                    {
-                        <span class="text-muted">Không có phản hồi</span>
-                    }
-                    else
-                    {
-                        @Model.Response
-                    }
-                </dd>
+                
 
                 <dt class="col-sm-4">Thời gian gửi:</dt>
                 <dd class="col-sm-8">@Model.SentAt.ToString("dd/MM/yyyy HH:mm:ss")</dd>

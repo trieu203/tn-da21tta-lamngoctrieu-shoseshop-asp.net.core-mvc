@@ -25,6 +25,7 @@ builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpS
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IChatbotService, DbChatbotService>();
 
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = "MyCookieAuth";

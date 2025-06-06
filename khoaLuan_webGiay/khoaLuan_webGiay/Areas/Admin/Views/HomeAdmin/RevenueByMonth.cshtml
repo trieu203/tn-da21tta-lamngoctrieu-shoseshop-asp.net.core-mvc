@@ -1,0 +1,47 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<dynamic>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Thống kê doanh thu theo tháng";
+
+    var labels = Model.Select(m => m.Month).ToList();
+    var data = Model.Select(m => m.Total).ToList();
+}
+
+<h2 class="text-center">📈 Doanh thu theo tháng</h2>
+<canvas id="revenueChart" width="1000" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('revenueChart').getContext('2d');
+
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(Json.Serialize(labels)),
+            datasets: [{
+                label: 'Doanh thu (VNĐ)',
+                data: @Html.Raw(Json.Serialize(data)),
+                borderColor: 'rgba(75, 192, 192, 1)',
+                tension: 0.3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return new Intl.NumberFormat().format(value);
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+

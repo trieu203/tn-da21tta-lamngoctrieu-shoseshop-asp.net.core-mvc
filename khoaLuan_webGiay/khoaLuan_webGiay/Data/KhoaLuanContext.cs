@@ -120,6 +120,10 @@ public partial class KhoaLuanContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__ChatHisto__User___5DCAEF64");
+            modelBuilder.Entity<ChatHistory>()
+                .Property(c => c.Sender)
+                .HasMaxLength(20)
+                .HasDefaultValue("user");
         });
 
         modelBuilder.Entity<EmailConfirmation>(entity =>

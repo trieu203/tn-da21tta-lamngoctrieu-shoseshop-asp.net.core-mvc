@@ -32,6 +32,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/ChatCountByDay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENoYXRDb3VudEJ5RGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Chathistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENoYXRoaXN0b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,6 +50,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/CreateProductSize.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXENyZWF0ZVByb2R1Y3RTaXplLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Dashboard2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERhc2hib2FyZDIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/DeleteCategory.cshtml]
@@ -128,8 +140,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFByb2R1Y3RTaXplLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/RevenueByMonth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFJldmVudWVCeU1vbnRoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/Review.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFJldmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/ReviewCountByProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFJldmlld0NvdW50QnlQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/StockChart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN0b2NrQ2hhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/KHOA_LUAN_TOT_NGHIEP/src/KhoaLuan/khoaLuan_webGiay/khoaLuan_webGiay/Areas/Admin/Views/HomeAdmin/User.cshtml]

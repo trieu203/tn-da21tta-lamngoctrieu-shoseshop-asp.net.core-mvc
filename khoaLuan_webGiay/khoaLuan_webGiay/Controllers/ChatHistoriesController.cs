@@ -28,6 +28,12 @@ namespace khoaLuan_webGiay.Controllers
             var chats = await _context.ChatHistories
                 .Where(c => c.UserId == userId)
                 .OrderBy(c => c.SentAt)
+                .Select(c => new
+                {
+                    c.Message,
+                    c.Sender,
+                    c.SentAt
+                })
                 .ToListAsync();
 
             return Json(chats);
