@@ -141,6 +141,7 @@ wwwroot\img\users\a51802.jpg
 wwwroot\img\users\avatar.jpg
 wwwroot\img\users\bb3206.jpg
 wwwroot\img\users\e28b7c.jpg
+wwwroot\img\users\fd438a.jfif
 wwwroot\img\users\fe5636.png
 wwwroot\img\users\user_boy.jpg
 wwwroot\img\users\user_girl.jpg

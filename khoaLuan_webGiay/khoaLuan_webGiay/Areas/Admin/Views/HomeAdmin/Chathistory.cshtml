@@ -4,6 +4,12 @@
 @{
     ViewData["Title"] = "Lịch sử Chat";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    string Shorten(string msg, int maxLength = 50)
+    {
+        if (string.IsNullOrWhiteSpace(msg)) return "(Trống)";
+        return msg.Length > maxLength ? msg.Substring(0, maxLength) + "..." : msg;
+    }
 }
 
 <div class="container mt-4">
@@ -25,7 +31,7 @@
                 <tr>
                     <th>Tin nhắn</th>
                     <th class="text-center">Thời gian gửi</th>
-                    <th>Người dùng</th>
+                    <th>Người gửi</th>
                     <th class="text-center">Hành động</th>
                 </tr>
             </thead>
@@ -33,23 +39,31 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td style="max-width: 350px; white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word;">
-                            @Html.Raw(Html.Encode(item.Message))
+                        <td style="max-width: 350px;">
+                            <span title="@item.Message">
+                                @Shorten(item.Message)
+                            </span>
                         </td>
 
                         <td class="text-center">
                             @item.SentAt.ToString("dd/MM/yyyy HH:mm:ss")
                         </td>
+
                         <td>
-                            @if (item.User != null)
+                            @if (item.Sender == "bot")
                             {
-                                @(item.User.UserName != null ? item.User.UserName : $"User ID: {item.User.UserId}")
+                                <span class="text-primary fw-semibold">🤖 Bot</span>
+                            }
+                            else if (item.User != null)
+                            {
+                                @(item.User.UserName ?? $"User ID: {item.User.UserId}")
                             }
                             else
                             {
                                 <span class="text-muted">Không xác định</span>
                             }
                         </td>
+
                         <td class="text-center">
                             <a class="btn btn-info btn-sm me-1" asp-action="DetailChatHistory" asp-route-id="@item.ChatId" title="Xem chi tiết">
                                 <i class="bi bi-eye"></i> Chi tiết

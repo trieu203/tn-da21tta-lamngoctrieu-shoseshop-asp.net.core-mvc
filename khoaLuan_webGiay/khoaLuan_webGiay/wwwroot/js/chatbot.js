@@ -34,12 +34,12 @@
                     data.forEach(chat => {
                         const isUser = chat.sender === "user";
                         appendMessage(
-                            chat.sender === "user" ? userFullName : "Bot",
+                            chat.senderName ?? (isUser ? userFullName : "Bot"),
                             chat.message,
-                            chat.sender === "user",
+                            isUser,
                             chat.sentAt
                         );
-                        });
+                    });
                 }
             })
             .catch(err => {
@@ -116,39 +116,54 @@
         div.style.flexDirection = isUser ? "row-reverse" : "row";
 
         div.innerHTML = `
-        ${!isUser ? `<img src="${avatarUrl}" alt="avatar" style="
-            width: 32px; height: 32px; border-radius: 50%; margin-right: 10px;">` : ""}
-        <div style="
-            background: ${isUser ? "#d1ecf1" : "#f8f9fa"};
-            padding: 8px 12px;
-            border-radius: 12px;
-            max-width: 220px;
-            text-align: ${isUser ? "right" : "left"};
-        ">
-            <div style="font-weight: bold;">${sender}</div>
-            <div>${text}</div>
-            <div style="text-align: ${isUser ? "left" : "right"}; font-size: 11px; color: #666;">${timestamp}</div>
-        </div>
-    `;
+    ${!isUser ? `<img src="${avatarUrl}" alt="avatar" style="
+        width: 32px; height: 32px; border-radius: 50%; margin-right: 10px;">` : ""}
+    <div style="
+        background: ${isUser ? "#d1ecf1" : "#f8f9fa"};
+        padding: 8px 12px;
+        border-radius: 12px;
+        max-width: 100%;
+        word-break: break-word;
+        text-align: ${isUser ? "right" : "left"};
+    ">
+        <div style="font-weight: bold;">${sender}</div>
+        <div>${isUser ? escapeHtml(text) : text}</div>
+        <div style="text-align: ${isUser ? "left" : "right"}; font-size: 11px; color: #666;">${timestamp}</div>
+    </div>
+`;
 
         chatMessages.appendChild(div);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+    function escapeHtml(str) {
+        return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
 
     function showProductList(products) {
         const div = document.createElement("div");
         div.innerHTML = `<strong>Bot:</strong> Dưới đây là một số sản phẩm bạn quan tâm:<br>`;
         products.forEach(p => {
             div.innerHTML += `
-                <div style="margin: 5px 0; display: flex; gap: 8px; align-items: center;">
-                    <img src="${p.image}" alt="${p.name}" width="50" height="50" style="border-radius: 6px;">
-                    <span>${p.name} - ${p.price.toLocaleString()} VNĐ</span>
+            <div style="margin: 8px 0; display: flex; gap: 10px; align-items: center;">
+                <img src="${p.image}" alt="${p.name}" width="50" height="50" style="border-radius: 6px;">
+                <div>
+                    <a href="/Product/Detail/${p.id}" style="font-weight: 500; color: #2c3e50; text-decoration: none;" target="_blank">
+                        ${p.name}
+                    </a>
+                    <div style="font-size: 13px; color: #888;">${p.price.toLocaleString()} VNĐ</div>
                 </div>
-            `;
+            </div>
+        `;
         });
         chatMessages.appendChild(div);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+
 
     function isJson(str) {
         try { JSON.parse(str); } catch { return false; }

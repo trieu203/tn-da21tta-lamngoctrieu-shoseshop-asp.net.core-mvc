@@ -27,7 +27,9 @@ namespace khoaLuan_webGiay.Hubs
                 {
                     await Clients.Caller.SendAsync("ReceiveMessage", new
                     {
-                        response = "⚠️ Bạn cần đăng nhập để sử dụng chatbot (UserId không tồn tại)."
+                        sender = "bot",
+                        message = "⚠️ Bạn cần đăng nhập để sử dụng chatbot (UserId không tồn tại).",
+                        sentAt = DateTime.Now
                     });
                     return;
                 }
@@ -36,18 +38,17 @@ namespace khoaLuan_webGiay.Hubs
                 {
                     await Clients.Caller.SendAsync("ReceiveMessage", new
                     {
-                        response = "⚠️ Bạn cần nhập tin nhắn."
+                        sender = "bot",
+                        message = "⚠️ Bạn cần nhập tin nhắn.",
+                        sentAt = DateTime.Now
                     });
                     return;
                 }
 
-                // Gửi message lên service để lấy phản hồi từ bot
                 var response = await _chatbotService.GetResponseAsync(message, userId);
-
-                // Tạo mốc thời gian chung
                 var now = DateTime.Now;
 
-                // Lưu message của user
+                // Lưu user
                 _context.ChatHistories.Add(new ChatHistory
                 {
                     UserId = userId,
@@ -56,7 +57,7 @@ namespace khoaLuan_webGiay.Hubs
                     SentAt = now
                 });
 
-                // Lưu phản hồi của bot
+                // Lưu bot
                 _context.ChatHistories.Add(new ChatHistory
                 {
                     UserId = userId,
@@ -67,7 +68,7 @@ namespace khoaLuan_webGiay.Hubs
 
                 await _context.SaveChangesAsync();
 
-                // Gửi lại cả hai message (nếu muốn show cả đôi bên)
+                // Gửi lại tin nhắn
                 await Clients.Caller.SendAsync("ReceiveMessage", new
                 {
                     sender = "user",
@@ -86,7 +87,9 @@ namespace khoaLuan_webGiay.Hubs
             {
                 await Clients.Caller.SendAsync("ReceiveMessage", new
                 {
-                    response = "⚠️ Lỗi server: " + ex.Message
+                    sender = "bot",
+                    message = "⚠️ Lỗi server: " + ex.Message,
+                    sentAt = DateTime.Now
                 });
             }
         }

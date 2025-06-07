@@ -25,7 +25,7 @@
             "Cửa hàng mở cửa từ 8h đến 21h mỗi ngày, kể cả thứ 7, CN."
         },
         {
-            new[] { "địa chỉ", "cửa hàng", "chi nhánh", "ở đâu" },
+            new[] { "địa chỉ", "cửa hàng", "chi nhánh", "shop ở đâu" },
             "Chúng tôi hiện có cửa hàng tại Hẻm 114 Kiên Thị Nhãn, Phường 7, TP.Trà Vinh."
         },
         {

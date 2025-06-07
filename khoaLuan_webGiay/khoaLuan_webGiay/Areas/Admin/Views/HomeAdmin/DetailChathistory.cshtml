@@ -7,45 +7,50 @@
 }
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Chi tiết lịch sử chat</h1>
-    <hr />
+    <h2 class="text-center text-primary mb-4">
+        <i class="bi bi-chat-dots-fill"></i> Chi tiết lịch sử trò chuyện
+    </h2>
 
-    <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            Thông tin chi tiết
-        </div>
+    <div class="card shadow-sm border-0">
         <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-4">Tin nhắn:</dt>
-                <dd class="col-sm-8" style="white-space: pre-wrap;">@Model.Message</dd>
-
-                <dt class="col-sm-4">Phản hồi:</dt>
-                
-
-                <dt class="col-sm-4">Thời gian gửi:</dt>
-                <dd class="col-sm-8">@Model.SentAt.ToString("dd/MM/yyyy HH:mm:ss")</dd>
-
-                <dt class="col-sm-4">Người dùng:</dt>
-                <dd class="col-sm-8">
-                    @if (Model.User != null)
+            <div class="mb-4">
+                <h5 class="fw-bold"><i class="bi bi-person-circle me-2"></i>Người gửi:</h5>
+                <p class="mb-0 ps-3">
+                    @if (Model.Sender == "bot")
                     {
-                        @(Model.User.UserName != null ? Model.User.UserName : $"User ID: {Model.User.UserId}")
+                        <span class="text-primary fw-semibold">🤖 Bot</span>
+                    }
+                    else if (Model.User != null)
+                    {
+                        @(Model.User.UserName ?? $"User ID: {Model.User.UserId}")
                     }
                     else
                     {
                         <span class="text-muted">Không xác định</span>
                     }
-                </dd>
-            </dl>
-        </div>
-    </div>
+                </p>
+            </div>
 
-    <div class="mt-4 d-flex justify-content-between">
-        <a asp-action="DeleteChatHistory" asp-route-id="@Model.ChatId" class="btn btn-danger">
-            <i class="bi bi-trash-fill"></i> Xóa
-        </a>
-        <a asp-action="Chathistory" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Quay lại danh sách
-        </a>
+            <div class="mb-4">
+                <h5 class="fw-bold"><i class="bi bi-chat-left-text me-2"></i>Tin nhắn:</h5>
+                <div class="border rounded p-3 bg-light ps-4" style="white-space: pre-wrap;">
+                    @Model.Message
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h5 class="fw-bold"><i class="bi bi-clock me-2"></i>Thời gian gửi:</h5>
+                <p class="ps-3">@Model.SentAt.ToString("dd/MM/yyyy HH:mm:ss")</p>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white d-flex justify-content-between">
+            <a asp-action="DeleteChatHistory" asp-route-id="@Model.ChatId" class="btn btn-outline-danger">
+                <i class="bi bi-trash-fill"></i> Xóa bản ghi
+            </a>
+            <a asp-action="ChatHistory" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Quay lại danh sách
+            </a>
+        </div>
     </div>
 </div>

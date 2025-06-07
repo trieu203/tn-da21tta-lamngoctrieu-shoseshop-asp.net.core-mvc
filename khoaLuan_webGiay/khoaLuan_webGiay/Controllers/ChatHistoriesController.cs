@@ -18,10 +18,7 @@ namespace khoaLuan_webGiay.Controllers
         {
             var userIdClaim = User.FindFirst("UserId")?.Value;
             if (string.IsNullOrEmpty(userIdClaim))
-            {
-                // Nếu chưa đăng nhập, chuyển về trang Login
                 return RedirectToAction("Login", "Users");
-            }
 
             int userId = int.Parse(userIdClaim);
 
@@ -32,7 +29,8 @@ namespace khoaLuan_webGiay.Controllers
                 {
                     c.Message,
                     c.Sender,
-                    c.SentAt
+                    c.SentAt,
+                    SenderName = c.Sender == "bot" ? "Bot" : c.User.FullName
                 })
                 .ToListAsync();
 
