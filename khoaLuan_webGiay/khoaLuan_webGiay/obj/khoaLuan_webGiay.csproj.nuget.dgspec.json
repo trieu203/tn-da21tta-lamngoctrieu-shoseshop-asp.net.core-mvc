@@ -57,6 +57,14 @@
               "target": "Package",
               "version": "[14.0.0, )"
             },
+            "DinkToPdf": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
+            "LibWkHtmlToX-32": {
+              "target": "Package",
+              "version": "[0.12.6.1, )"
+            },
             "Microsoft.AspNetCore.Authorization": {
               "target": "Package",
               "version": "[8.0.15, )"

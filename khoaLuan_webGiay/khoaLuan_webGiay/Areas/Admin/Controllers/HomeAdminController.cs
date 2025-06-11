@@ -5,6 +5,9 @@ using khoaLuan_webGiay.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using X.PagedList.Extensions;
+using DinkToPdf.Contracts;
+using DinkToPdf;
+using khoaLuan_webGiay.Helpers;
 
 namespace khoaLuan_webGiay.Areas.Admin.Controllers
 {
@@ -1099,6 +1102,43 @@ namespace khoaLuan_webGiay.Areas.Admin.Controllers
                 return StatusCode(500, "Đã xảy ra lỗi, vui lòng thử lại sau.");
             }
         }
+
+        [Route("ExportOrderPdf")]
+        public async Task<IActionResult> ExportOrderPdf(int id, [FromServices] IConverter converter)
+        {
+            var order = await _context.Orders
+                .Include(o => o.User)
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Product)
+                .FirstOrDefaultAsync(o => o.OrderId == id);
+
+            if (order == null) return NotFound();
+
+            // Render Razor view ra HTML string
+            var html = await this.RenderViewAsync("_OrderPdf", order, true);
+
+            var doc = new HtmlToPdfDocument()
+            {
+                GlobalSettings = new GlobalSettings
+                {
+                    ColorMode = ColorMode.Color,
+                    Orientation = Orientation.Portrait,
+                    PaperSize = PaperKind.A4,
+                    Margins = new MarginSettings { Top = 10, Bottom = 10 }
+                },
+                Objects = {
+            new ObjectSettings {
+                PagesCount = true,
+                HtmlContent = html,
+                WebSettings = { DefaultEncoding = "utf-8" }
+            }
+        }
+            };
+
+            var pdf = converter.Convert(doc);
+            return File(pdf, "application/pdf", $"HoaDon_{order.OrderId}.pdf");
+        }
+
 
 
         // Index Chathistory

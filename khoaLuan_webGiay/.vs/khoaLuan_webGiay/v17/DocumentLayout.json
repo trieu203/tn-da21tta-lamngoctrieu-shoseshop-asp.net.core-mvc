@@ -1,53 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\service\\dbchatbotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\service\\dbchatbotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\chatkeywords\\chatbotknowledgebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\chatkeywords\\chatbotknowledgebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChatbotKnowledgeBase.cs",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
-              "RelativeToolTip": "khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T04:18:09.898Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DbChatbotService.cs",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "RelativeToolTip": "khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0BAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T03:13:38.054Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

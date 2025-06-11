@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("khoaLuan_webGiay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7602ab409d40bc0e3d38a438a9857b7bcefc713d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51266f8ae0cdff328038da0dfe516b86a02d7676")]
 [assembly: System.Reflection.AssemblyProductAttribute("khoaLuan_webGiay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("khoaLuan_webGiay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

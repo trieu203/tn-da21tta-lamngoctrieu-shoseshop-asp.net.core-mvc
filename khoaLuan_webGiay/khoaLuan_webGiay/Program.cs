@@ -5,12 +5,16 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using DinkToPdf;
+using DinkToPdf.Contracts;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession(); 
+builder.Services.AddSession();
 
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -58,9 +58,40 @@
             <a form="form0" asp-action="EditOrder" asp-route-id="@Model.OrderId" class="btn btn-primary me-2">
                 <i class="bi bi-check-circle"></i> Sửa
             </a>
+            <a asp-action="ExportOrderPdf" asp-route-id="@Model.OrderId" class="btn btn-danger">
+                <i class="bi bi-file-earmark-pdf"></i> Xuất PDF
+            </a>
             <a asp-action="Order" class="btn btn-outline-secondary">
                 <i class="bi bi-arrow-left-circle"></i> Quay lại danh sách
             </a>
         </div>
     </div>
 </div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function exportOrderToPdf() {
+            const element = document.querySelector('.card');
+
+            html2canvas(element, {
+                scale: 2,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                // Chuyển px → mm: 1px = 0.264583 mm
+                const imgWidthMm = 80; // 80mm chiều ngang
+                const imgHeightMm = canvas.height * 0.264583 * (imgWidthMm / (canvas.width * 0.264583));
+
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: [imgWidthMm, imgHeightMm]
+                });
+
+                pdf.addImage(imgData, 'JPEG', 0, 0, imgWidthMm, imgHeightMm);
+                pdf.save('don-hang-' + '@Html.Raw(Model.OrderId)' + '.pdf');
+            });
+        }
+    </script>
+}
