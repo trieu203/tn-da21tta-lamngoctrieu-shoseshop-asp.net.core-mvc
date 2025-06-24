@@ -50,10 +50,10 @@
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <span class="menu-title">Quản lý sản phẩm</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                            <i class="mdi mdi-crosshairs-gps menu-icon text-primary"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
+                            <ul class="nav flex-column sub-menu ">
                                 <li class="nav-item">
                                     <a class="nav-link" style="display: inline-block;" asp-area="admin" asp-controller="HomeAdmin" asp-action="Category">
                                         Quản lý danh mục sản phẩm
@@ -76,7 +76,7 @@
                             <i class="mdi mdi-account menu-icon"></i>
                         </a>
                         <div class="collapse" id="user-management">
-                            <ul class="nav flex-column sub-menu">
+                            <ul class="nav flex-column sub-menu text-primary">
                                 <li class="nav-item">
                                     <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="Review">
                                         Quản lý bình luận
@@ -89,22 +89,36 @@
                                     <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="Order">Quản lý đơn hàng</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="Dashboard">Thống kế danh mục</a>
+                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ChatHistory">Quản lý Chatbot</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#statistic-menu" aria-expanded="false" aria-controls="statistic-menu">
+                            <span class="menu-title">Quản lý Thống kê</span>
+                            <i class="menu-arrow"></i>
+                            <i class="mdi mdi-chart-bar menu-icon text-primary"></i>
+                        </a>
+                        <div class="collapse" id="statistic-menu">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="Dashboard">Thống kê danh mục</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="Dashboard2">Thống kế sản phẩm bán chạy</a>
+                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="Dashboard2">Thống kê sản phẩm bán chạy</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="StockChart">Thống kế tồn kho</a>
+                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="StockChart">Thống kê tồn kho</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="RevenueByMonth">Thống kế doanh thu</a>
+                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="RevenueByMonth">Thống kê doanh thu</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ReviewCountByProduct">Thống kế lượt đánh giá</a>
+                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ReviewCountByProduct">Thống kê lượt đánh giá</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ChatCountByDay">Thống kế lượt chat</a>
+                                    <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ChatCountByDay">Thống kê lượt chat</a>
                                 </li>
                             </ul>
                         </div>
@@ -113,7 +127,7 @@
                         <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                             <span class="menu-title">Hành động</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-lock menu-icon"></i>
+                            <i class="mdi mdi-lock menu-icon text-primary"></i>
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">

@@ -1078,6 +1078,8 @@ wwwroot\scss\style.scss
 wwwroot\shop.html
 wwwroot\uploads\reviews\609a9796-b759-42d5-9aa0-7370aebe88e1.jpg
 wwwroot\uploads\reviews\nenmoi_328.jpg
+wwwroot\uploads\reviews\nenmoi_918.jpg
+wwwroot\uploads\reviews\test_078.mp4
 wwwroot\uploads\reviews\test_1cb.mp4
 wwwroot\uploads\reviews\test_7fc.mp4
 wwwroot\uploads\reviews\test_80b.mp4
