@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "khoaLuan_webGiay\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
               "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
               "RelativeToolTip": "khoaLuan_webGiay\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-23T03:18:51.753Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "khoaLuan_webGiay\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-23T03:17:04.798Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T03:17:04.798Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "khoaLuan_webGiay\\Service\\DbChatbotService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T01:01:47.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T01:01:47.204Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T01:00:57.53Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T01:00:57.53Z"
             }
           ]
         }
