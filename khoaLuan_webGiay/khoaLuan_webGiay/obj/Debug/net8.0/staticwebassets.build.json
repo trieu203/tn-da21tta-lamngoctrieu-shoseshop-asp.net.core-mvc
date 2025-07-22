@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4TBsVOFuXXHrMZepv4Q7fFmXpO3BWClVyWTRxe0OvtA=",
+  "Hash": "XBTlEedlJkb1y1osbHj9ejWucou5SmREUMN0n33dXG0=",
   "Source": "khoaLuan_webGiay",
   "BasePath": "_content/khoaLuan_webGiay",
   "Mode": "Default",
@@ -22716,6 +22716,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\reviews\\609a9796-b759-42d5-9aa0-7370aebe88e1.jpg"
+    },
+    {
+      "Identity": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\ga_038.png",
+      "SourceId": "khoaLuan_webGiay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\",
+      "BasePath": "_content/khoaLuan_webGiay",
+      "RelativePath": "uploads/reviews/ga_038#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "v14qjqjgqn",
+      "Integrity": "/Z3pV5HTcVab9H4j7m2na/nGyVnOG93NUV4p/27ny+Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\reviews\\ga_038.png"
     },
     {
       "Identity": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\nenmoi_328.jpg",
@@ -111526,6 +111547,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-lvqivbvt+Fzm+0pEzVpi0vN5VDjXbj//VChMyZU1uX4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/reviews/ga_038.png",
+      "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\ga_038.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/Z3pV5HTcVab9H4j7m2na/nGyVnOG93NUV4p/27ny+Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:19:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/Z3pV5HTcVab9H4j7m2na/nGyVnOG93NUV4p/27ny+Y="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/reviews/ga_038.v14qjqjgqn.png",
+      "AssetFile": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\uploads\\reviews\\ga_038.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/Z3pV5HTcVab9H4j7m2na/nGyVnOG93NUV4p/27ny+Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:19:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "v14qjqjgqn"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/reviews/ga_038.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/Z3pV5HTcVab9H4j7m2na/nGyVnOG93NUV4p/27ny+Y="
         }
       ]
     },

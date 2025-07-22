@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\areas\\admin\\views\\homeadmin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\areas\\admin\\views\\homeadmin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\views\\shared\\_chatbotpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\views\\shared\\_chatbotpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\chatkeywords\\chatbotknowledgebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\chatkeywords\\chatbotknowledgebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\service\\ichatbotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\service\\ichatbotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\service\\dbchatbotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\service\\dbchatbotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|d:\\khoa_luan_tot_nghiep\\src\\khoaluan\\khoaluan_webgiay\\khoaluan_webgiay\\wwwroot\\js\\chatbot.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{18979AB7-3181-450F-8EFA-504623063E09}|khoaLuan_webGiay\\khoaLuan_webGiay.csproj|solutionrelative:khoaluan_webgiay\\wwwroot\\js\\chatbot.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,39 +39,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
-              "RelativeToolTip": "khoaLuan_webGiay\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Title": "_ChatbotPartial.cshtml",
+              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Shared\\_ChatbotPartial.cshtml",
+              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Views\\Shared\\_ChatbotPartial.cshtml",
+              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Views\\Shared\\_ChatbotPartial.cshtml",
+              "RelativeToolTip": "khoaLuan_webGiay\\Views\\Shared\\_ChatbotPartial.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-23T03:18:51.753Z",
+              "WhenOpened": "2025-07-20T11:16:14.509Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "khoaLuan_webGiay\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-23T03:17:04.798Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DbChatbotService.cs",
-              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "RelativeToolTip": "khoaLuan_webGiay\\Service\\DbChatbotService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T01:01:47.204Z"
             },
             {
               "$type": "Document",
@@ -73,9 +57,62 @@
               "RelativeDocumentMoniker": "khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
               "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
               "RelativeToolTip": "khoaLuan_webGiay\\ChatKeyWords\\ChatbotKnowledgeBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwB4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T01:00:57.53Z"
+              "WhenOpened": "2025-07-20T11:16:03.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "chatbot.js",
+              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\chatbot.js",
+              "RelativeDocumentMoniker": "khoaLuan_webGiay\\wwwroot\\js\\chatbot.js",
+              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\wwwroot\\js\\chatbot.js",
+              "RelativeToolTip": "khoaLuan_webGiay\\wwwroot\\js\\chatbot.js",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAgwKEAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-20T11:15:08.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DbChatbotService.cs",
+              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\DbChatbotService.cs",
+              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Service\\DbChatbotService.cs",
+              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\DbChatbotService.cs",
+              "RelativeToolTip": "khoaLuan_webGiay\\Service\\DbChatbotService.cs",
+              "ViewState": "AgIAAGoBAAAAAAAAAAAYwHoBAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T11:14:55.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IChatbotService.cs",
+              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\IChatbotService.cs",
+              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Service\\IChatbotService.cs",
+              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Service\\IChatbotService.cs",
+              "RelativeToolTip": "khoaLuan_webGiay\\Service\\IChatbotService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T11:14:53.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "khoaLuan_webGiay\\Hubs\\ChatHub.cs",
+              "ToolTip": "D:\\KHOA_LUAN_TOT_NGHIEP\\src\\KhoaLuan\\khoaLuan_webGiay\\khoaLuan_webGiay\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "khoaLuan_webGiay\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAgwFIAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T11:14:43.234Z",
+              "EditorCaption": ""
             }
           ]
         }
